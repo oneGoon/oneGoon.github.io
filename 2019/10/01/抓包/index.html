@@ -108,14 +108,14 @@
 <meta property="og:site_name" content="WG&#39;s Lakeside">
 <meta property="og:description" content="网络已成为当下人类的必需品，身为开发人员势必了解其原理，无论是正向开发，抑或是逆向攻击。 网络抓包，是对网络传输中的数据包进行抓取。而后可对其进行分析。 正向开发中，我们可以通过抓包进行验证发送的数据是否正确，如验证发送的次数，host，path，header等。 也可以对特定的请求模拟给出特定的响应结果，检查发送端在得到响应后的行为是否符合预期，比如验证一些业务场景极少发生的场景以及边界等。 抓">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:image" content="/Users/wanglele/Desktop/Screen%20Shot%202019-10-01%20at%204.27.02%20PM.png">
-<meta property="og:image" content="/Users/wanglele/Library/Application%20Support/typora-user-images/image-20191001163433263.png">
-<meta property="og:image" content="/Users/wanglele/Library/Containers/com.tencent.xinWeChat/Data/Library/Application%20Support/com.tencent.xinWeChat/2.0b4.0.9/03c0d77b6b1c94307d230852b5503897/Message/MessageTemp/9e20f478899dc29eb19741386f9343c8/Image/2351569919333_.pic.jpg">
-<meta property="og:updated_time" content="2019-10-01T08:43:21.100Z">
+<meta property="og:image" content="https://github.com/oneGoon/Graphic/blob/master/hexo-blog/proxy.png">
+<meta property="og:image" content="https://github.com/oneGoon/Graphic/blob/master/hexo-blog/CharlesProxySetting.png">
+<meta property="og:image" content="https://github.com/oneGoon/Graphic/blob/master/hexo-blog/iPhoneProxySetting.jpeg">
+<meta property="og:updated_time" content="2019-10-01T09:03:43.577Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="抓包">
 <meta name="twitter:description" content="网络已成为当下人类的必需品，身为开发人员势必了解其原理，无论是正向开发，抑或是逆向攻击。 网络抓包，是对网络传输中的数据包进行抓取。而后可对其进行分析。 正向开发中，我们可以通过抓包进行验证发送的数据是否正确，如验证发送的次数，host，path，header等。 也可以对特定的请求模拟给出特定的响应结果，检查发送端在得到响应后的行为是否符合预期，比如验证一些业务场景极少发生的场景以及边界等。 抓">
-<meta name="twitter:image" content="/Users/wanglele/Desktop/Screen%20Shot%202019-10-01%20at%204.27.02%20PM.png">
+<meta name="twitter:image" content="https://github.com/oneGoon/Graphic/blob/master/hexo-blog/proxy.png">
 
 
 
@@ -352,7 +352,7 @@
                 
               
 
-              <time title="Erstellt: 2019-10-01 15:25:18 / Geändert am: 16:43:21" itemprop="dateCreated datePublished" datetime="2019-10-01T15:25:18+08:00">2019-10-01</time>
+              <time title="Erstellt: 2019-10-01 15:25:18 / Geändert am: 17:03:43" itemprop="dateCreated datePublished" datetime="2019-10-01T15:25:18+08:00">2019-10-01</time>
             
 
             
@@ -401,16 +401,16 @@
 <p>​        客户端发送的所有数据都会先通过代理，然后由代理发送给服务器。</p>
 <p>​        服务器收到请求后，将相应消息返回给代理，然后由代理发送给客户端。</p>
 <p>对客户端来说代理就是服务器，对服务器来说代理就是客户端，所以两者都不会感知网络被拦截了。这就是中间人攻击的原理。</p>
-<p><img src="/Users/wanglele/Desktop/Screen Shot 2019-10-01 at 4.27.02 PM.png" alt="Screen Shot 2019-10-01 at 4.27.02 PM"></p>
+<p><img src="https://github.com/oneGoon/Graphic/blob/master/hexo-blog/proxy.png" alt="Screen Shot 2019-10-01 at 4.27.02 PM"></p>
 <p>拦截iPhone上的网络请求</p>
 <ol>
 <li>将Charles的代理功能打开</li>
 </ol>
-<p><img src="/Users/wanglele/Library/Application Support/typora-user-images/image-20191001163433263.png" alt="image-20191001163433263"></p>
+<p><img src="https://github.com/oneGoon/Graphic/blob/master/hexo-blog/CharlesProxySetting.png" alt="image-CharlesProxySetting"></p>
 <p>设置代理并勾选”Enable transparent HTTP proxying”</p>
 <p>查看ip， Help -&gt; Local IP Address . 或者去网络设置中去查看，如今可以看到两种地址，短的是IPv4,长的是IPv6.</p>
 <p>在iphone上，设置网络代理为Charles启动的代理服务器。</p>
-<p><img src="/Users/wanglele/Library/Containers/com.tencent.xinWeChat/Data/Library/Application Support/com.tencent.xinWeChat/2.0b4.0.9/03c0d77b6b1c94307d230852b5503897/Message/MessageTemp/9e20f478899dc29eb19741386f9343c8/Image/2351569919333_.pic.jpg" alt="2351569919333_.pic" style="zoom: 33%;"></p>
+<p><img src="https://github.com/oneGoon/Graphic/blob/master/hexo-blog/iPhoneProxySetting.jpeg" alt="iPhoneProxySetting"></p>
 
       
     </div>
