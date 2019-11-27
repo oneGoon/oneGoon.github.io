@@ -100,22 +100,15 @@
 
 
 
-  <meta name="description" content="网络已成为当下人类的必需品，身为开发人员势必了解其原理，无论是正向开发，抑或是逆向攻击。 网络抓包，是对网络传输中的数据包进行抓取。而后可对其进行分析。 正向开发中，我们可以通过抓包进行验证发送的数据是否正确，如验证发送的次数，host，path，header等。 也可以对特定的请求模拟给出特定的响应结果，检查发送端在得到响应后的行为是否符合预期，比如验证一些业务场景极少发生的场景以及边界等。 抓">
-<meta name="keywords" content="http">
+  <meta name="keywords" content="swift">
 <meta property="og:type" content="article">
-<meta property="og:title" content="抓包">
-<meta property="og:url" content="onegoon.store/2019/10/01/抓包/index.html">
+<meta property="og:title" content="iOS URLSession Request">
+<meta property="og:url" content="onegoon.store/2019/11/27/iOS-URLSession-Request/index.html">
 <meta property="og:site_name" content="WG&#39;s Lakeside">
-<meta property="og:description" content="网络已成为当下人类的必需品，身为开发人员势必了解其原理，无论是正向开发，抑或是逆向攻击。 网络抓包，是对网络传输中的数据包进行抓取。而后可对其进行分析。 正向开发中，我们可以通过抓包进行验证发送的数据是否正确，如验证发送的次数，host，path，header等。 也可以对特定的请求模拟给出特定的响应结果，检查发送端在得到响应后的行为是否符合预期，比如验证一些业务场景极少发生的场景以及边界等。 抓">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:image" content="https://github.com/oneGoon/Graphic/blob/master/hexo-blog/CapturePackage/proxy.png?raw=true">
-<meta property="og:image" content="https://github.com/oneGoon/Graphic/blob/master/hexo-blog/CapturePackage/CharlesProxySetting.png?raw=true">
-<meta property="og:image" content="https://github.com/oneGoon/Graphic/blob/master/hexo-blog/iPhoneProxySetting.jpeg?raw=true">
-<meta property="og:updated_time" content="2019-11-27T15:38:56.357Z">
+<meta property="og:updated_time" content="2019-11-27T15:14:13.103Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="抓包">
-<meta name="twitter:description" content="网络已成为当下人类的必需品，身为开发人员势必了解其原理，无论是正向开发，抑或是逆向攻击。 网络抓包，是对网络传输中的数据包进行抓取。而后可对其进行分析。 正向开发中，我们可以通过抓包进行验证发送的数据是否正确，如验证发送的次数，host，path，header等。 也可以对特定的请求模拟给出特定的响应结果，检查发送端在得到响应后的行为是否符合预期，比如验证一些业务场景极少发生的场景以及边界等。 抓">
-<meta name="twitter:image" content="https://github.com/oneGoon/Graphic/blob/master/hexo-blog/CapturePackage/proxy.png?raw=true">
+<meta name="twitter:title" content="iOS URLSession Request">
 
 
 
@@ -123,7 +116,7 @@
 
   
   
-  <link rel="canonical" href="onegoon.store/2019/10/01/抓包/">
+  <link rel="canonical" href="onegoon.store/2019/11/27/iOS-URLSession-Request/">
 
 
 
@@ -133,7 +126,7 @@
   };
 </script>
 
-  <title>抓包 | WG's Lakeside</title>
+  <title>iOS URLSession Request | WG's Lakeside</title>
   
 
 
@@ -309,7 +302,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="onegoon.store/2019/10/01/抓包/">
+    <link itemprop="mainEntityOfPage" href="onegoon.store/2019/11/27/iOS-URLSession-Request/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Tccat">
@@ -326,7 +319,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">抓包
+          <h1 class="post-title" itemprop="name headline">iOS URLSession Request
 
               
             
@@ -352,25 +345,9 @@
                 
               
 
-              <time title="Erstellt: 2019-10-01 15:25:18" itemprop="dateCreated datePublished" datetime="2019-10-01T15:25:18+08:00">2019-10-01</time>
+              <time title="Erstellt: 2019-11-27 23:14:13" itemprop="dateCreated datePublished" datetime="2019-11-27T23:14:13+08:00">2019-11-27</time>
             
 
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Bearbeitet am</span>
-                
-                <time title="Geändert am: 2019-11-27 23:38:56" itemprop="dateModified" datetime="2019-11-27T23:38:56+08:00">2019-11-27</time>
-              
             
           </span>
 
@@ -403,27 +380,7 @@
       
 
       
-        <p>网络已成为当下人类的必需品，身为开发人员势必了解其原理，无论是正向开发，抑或是逆向攻击。</p>
-<p>网络抓包，是对网络传输中的数据包进行抓取。而后可对其进行分析。</p>
-<p>正向开发中，我们可以通过抓包进行验证发送的数据是否正确，如验证发送的次数，host，path，header等。</p>
-<p>也可以对特定的请求模拟给出特定的响应结果，检查发送端在得到响应后的行为是否符合预期，比如验证一些业务场景极少发生的场景以及边界等。</p>
-<h3 id="抓包工具"><a href="#抓包工具" class="headerlink" title="抓包工具"></a>抓包工具</h3><h4 id="Charles-青花瓷-花瓶"><a href="#Charles-青花瓷-花瓶" class="headerlink" title="Charles (青花瓷/花瓶)"></a>Charles (青花瓷/花瓶)</h4><p><a href="https://www.charlesproxy.com/" target="_blank" rel="noopener">Charles</a> 支持截取 HTTP/<strong>HTTPS</strong></p>
-<p>Charles 抓包原理是将自己设为代理。</p>
-<p>代理相当于一个中间人</p>
-<p>​        客户端发送的所有数据都会先通过代理，然后由代理发送给服务器。</p>
-<p>​        服务器收到请求后，将相应消息返回给代理，然后由代理发送给客户端。</p>
-<p>对客户端来说代理就是服务器，对服务器来说代理就是客户端，所以两者都不会感知网络被拦截了。这就是中间人攻击的原理。</p>
-<p><img src="https://github.com/oneGoon/Graphic/blob/master/hexo-blog/CapturePackage/proxy.png?raw=true" alt="代理示意图"></p>
-<p>拦截iPhone上的网络请求</p>
-<ol>
-<li>将Charles的代理功能打开</li>
-</ol>
-<p><img src="https://github.com/oneGoon/Graphic/blob/master/hexo-blog/CapturePackage/CharlesProxySetting.png?raw=true" alt="image-CharlesProxySetting"></p>
-<p>设置代理并勾选”Enable transparent HTTP proxying”</p>
-<p>查看ip， Help -&gt; Local IP Address . 或者去网络设置中去查看，如今可以看到两种地址，短的是IPv4,长的是IPv6.</p>
-<p>在iphone上，设置网络代理为Charles启动的代理服务器。</p>
-<p><img src="https://github.com/oneGoon/Graphic/blob/master/hexo-blog/iPhoneProxySetting.jpeg?raw=true" alt="iPhoneProxySetting" style="zoom:33%;"></p>
-
+        
       
     </div>
 
@@ -444,12 +401,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/http/" rel="tag"># http</a>
-          
-        </div>
-      
 
       
       
@@ -459,8 +410,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/28/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2019/10/01/抓包/" rel="next" title="抓包">
+                <i class="fa fa-chevron-left"></i> 抓包
               </a>
             
           </div>
@@ -468,10 +419,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/11/27/iOS-URLSession-Request/" rel="prev" title="iOS URLSession Request">
-                iOS URLSession Request <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -515,17 +462,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Inhaltsverzeichnis
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Übersicht
-          </li>
-        </ul>
-      
 
-      <div class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -584,23 +522,6 @@
         </div>
       </div>
 
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#抓包工具"><span class="nav-number">1.</span> <span class="nav-text">抓包工具</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Charles-青花瓷-花瓶"><span class="nav-number">1.1.</span> <span class="nav-text">Charles (青花瓷/花瓶)</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
       
 
       
