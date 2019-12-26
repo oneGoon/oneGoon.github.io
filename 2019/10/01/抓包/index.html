@@ -100,21 +100,21 @@
 
 
 
-  <meta name="description" content="网络已成为当下人类的必需品，身为开发人员势必了解其原理，无论是正向开发，抑或是逆向攻击。 网络抓包，是对网络传输中的数据包进行抓取。而后可对其进行分析。 正向开发中，我们可以通过抓包进行验证发送的数据是否正确，如验证发送的次数，host，path，header等。 也可以对特定的请求模拟给出特定的响应结果，检查发送端在得到响应后的行为是否符合预期，比如验证一些业务场景极少发生的场景以及边界等。 抓">
+  <meta name="description" content="网络已成为当下人类的必需品，身为开发人员势必了解其原理，无论是正向开发，抑或是逆向攻击。 网络抓包，是对网络传输中的数据包进行抓取。而后可对其进行分析。 正向开发中，我们可以通过抓包进行验证发送的数据是否正确，如验证发送的次数，host，path，header等。 也可以对特定的请求模拟给出特定的响应结果，检查发送端在得到响应后的行为是否符合预期，比如验证一些业务场景极少发生的场景以及边界等。">
 <meta name="keywords" content="http">
 <meta property="og:type" content="article">
 <meta property="og:title" content="抓包">
 <meta property="og:url" content="onegoon.store/2019/10/01/抓包/index.html">
 <meta property="og:site_name" content="WG&#39;s Lakeside">
-<meta property="og:description" content="网络已成为当下人类的必需品，身为开发人员势必了解其原理，无论是正向开发，抑或是逆向攻击。 网络抓包，是对网络传输中的数据包进行抓取。而后可对其进行分析。 正向开发中，我们可以通过抓包进行验证发送的数据是否正确，如验证发送的次数，host，path，header等。 也可以对特定的请求模拟给出特定的响应结果，检查发送端在得到响应后的行为是否符合预期，比如验证一些业务场景极少发生的场景以及边界等。 抓">
+<meta property="og:description" content="网络已成为当下人类的必需品，身为开发人员势必了解其原理，无论是正向开发，抑或是逆向攻击。 网络抓包，是对网络传输中的数据包进行抓取。而后可对其进行分析。 正向开发中，我们可以通过抓包进行验证发送的数据是否正确，如验证发送的次数，host，path，header等。 也可以对特定的请求模拟给出特定的响应结果，检查发送端在得到响应后的行为是否符合预期，比如验证一些业务场景极少发生的场景以及边界等。">
 <meta property="og:locale" content="zh-cn">
 <meta property="og:image" content="https://github.com/oneGoon/Graphic/blob/master/hexo-blog/CapturePackage/proxy.png?raw=true">
 <meta property="og:image" content="https://github.com/oneGoon/Graphic/blob/master/hexo-blog/CapturePackage/CharlesProxySetting.png?raw=true">
 <meta property="og:image" content="https://github.com/oneGoon/Graphic/blob/master/hexo-blog/CapturePackage/iPhoneProxySetting.jpeg?raw=true">
-<meta property="og:updated_time" content="2019-11-27T15:42:44.029Z">
+<meta property="og:updated_time" content="2019-12-26T09:18:01.212Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="抓包">
-<meta name="twitter:description" content="网络已成为当下人类的必需品，身为开发人员势必了解其原理，无论是正向开发，抑或是逆向攻击。 网络抓包，是对网络传输中的数据包进行抓取。而后可对其进行分析。 正向开发中，我们可以通过抓包进行验证发送的数据是否正确，如验证发送的次数，host，path，header等。 也可以对特定的请求模拟给出特定的响应结果，检查发送端在得到响应后的行为是否符合预期，比如验证一些业务场景极少发生的场景以及边界等。 抓">
+<meta name="twitter:description" content="网络已成为当下人类的必需品，身为开发人员势必了解其原理，无论是正向开发，抑或是逆向攻击。 网络抓包，是对网络传输中的数据包进行抓取。而后可对其进行分析。 正向开发中，我们可以通过抓包进行验证发送的数据是否正确，如验证发送的次数，host，path，header等。 也可以对特定的请求模拟给出特定的响应结果，检查发送端在得到响应后的行为是否符合预期，比如验证一些业务场景极少发生的场景以及边界等。">
 <meta name="twitter:image" content="https://github.com/oneGoon/Graphic/blob/master/hexo-blog/CapturePackage/proxy.png?raw=true">
 
 
@@ -205,7 +205,7 @@
   </div>
 
   <div class="site-nav-toggle">
-    <button aria-label="Toggle navigation bar">
+    <button aria-label="Navigationsleiste an/ausschalten">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -233,7 +233,7 @@
 
     
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Startseite</a>
 
   </li>
         
@@ -250,7 +250,7 @@
 
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archiv</a>
 
   </li>
 
@@ -345,14 +345,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="Created: 2019-10-01 15:25:18" itemprop="dateCreated datePublished" datetime="2019-10-01T15:25:18+08:00">2019-10-01</time>
+              <time title="Erstellt: 2019-10-01 15:25:18" itemprop="dateCreated datePublished" datetime="2019-10-01T15:25:18+08:00">2019-10-01</time>
             
 
             
@@ -367,9 +367,9 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 
-                  <span class="post-meta-item-text">Edited on</span>
+                  <span class="post-meta-item-text">Bearbeitet am</span>
                 
-                <time title="Modified: 2019-11-27 23:42:44" itemprop="dateModified" datetime="2019-11-27T23:42:44+08:00">2019-11-27</time>
+                <time title="Geändert am: 2019-12-26 17:18:01" itemprop="dateModified" datetime="2019-12-26T17:18:01+08:00">2019-12-26</time>
               
             
           </span>
@@ -406,7 +406,7 @@
         <p>网络已成为当下人类的必需品，身为开发人员势必了解其原理，无论是正向开发，抑或是逆向攻击。</p>
 <p>网络抓包，是对网络传输中的数据包进行抓取。而后可对其进行分析。</p>
 <p>正向开发中，我们可以通过抓包进行验证发送的数据是否正确，如验证发送的次数，host，path，header等。</p>
-<p>也可以对特定的请求模拟给出特定的响应结果，检查发送端在得到响应后的行为是否符合预期，比如验证一些业务场景极少发生的场景以及边界等。</p>
+<p>也可以对特定的请求模拟给出特定的响应结果，检查发送端在得到响应后的行为是否符合预期，比如验证一些业务场景极少发生的场景以及边界等。<br><a id="more"></a></p>
 <h3 id="抓包工具"><a href="#抓包工具" class="headerlink" title="抓包工具"></a>抓包工具</h3><h4 id="Charles-青花瓷-花瓶"><a href="#Charles-青花瓷-花瓶" class="headerlink" title="Charles (青花瓷/花瓶)"></a>Charles (青花瓷/花瓶)</h4><p><a href="https://www.charlesproxy.com/" target="_blank" rel="noopener">Charles</a> 支持截取 HTTP/<strong>HTTPS</strong></p>
 <p>Charles 抓包原理是将自己设为代理。</p>
 <p>代理相当于一个中间人</p>
@@ -517,10 +517,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
+            Übersicht
           </li>
         </ul>
       
@@ -541,7 +541,7 @@
                   <a href="/archives/">
                 
                     <span class="site-state-item-count">5</span>
-                    <span class="site-state-item-name">posts</span>
+                    <span class="site-state-item-name">Artikel</span>
                   </a>
                 </div>
               
@@ -562,7 +562,7 @@
                       
                     
                     <span class="site-state-item-count">3</span>
-                    <span class="site-state-item-name">tags</span>
+                    <span class="site-state-item-name">schlagwörter</span>
                   
                 </div>
               
@@ -632,7 +632,7 @@
 </div>
 
 
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+  <div class="powered-by">Erstellt mit  <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
 
 
 
@@ -640,7 +640,7 @@
 
 
 
-  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.1</div>
+  <div class="theme-info">Design – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.1</div>
 
 
 
