@@ -302,6 +302,168 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="onegoon.store/2019/12/26/SF-Symbols/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tccat">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WG's Lakeside">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/12/26/SF-Symbols/" class="post-title-link" itemprop="url">SF Symbols</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+
+              
+                
+              
+
+              <time title="Erstellt: 2019-12-26 13:06:06 / Geändert am: 13:36:17" itemprop="dateCreated datePublished" datetime="2019-12-26T13:06:06+08:00">2019-12-26</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://developer.apple.com/design/downloads/SF-Symbols.dmg" target="_blank" rel="noopener">SF Symbols</a>  Mac上的一款app</p>
+<p>有超1500个符号可供使用，也可以自定义符号</p>
+<p>可以导出文件，用sketch编辑</p>
+<p><img src="https://tva1.sinaimg.cn/large/006tNbRwgy1gaa2273dbqj30m90i7tfn.jpg" alt="SF Symbols Default"></p>
+<p>UIKit 提供了两个API，一个是使用系统符号，并一个是自定义</p>
+<ul>
+<li>Load system-supplied symbol images using the <a href="apple-reference-documentation://hsRPImtCwl" target="_blank" rel="noopener"><code>init(systemName:)</code></a>, <a href="apple-reference-documentation://hs6shfzfId" target="_blank" rel="noopener"><code>init(systemName:compatibleWith:)</code></a>, or <a href="apple-reference-documentation://hsZse2GK51" target="_blank" rel="noopener"><code>init(systemName:withConfiguration:)</code></a> methods of <code>UIImage</code>. </li>
+<li>Load your app’s custom symbol images using the <a href="apple-reference-documentation://hs__6rQ8fL" target="_blank" rel="noopener"><code>init(named:)</code></a>, <a href="apple-reference-documentation://hsLlYHGS2U" target="_blank" rel="noopener"><code>init(named:in:compatibleWith:)</code></a>, or <a href="apple-reference-documentation://hsi3i1cWdW" target="_blank" rel="noopener"><code>init(named:in:with:)</code></a>methods of <code>UIImage</code>.</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> image = <span class="type">UIImage</span>(systemName: <span class="string">"square.and.arrow.up"</span>)</span><br></pre></td></tr></table></figure>
+<p>image 会加载<img src="/Users/wanglele/Library/Application Support/typora-user-images/image-20191226132926654.png" alt="image-20191226132926654">对应的符号</p>
+<p>也可以自定义符号</p>
+<p><img src="/Users/wanglele/Library/Application Support/typora-user-images/image-20191226133109500.png" alt="image-20191226133109500"></p>
+<p>Assets.xcassets / + / New Symbol Image Set / </p>
+<p>拖拽编辑好的SVG文件到xcode中</p>
+<p>效果如图</p>
+<p><img src="/Users/wanglele/Library/Application Support/typora-user-images/image-20191226133358597.png" alt="image-20191226133358597"></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> imageT = <span class="type">UIImage</span>(systemName: <span class="string">"arrowupfill"</span>)</span><br></pre></td></tr></table></figure>
+<p>#####link refer</p>
+<p><a href="https://developer.apple.com/documentation/xcode/creating_custom_symbol_images_for_your_app" target="_blank" rel="noopener">Creating Custom Symbol Images for Your App</a></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="onegoon.store/2019/11/27/iOS-URLSession-Request/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -811,7 +973,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">Artikel</span>
                   </a>
                 </div>
@@ -828,7 +990,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">1</span>
+                      
+                    
+                    <span class="site-state-item-count">2</span>
                     <span class="site-state-item-name">schlagwörter</span>
                   
                 </div>
