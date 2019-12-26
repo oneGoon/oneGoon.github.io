@@ -111,7 +111,7 @@
 <meta property="og:image" content="https://github.com/oneGoon/Graphic/blob/master/hexo-blog/macOS%20app%20socket%20server/image-20191226163800765.png?raw=true">
 <meta property="og:image" content="https://github.com/oneGoon/Graphic/blob/master/hexo-blog/macOS%20app%20socket%20server/image-20191226164140765.png?raw=true">
 <meta property="og:image" content="https://github.com/oneGoon/Graphic/blob/master/hexo-blog/macOS%20app%20socket%20server/image-20191226164913282.png?raw=true">
-<meta property="og:updated_time" content="2019-12-26T09:12:48.817Z">
+<meta property="og:updated_time" content="2019-12-26T09:16:06.755Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mac app socket server">
 <meta name="twitter:description" content="在macOS app 上创建socket server  发现创建失败 抛出异常代码如下 1try checkNotMinus1&amp;#123; Darwin.bind(ipv4Socket, addrPtr, UInt32(MemoryLayout&amp;lt;sockaddr_in&amp;gt;.size)) 123456789/// 封装检测是否为-1/// errno 为Darwin的错误码enum So">
@@ -205,7 +205,7 @@
   </div>
 
   <div class="site-nav-toggle">
-    <button aria-label="Navigationsleiste an/ausschalten">
+    <button aria-label="Toggle navigation bar">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -233,7 +233,7 @@
 
     
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Startseite</a>
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
 
   </li>
         
@@ -250,7 +250,7 @@
 
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archiv</a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
 
   </li>
 
@@ -345,14 +345,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Erstellt: 2019-12-26 16:24:57 / Geändert am: 17:12:48" itemprop="dateCreated datePublished" datetime="2019-12-26T16:24:57+08:00">2019-12-26</time>
+              <time title="Created: 2019-12-26 16:24:57 / Modified: 17:16:06" itemprop="dateCreated datePublished" datetime="2019-12-26T16:24:57+08:00">2019-12-26</time>
             
 
             
@@ -398,6 +398,7 @@
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/// 封装检测是否为-1</span></span><br><span class="line"><span class="comment">/// errno 为Darwin的错误码</span></span><br><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">SocketError</span>: <span class="title">Error</span> </span>&#123; <span class="keyword">case</span> socketCreateFailed(<span class="type">Int32</span>) &#125;</span><br><span class="line"><span class="meta">@discardableResult</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">checkNotMinus1</span><span class="params">(<span class="number">_</span> f: <span class="params">()</span></span></span> -&gt; <span class="type">Int32</span>) <span class="keyword">throws</span> -&gt; <span class="type">Int32</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> r = f()</span><br><span class="line">    <span class="keyword">guard</span> r != -<span class="number">1</span> <span class="keyword">else</span> &#123; <span class="keyword">throw</span> <span class="type">SocketError</span>.socketCreateFailed(errno) &#125;</span><br><span class="line">    <span class="keyword">return</span> r</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><code>catch</code>中的error 为<code>ssocketCreateFailed(1)</code></p>
 <p>也就是<code>errno</code>为1</p>
+<a id="more"></a>
 <p>⌘左键 进入代码定义（Jump to Definition）</p>
 <p>发现只有定义没有注释，好在能看到他是定义在Darwin中</p>
 <p><img src="https://github.com/oneGoon/Graphic/blob/master/hexo-blog/macOS%20app%20socket%20server/image-20191226163800765.png?raw=true"></p>
@@ -516,7 +517,7 @@
                   <a href="/archives/">
                 
                     <span class="site-state-item-count">5</span>
-                    <span class="site-state-item-name">Artikel</span>
+                    <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
               
@@ -537,7 +538,7 @@
                       
                     
                     <span class="site-state-item-count">3</span>
-                    <span class="site-state-item-name">schlagwörter</span>
+                    <span class="site-state-item-name">tags</span>
                   
                 </div>
               
@@ -590,7 +591,7 @@
 </div>
 
 
-  <div class="powered-by">Erstellt mit  <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
 
 
 
@@ -598,7 +599,7 @@
 
 
 
-  <div class="theme-info">Design – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.1</div>
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.1</div>
 
 
 
