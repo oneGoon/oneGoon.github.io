@@ -347,7 +347,7 @@
                 
               
 
-              <time title="Erstellt: 2019-12-26 13:06:06 / Geändert am: 13:36:17" itemprop="dateCreated datePublished" datetime="2019-12-26T13:06:06+08:00">2019-12-26</time>
+              <time title="Erstellt: 2019-12-26 13:06:06 / Geändert am: 13:45:52" itemprop="dateCreated datePublished" datetime="2019-12-26T13:06:06+08:00">2019-12-26</time>
             
 
             
@@ -394,17 +394,17 @@
 <p><img src="https://tva1.sinaimg.cn/large/006tNbRwgy1gaa2273dbqj30m90i7tfn.jpg" alt="SF Symbols Default"></p>
 <p>UIKit 提供了两个API，一个是使用系统符号，并一个是自定义</p>
 <ul>
-<li>Load system-supplied symbol images using the <a href="apple-reference-documentation://hsRPImtCwl" target="_blank" rel="noopener"><code>init(systemName:)</code></a>, <a href="apple-reference-documentation://hs6shfzfId" target="_blank" rel="noopener"><code>init(systemName:compatibleWith:)</code></a>, or <a href="apple-reference-documentation://hsZse2GK51" target="_blank" rel="noopener"><code>init(systemName:withConfiguration:)</code></a> methods of <code>UIImage</code>. </li>
-<li>Load your app’s custom symbol images using the <a href="apple-reference-documentation://hs__6rQ8fL" target="_blank" rel="noopener"><code>init(named:)</code></a>, <a href="apple-reference-documentation://hsLlYHGS2U" target="_blank" rel="noopener"><code>init(named:in:compatibleWith:)</code></a>, or <a href="apple-reference-documentation://hsi3i1cWdW" target="_blank" rel="noopener"><code>init(named:in:with:)</code></a>methods of <code>UIImage</code>.</li>
+<li>Load system-supplied symbol images using the <code>init(systemName:)</code>, <code>init(systemName:compatibleWith:)</code>, or <code>init(systemName:withConfiguration:)</code>methods of <code>UIImage</code>. </li>
+<li>Load your app’s custom symbol images using the <code>init(named:)</code>, <code>init(named:in:compatibleWith:)</code>, or <code>init(named:in:with:)</code>methods of <code>UIImage</code>.</li>
 </ul>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> image = <span class="type">UIImage</span>(systemName: <span class="string">"square.and.arrow.up"</span>)</span><br></pre></td></tr></table></figure>
-<p>image 会加载<img src="/Users/wanglele/Library/Application Support/typora-user-images/image-20191226132926654.png" alt="image-20191226132926654">对应的符号</p>
+<p>image 会加载<img src="https://tva1.sinaimg.cn/large/006tNbRwly1gaa2mjcpodj303c03jjr8.jpg" alt="image-20191226132926654">对应的符号</p>
 <p>也可以自定义符号</p>
-<p><img src="/Users/wanglele/Library/Application Support/typora-user-images/image-20191226133109500.png" alt="image-20191226133109500"></p>
+<p><img src="https://tva1.sinaimg.cn/large/006tNbRwly1gaa2oekrk3j30ha02wdh7.jpg" alt="image-20191226133109500"></p>
 <p>Assets.xcassets / + / New Symbol Image Set / </p>
 <p>拖拽编辑好的SVG文件到xcode中</p>
 <p>效果如图</p>
-<p><img src="/Users/wanglele/Library/Application Support/typora-user-images/image-20191226133358597.png" alt="image-20191226133358597"></p>
+<p><img src="https://tva1.sinaimg.cn/large/006tNbRwly1gaa2ns14jlj30rs06fmxm.jpg" alt="Assets"></p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> imageT = <span class="type">UIImage</span>(systemName: <span class="string">"arrowupfill"</span>)</span><br></pre></td></tr></table></figure>
 <p>#####link refer</p>
 <p><a href="https://developer.apple.com/documentation/xcode/creating_custom_symbol_images_for_your_app" target="_blank" rel="noopener">Creating Custom Symbol Images for Your App</a></p>
