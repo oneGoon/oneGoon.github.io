@@ -302,6 +302,168 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="onegoon.store/2019/12/26/Mac-app-socket-server/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Tccat">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WG's Lakeside">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/12/26/Mac-app-socket-server/" class="post-title-link" itemprop="url">Mac app socket server</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+
+              
+                
+              
+
+              <time title="Erstellt: 2019-12-26 16:24:57 / Geändert am: 17:12:48" itemprop="dateCreated datePublished" datetime="2019-12-26T16:24:57+08:00">2019-12-26</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在macOS app 上创建socket server </p>
+<p>发现创建失败</p>
+<p>抛出异常代码如下</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> checkNotMinus1&#123; <span class="type">Darwin</span>.bind(ipv4Socket, addrPtr, <span class="type">UInt32</span>(<span class="type">MemoryLayout</span>&lt;sockaddr_in&gt;.size))</span><br></pre></td></tr></table></figure>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/// 封装检测是否为-1</span></span><br><span class="line"><span class="comment">/// errno 为Darwin的错误码</span></span><br><span class="line"><span class="class"><span class="keyword">enum</span> <span class="title">SocketError</span>: <span class="title">Error</span> </span>&#123; <span class="keyword">case</span> socketCreateFailed(<span class="type">Int32</span>) &#125;</span><br><span class="line"><span class="meta">@discardableResult</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">checkNotMinus1</span><span class="params">(<span class="number">_</span> f: <span class="params">()</span></span></span> -&gt; <span class="type">Int32</span>) <span class="keyword">throws</span> -&gt; <span class="type">Int32</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> r = f()</span><br><span class="line">    <span class="keyword">guard</span> r != -<span class="number">1</span> <span class="keyword">else</span> &#123; <span class="keyword">throw</span> <span class="type">SocketError</span>.socketCreateFailed(errno) &#125;</span><br><span class="line">    <span class="keyword">return</span> r</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>catch</code>中的error 为<code>ssocketCreateFailed(1)</code></p>
+<p>也就是<code>errno</code>为1</p>
+<p>⌘左键 进入代码定义（Jump to Definition）</p>
+<p>发现只有定义没有注释，好在能看到他是定义在Darwin中</p>
+<p><img src="https://github.com/oneGoon/Graphic/blob/master/hexo-blog/macOS%20app%20socket%20server/image-20191226163800765.png?raw=true"></p>
+<p>打开Darwin-xnu</p>
+<p>找到errno.h  (&lt;sys/errno.h&gt;)</p>
+<p><img src="https://github.com/oneGoon/Graphic/blob/master/hexo-blog/macOS%20app%20socket%20server/image-20191226164140765.png?raw=true" alt="image-20191226164140765"></p>
+<p>发现错误码为1 对应 Operation not permitted </p>
+<p>嗯哼！</p>
+<p>我是使用Xcode的版本 Version 11.2.1 (11B500) </p>
+<p><em>不得不吐槽。Xcode 11之后，进入了被黑（实际真的很烂，自家的东西常见的使用会有必现crash比如用<code>IB</code> + <code>TextView</code> 会crash！ - 11.2.0）元年</em></p>
+<p><img src="https://github.com/oneGoon/Graphic/blob/master/hexo-blog/macOS%20app%20socket%20server/image-20191226164913282.png?raw=true" alt="image-20191226164913282"></p>
+<p>新版Xcode会把app 的能力单独一页列出来</p>
+<p>当我勾选Newwork 的 Server选项后 bind成功了</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="onegoon.store/2019/12/26/SF-Symbols/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -963,7 +1125,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">Artikel</span>
                   </a>
                 </div>
@@ -982,7 +1144,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">2</span>
+                      
+                    
+                    <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">schlagwörter</span>
                   
                 </div>
