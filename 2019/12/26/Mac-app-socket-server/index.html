@@ -111,7 +111,7 @@
 <meta property="og:image" content="https://github.com/oneGoon/Graphic/blob/master/hexo-blog/macOS%20app%20socket%20server/image-20191226163800765.png?raw=true">
 <meta property="og:image" content="https://github.com/oneGoon/Graphic/blob/master/hexo-blog/macOS%20app%20socket%20server/image-20191226164140765.png?raw=true">
 <meta property="og:image" content="https://github.com/oneGoon/Graphic/blob/master/hexo-blog/macOS%20app%20socket%20server/image-20191226164913282.png?raw=true">
-<meta property="og:updated_time" content="2019-12-26T09:16:06.755Z">
+<meta property="og:updated_time" content="2019-12-27T01:21:00.374Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mac app socket server">
 <meta name="twitter:description" content="在macOS app 上创建socket server  发现创建失败 抛出异常代码如下 1try checkNotMinus1&amp;#123; Darwin.bind(ipv4Socket, addrPtr, UInt32(MemoryLayout&amp;lt;sockaddr_in&amp;gt;.size)) 123456789/// 封装检测是否为-1/// errno 为Darwin的错误码enum So">
@@ -352,12 +352,24 @@
                 
               
 
-              <time title="Erstellt: 2019-12-26 16:24:57 / Geändert am: 17:16:06" itemprop="dateCreated datePublished" datetime="2019-12-26T16:24:57+08:00">2019-12-26</time>
+              <time title="Erstellt: 2019-12-26 16:24:57" itemprop="dateCreated datePublished" datetime="2019-12-26T16:24:57+08:00">2019-12-26</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Bearbeitet am</span>
+                
+                <time title="Geändert am: 2019-12-27 09:21:00" itemprop="dateModified" datetime="2019-12-27T09:21:00+08:00">2019-12-27</time>
               
             
           </span>
@@ -406,9 +418,7 @@
 <p>找到errno.h  (&lt;sys/errno.h&gt;)</p>
 <p><img src="https://github.com/oneGoon/Graphic/blob/master/hexo-blog/macOS%20app%20socket%20server/image-20191226164140765.png?raw=true" alt="image-20191226164140765"></p>
 <p>发现错误码为1 对应 Operation not permitted </p>
-<p>嗯哼！</p>
 <p>我是使用Xcode的版本 Version 11.2.1 (11B500) </p>
-<p><em>不得不吐槽。Xcode 11之后，进入了被黑（实际真的很烂，自家的东西常见的使用会有必现crash比如用<code>IB</code> + <code>TextView</code> 会crash！ - 11.2.0）元年</em></p>
 <p><img src="https://github.com/oneGoon/Graphic/blob/master/hexo-blog/macOS%20app%20socket%20server/image-20191226164913282.png?raw=true" alt="image-20191226164913282"></p>
 <p>新版Xcode会把app 的能力单独一页列出来</p>
 <p>当我勾选Newwork 的 Server选项后 bind成功了</p>
