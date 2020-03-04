@@ -12,19 +12,19 @@
     
     <meta name="keywords" content="python, django">
     
-    <meta name="description" content="资料https://tutorial.djangogirls.org/zh/  一个gitbook，难度较低的教程，如果有基础不建议看 https://github.com/TwoWater/Python 国人写的教程，能够快速了解陌生的信息 https://docs.djangoproject.com/  官方文档，更新较为即时，语言可选中文。 https://simpleisbetterth">
+    <meta name="description" content="Django 初级篇虚拟环境 virtualenv1virtualenv venv -p python3 为project提供独立的python环境。pycharm默认开启的  开启  1source venv/bin/activate 开启后 命令行最左端有(venv)字样 代表虚拟环境开启 1(venv) ➜  PlanA 注意开启后  所有操作都在venv环境下进行的 使用 python">
 <meta name="keywords" content="python, django">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Django入门">
 <meta property="og:url" content="onegoon.store/2020/02/28/Django入门/index.html">
 <meta property="og:site_name" content="WG&#39;s Lakeside">
-<meta property="og:description" content="资料https://tutorial.djangogirls.org/zh/  一个gitbook，难度较低的教程，如果有基础不建议看 https://github.com/TwoWater/Python 国人写的教程，能够快速了解陌生的信息 https://docs.djangoproject.com/  官方文档，更新较为即时，语言可选中文。 https://simpleisbetterth">
+<meta property="og:description" content="Django 初级篇虚拟环境 virtualenv1virtualenv venv -p python3 为project提供独立的python环境。pycharm默认开启的  开启  1source venv/bin/activate 开启后 命令行最左端有(venv)字样 代表虚拟环境开启 1(venv) ➜  PlanA 注意开启后  所有操作都在venv环境下进行的 使用 python">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://simpleisbetterthancomplex.com/media/series/beginners-guide/1.11/part-7/deployment.jpg">
-<meta property="og:updated_time" content="2020-02-28T11:55:03.466Z">
+<meta property="og:updated_time" content="2020-03-03T10:34:43.892Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Django入门">
-<meta name="twitter:description" content="资料https://tutorial.djangogirls.org/zh/  一个gitbook，难度较低的教程，如果有基础不建议看 https://github.com/TwoWater/Python 国人写的教程，能够快速了解陌生的信息 https://docs.djangoproject.com/  官方文档，更新较为即时，语言可选中文。 https://simpleisbetterth">
+<meta name="twitter:description" content="Django 初级篇虚拟环境 virtualenv1virtualenv venv -p python3 为project提供独立的python环境。pycharm默认开启的  开启  1source venv/bin/activate 开启后 命令行最左端有(venv)字样 代表虚拟环境开启 1(venv) ➜  PlanA 注意开启后  所有操作都在venv环境下进行的 使用 python">
 <meta name="twitter:image" content="https://simpleisbetterthancomplex.com/media/series/beginners-guide/1.11/part-7/deployment.jpg">
     
 
@@ -182,6 +182,53 @@
         
         <div class="article-entry" itemprop="articleBody">
             <p><img src="https://simpleisbetterthancomplex.com/media/series/beginners-guide/1.11/part-7/deployment.jpg" alt="Deployment"></p>
+<h3 id="Django-初级篇"><a href="#Django-初级篇" class="headerlink" title="Django 初级篇"></a>Django 初级篇</h3><h4 id="虚拟环境-virtualenv"><a href="#虚拟环境-virtualenv" class="headerlink" title="虚拟环境 virtualenv"></a>虚拟环境 virtualenv</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">virtualenv venv -p python3</span><br></pre></td></tr></table></figure>
+<p>为project提供独立的python环境。pycharm默认开启的</p>
+<ul>
+<li>开启</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source venv/bin/activate</span><br></pre></td></tr></table></figure>
+<p>开启后 命令行最左端有(venv)字样 代表虚拟环境开启</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(venv) ➜  PlanA</span><br></pre></td></tr></table></figure>
+<p>注意开启后  所有操作都在venv环境下进行的</p>
+<p>使用 python 而不是python3，pip而不是pip3</p>
+<ul>
+<li>关闭</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">deactivate</span><br></pre></td></tr></table></figure>
+<h5 id="安装-Django"><a href="#安装-Django" class="headerlink" title="安装 Django"></a>安装 Django</h5><figure class="highlight plain"><figcaption><span>install django ```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">就此环境搭建完毕</span><br><span class="line"></span><br><span class="line">##### 开始构建项目（Project）</span><br><span class="line"></span><br><span class="line">我的第一个项目`PlanA`</span><br><span class="line"></span><br><span class="line">```django-admin startproject PlanA</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">PlanA/              &lt;-- higher level folder</span><br><span class="line">├── PlanA           &lt;-- django project folder （ `startproject` 命令创建的）</span><br><span class="line">│   ├── PlanA</span><br><span class="line">│   │   ├── __init__.py</span><br><span class="line">│   │   ├── asgi.py</span><br><span class="line">│   │   ├── settings.py</span><br><span class="line">│   │   ├── urls.py</span><br><span class="line">│   │   └── wsgi.py</span><br><span class="line">│   └── manage.py</span><br><span class="line">└── venv            &lt;-- virtual environment folder</span><br></pre></td></tr></table></figure>
+<p>这些目录和文件的用处是：(<a href="https://docs.djangoproject.com/zh-hans/3.0/intro/tutorial01/" target="_blank" rel="noopener">django 文档</a>给出)</p>
+<ul>
+<li>The outer <code>mysite/</code> root directory is a container for your project. Its name doesn’t matter to Django; you can rename it to anything you like.</li>
+<li><code>manage.py</code>: 一个让你用各种方式管理 Django 项目的命令行工具。你可以阅读 <a href="https://docs.djangoproject.com/zh-hans/3.0/ref/django-admin/" target="_blank" rel="noopener">django-admin and manage.py</a> 获取所有 <code>manage.py</code> 的细节。</li>
+<li>里面一层的 <code>mysite/</code> 目录包含你的项目，它是一个纯 Python 包。它的名字就是当你引用它内部任何东西时需要用到的 Python 包名。 (比如 <code>mysite.urls</code>).</li>
+<li><code>mysite/__init__.py</code>：一个空文件，告诉 Python 这个目录应该被认为是一个 Python 包。如果你是 Python 初学者，阅读官方文档中的 <a href="https://docs.python.org/3/tutorial/modules.html#tut-packages" target="_blank" rel="noopener">更多关于包的知识</a>。</li>
+<li><code>mysite/settings.py</code>：Django 项目的配置文件。如果你想知道这个文件是如何工作的，请查看 <a href="https://docs.djangoproject.com/zh-hans/3.0/topics/settings/" target="_blank" rel="noopener">Django 配置</a> 了解细节。</li>
+<li><code>mysite/urls.py</code>：Django 项目的 URL 声明，就像你网站的“目录”。阅读 <a href="https://docs.djangoproject.com/zh-hans/3.0/topics/http/urls/" target="_blank" rel="noopener">URL调度器</a> 文档来获取更多关于 URL 的内容。</li>
+<li><code>mysite/asgi.py</code>: An entry-point for ASGI-compatible web servers to serve your project. See <a href="https://docs.djangoproject.com/zh-hans/3.0/howto/deployment/asgi/" target="_blank" rel="noopener">How to deploy with ASGI</a> for more details.</li>
+<li><code>mysite/wsgi.py</code>：作为你的项目的运行在 WSGI 兼容的Web服务器上的入口。阅读 <a href="https://docs.djangoproject.com/zh-hans/3.0/howto/deployment/wsgi/" target="_blank" rel="noopener">如何使用 WSGI 进行部署</a> 了解更多细节。</li>
+</ul>
+<p>一个project可以包含很多个app</p>
+<p>同一个app可以存在与多个project中</p>
+<h5 id="创建app"><a href="#创建app" class="headerlink" title="创建app"></a>创建app</h5><figure class="highlight plain"><figcaption><span>startapp boards ```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">注意这次我们用的是`startapp`</span><br><span class="line"></span><br><span class="line">.</span><br><span class="line">├── __init__.py</span><br><span class="line">├── admin.py</span><br><span class="line">├── apps.py</span><br><span class="line">├── migrations</span><br><span class="line">│   └── __init__.py</span><br><span class="line">├── models.py</span><br><span class="line">├── tests.py</span><br><span class="line">└── views.py</span><br></pre></td></tr></table></figure>
+<p>PlanA/              &lt;– higher level folder<br>├── boards          &lt;– our new django app!<br>│   ├── <strong>init</strong>.py<br>│   ├── admin.py<br>│   ├── apps.py<br>│   ├── migrations<br>│   │   └── <strong>init</strong>.py<br>│   ├── models.py<br>│   ├── tests.py<br>│   └── views.py<br>├── PlanA           &lt;– django project folder （ <code>startproject</code> 命令创建的）<br>│   ├── PlanA<br>│   │   ├── <strong>init</strong>.py<br>│   │   ├── asgi.py<br>│   │   ├── settings.py<br>│   │   ├── urls.py<br>│   │   └── wsgi.py<br>│   └── manage.py<br>└── venv            &lt;– virtual environment folder</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">##### 本地运行服务 8000端口</span><br><span class="line"></span><br><span class="line">``` python manage.py runserver</span><br></pre></td></tr></table></figure>
+<h5 id="更换端口"><a href="#更换端口" class="headerlink" title="更换端口"></a>更换端口</h5><p>默认情况下，<a href="https://docs.djangoproject.com/zh-hans/3.0/ref/django-admin/#django-admin-runserver" target="_blank" rel="noopener"><code>runserver</code></a> 命令会将服务器设置为监听本机内部 IP 的 8000 端口。</p>
+<p>如果你想更换服务器的监听端口，请使用命令行参数。举个例子，下面的命令会使服务器监听 8080 端口：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ python manage.py runserver 8080</span><br></pre></td></tr></table></figure>
+<p>如果你想要修改服务器监听的IP，在端口之前输入新的。比如，为了监听所有服务器的公开IP（这你运行 Vagrant 或想要向网络上的其它电脑展示你的成果时很有用），使用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ python manage.py runserver 0:8000</span><br></pre></td></tr></table></figure>
+<p><strong>0</strong> 是 <strong>0.0.0.0</strong> 的简写。完整的关于开发服务器的文档可以在 <a href="https://docs.djangoproject.com/zh-hans/3.0/intro/tutorial01/#id1" target="_blank" rel="noopener">:djamdin:<code>runserver</code></a> 参考文档中找到。</p>
+<h5 id="新版django-的路由-path与re-path"><a href="#新版django-的路由-path与re-path" class="headerlink" title="新版django 的路由 path与re_path"></a>新版django 的路由 path与re_path</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">urlpatterns = [</span><br><span class="line">    path(&apos;polls/&apos;, include(&apos;polls.urls&apos;)),</span><br><span class="line">    path(&apos;admin/&apos;, admin.site.urls),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>以前是url</p>
+<h3 id="path-参数：-route¶"><a href="#path-参数：-route¶" class="headerlink" title="path() 参数： route¶"></a><a href="https://docs.djangoproject.com/zh-hans/3.0/ref/urls/#django.urls.path" target="_blank" rel="noopener"><code>path()</code></a> 参数： <code>route</code><a href="https://docs.djangoproject.com/zh-hans/3.0/intro/tutorial01/#path-argument-route" target="_blank" rel="noopener">¶</a></h3><p><code>route</code> 是一个匹配 URL 的准则（类似正则表达式）。当 Django 响应一个请求时，它会从 <code>urlpatterns</code> 的第一项开始，按顺序依次匹配列表中的项，直到找到匹配的项。</p>
+<p>这些准则不会匹配 GET 和 POST 参数或域名。例如，URLconf 在处理请求 <code>https://www.example.com/myapp/</code> 时，它会尝试匹配 <code>myapp/</code> 。处理请求 <code>https://www.example.com/myapp/?page=3</code> 时，也只会尝试匹配 <code>myapp/</code>。</p>
+<h3 id="path-参数：-view¶"><a href="#path-参数：-view¶" class="headerlink" title="path() 参数： view¶"></a><a href="https://docs.djangoproject.com/zh-hans/3.0/ref/urls/#django.urls.path" target="_blank" rel="noopener"><code>path()</code></a> 参数： <code>view</code><a href="https://docs.djangoproject.com/zh-hans/3.0/intro/tutorial01/#path-argument-view" target="_blank" rel="noopener">¶</a></h3><p>当 Django 找到了一个匹配的准则，就会调用这个特定的视图函数，并传入一个 <a href="https://docs.djangoproject.com/zh-hans/3.0/ref/request-response/#django.http.HttpRequest" target="_blank" rel="noopener"><code>HttpRequest</code></a> 对象作为第一个参数，被“捕获”的参数以关键字参数的形式传入。稍后，我们会给出一个例子。</p>
+<h3 id="path-参数：-kwargs¶"><a href="#path-参数：-kwargs¶" class="headerlink" title="path() 参数： kwargs¶"></a><a href="https://docs.djangoproject.com/zh-hans/3.0/ref/urls/#django.urls.path" target="_blank" rel="noopener"><code>path()</code></a> 参数： <code>kwargs</code><a href="https://docs.djangoproject.com/zh-hans/3.0/intro/tutorial01/#path-argument-kwargs" target="_blank" rel="noopener">¶</a></h3><p>任意个关键字参数可以作为一个字典传递给目标视图函数。本教程中不会使用这一特性。</p>
+<h3 id="path-参数：-name¶"><a href="#path-参数：-name¶" class="headerlink" title="path() 参数： name¶"></a><a href="https://docs.djangoproject.com/zh-hans/3.0/ref/urls/#django.urls.path" target="_blank" rel="noopener"><code>path()</code></a> 参数： <code>name</code><a href="https://docs.djangoproject.com/zh-hans/3.0/intro/tutorial01/#path-argument-name" target="_blank" rel="noopener">¶</a></h3><p>为你的 URL 取名能使你在 Django 的任意地方唯一地引用它，尤其是在模板中。这个有用的特性允许你只改一个文件就能全局地修改某个 URL 模式。</p>
+<p>当你了解了基本的请求和响应流程后，请阅读 <a href="https://docs.djangoproject.com/zh-hans/3.0/intro/tutorial02/" target="_blank" rel="noopener">教程的第 2 部分</a> 开始使用数据库.</p>
+<h5 id="数据库迁移"><a href="#数据库迁移" class="headerlink" title="数据库迁移"></a>数据库迁移</h5><figure class="highlight python"><figcaption><span>manage.py makemigrations```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">```python manage.py migrate</span><br></pre></td></tr></table></figure>
 <h2 id="资料"><a href="#资料" class="headerlink" title="资料"></a>资料</h2><p><a href="https://tutorial.djangogirls.org/zh/" target="_blank" rel="noopener">https://tutorial.djangogirls.org/zh/</a>  一个gitbook，难度较低的教程，如果有基础不建议看</p>
 <p><a href="https://github.com/TwoWater/Python" target="_blank" rel="noopener">https://github.com/TwoWater/Python</a> 国人写的教程，能够快速了解陌生的信息</p>
 <p><a href="https://docs.djangoproject.com/" target="_blank" rel="noopener">https://docs.djangoproject.com/</a>  官方文档，更新较为即时，语言可选中文。</p>
@@ -193,7 +240,7 @@
 
 
 
-    <a data-url="onegoon.store/2020/02/28/Django入门/" data-id="ck7ak9cw100004xcky8loj0u4" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="onegoon.store/2020/02/28/Django入门/" data-id="ck7crm7en0001f6ckt8zjc92u" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -269,14 +316,20 @@
         "genre": "",
         "datePublished": "2020-02-28",
         "dateCreated": "2020-02-28",
-        "dateModified": "2020-02-28",
+        "dateModified": "2020-03-03",
         "url": "/onegoon.store/2020/02/28/Django入门/",
         "description": "
-资料https://tutorial.djangogirls.org/zh/  一个gitbook，难度较低的教程，如果有基础不建议看
-https://github.com/TwoWater/Python 国人写的教程，能够快速了解陌生的信息
-https://docs.djangoproject.com/  官方文档，更新较为即时，语言可选中文。
-https://simpleisbetterth",
-        "wordCount": 27
+Django 初级篇虚拟环境 virtualenv1virtualenv venv -p python3
+为project提供独立的python环境。pycharm默认开启的
+
+开启
+
+1source venv/bin/activate
+开启后 命令行最左端有(venv)字样 代表虚拟环境开启
+1(venv) ➜  PlanA
+注意开启后  所有操作都在venv环境下进行的
+使用 python ",
+        "wordCount": 727
     }
 </script>
 
@@ -341,6 +394,26 @@ https://simpleisbetterth",
         <h3 class="widget-title">recents</h3>
         <div class="widget">
             <ul id="recent-post" class>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/03/03/SQL/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2020/03/03/SQL/" class="title">SQL</a></p>
+                            <p class="item-date"><time datetime="2020-03-03T10:35:43.000Z" itemprop="datePublished">2020-03-03</time></p>
+                        </div>
+                    </li>
                 
                     <li>
                         
@@ -422,26 +495,6 @@ https://simpleisbetterth",
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2019/12/26/Mac-app-socket-server/" class="thumbnail">
-    
-    
-        <span style="background-image:url(https://github.com/oneGoon/Graphic/blob/master/hexo-blog/macOS%20app%20socket%20server/image-20191226163800765.png?raw=true)" alt="Mac app socket server" class="thumbnail-image"></span>
-    
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2019/12/26/Mac-app-socket-server/" class="title">Mac app socket server</a></p>
-                            <p class="item-date"><time datetime="2019-12-26T08:24:57.000Z" itemprop="datePublished">2019-12-26</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -454,7 +507,7 @@ https://simpleisbetterth",
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a><span class="archive-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -464,7 +517,7 @@ https://simpleisbetterth",
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">tags</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac-OS/">Mac OS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/">iOS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python-django/">python, django</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/socket/">socket</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/架构/">架构</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac-OS/">Mac OS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/">iOS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python-django/">python, django</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/socket/">socket</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/架构/">架构</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -474,7 +527,7 @@ https://simpleisbetterth",
     <div class="widget-wrap widget-float">
         <h3 class="widget-title">tag cloud</h3>
         <div class="widget tagcloud">
-            <a href="/tags/Mac-OS/" style="font-size: 10px;">Mac OS</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/iOS/" style="font-size: 10px;">iOS</a> <a href="/tags/python-django/" style="font-size: 10px;">python, django</a> <a href="/tags/socket/" style="font-size: 10px;">socket</a> <a href="/tags/架构/" style="font-size: 10px;">架构</a>
+            <a href="/tags/Mac-OS/" style="font-size: 10px;">Mac OS</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/iOS/" style="font-size: 10px;">iOS</a> <a href="/tags/python-django/" style="font-size: 10px;">python, django</a> <a href="/tags/socket/" style="font-size: 10px;">socket</a> <a href="/tags/架构/" style="font-size: 10px;">架构</a>
         </div>
     </div>
 
