@@ -12,18 +12,20 @@
     
     <meta name="keywords" content="git">
     
-    <meta name="description" content="git checkout -b  撤销git reset通过把分支记录回退几个提交记录来实现撤销改动。你可以将这想象成“改写历史”。向上移动分支，原来指向的提交记录就跟重来没有提交过一样。 git revert两者的区别reset意义 ：回到指定节点（哈希值或者相对引用） 表象：清理结点，这个节点之后记录的统统不要了，真正做到回到过去。 revert意义：撤销指定结点的操作 表象：提交一新个记录，">
+    <meta name="description" content="撤销git reset通过把分支记录回退几个提交记录来实现撤销改动。你可以将这想象成“改写历史”。向上移动分支，原来指向的提交记录就跟重来没有提交过一样。 git revert两者的区别reset意义 ：回到指定节点（哈希值或者相对引用） 表象：清理结点，这个节点之后记录的统统不要了，真正做到回到过去。 revert意义：撤销指定结点的操作 表象：提交一新个记录，该次提交的作用为上一步的逆操作，">
 <meta name="keywords" content="git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="git经验">
 <meta property="og:url" content="onegoon.store/2020/03/07/git经验/index.html">
 <meta property="og:site_name" content="WG&#39;s Lakeside">
-<meta property="og:description" content="git checkout -b  撤销git reset通过把分支记录回退几个提交记录来实现撤销改动。你可以将这想象成“改写历史”。向上移动分支，原来指向的提交记录就跟重来没有提交过一样。 git revert两者的区别reset意义 ：回到指定节点（哈希值或者相对引用） 表象：清理结点，这个节点之后记录的统统不要了，真正做到回到过去。 revert意义：撤销指定结点的操作 表象：提交一新个记录，">
+<meta property="og:description" content="撤销git reset通过把分支记录回退几个提交记录来实现撤销改动。你可以将这想象成“改写历史”。向上移动分支，原来指向的提交记录就跟重来没有提交过一样。 git revert两者的区别reset意义 ：回到指定节点（哈希值或者相对引用） 表象：清理结点，这个节点之后记录的统统不要了，真正做到回到过去。 revert意义：撤销指定结点的操作 表象：提交一新个记录，该次提交的作用为上一步的逆操作，">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-03-07T10:21:40.846Z">
+<meta property="og:image" content="https://git-scm.com/images/branching-illustration@2x.png">
+<meta property="og:updated_time" content="2020-03-07T10:36:08.059Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git经验">
-<meta name="twitter:description" content="git checkout -b  撤销git reset通过把分支记录回退几个提交记录来实现撤销改动。你可以将这想象成“改写历史”。向上移动分支，原来指向的提交记录就跟重来没有提交过一样。 git revert两者的区别reset意义 ：回到指定节点（哈希值或者相对引用） 表象：清理结点，这个节点之后记录的统统不要了，真正做到回到过去。 revert意义：撤销指定结点的操作 表象：提交一新个记录，">
+<meta name="twitter:description" content="撤销git reset通过把分支记录回退几个提交记录来实现撤销改动。你可以将这想象成“改写历史”。向上移动分支，原来指向的提交记录就跟重来没有提交过一样。 git revert两者的区别reset意义 ：回到指定节点（哈希值或者相对引用） 表象：清理结点，这个节点之后记录的统统不要了，真正做到回到过去。 revert意义：撤销指定结点的操作 表象：提交一新个记录，该次提交的作用为上一步的逆操作，">
+<meta name="twitter:image" content="https://git-scm.com/images/branching-illustration@2x.png">
     
 
     
@@ -179,7 +181,7 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p>git checkout -b <branchname></branchname></p>
+            <p><img src="https://git-scm.com/images/branching-illustration@2x.png" alt="img"></p>
 <h4 id="撤销"><a href="#撤销" class="headerlink" title="撤销"></a>撤销</h4><h5 id="git-reset"><a href="#git-reset" class="headerlink" title="git reset"></a>git reset</h5><p>通过把分支记录回退几个提交记录来实现撤销改动。你可以将这想象成“改写历史”。向上移动分支，原来指向的提交记录就跟重来没有提交过一样。</p>
 <h5 id="git-revert"><a href="#git-revert" class="headerlink" title="git revert"></a>git revert</h5><h6 id="两者的区别"><a href="#两者的区别" class="headerlink" title="两者的区别"></a>两者的区别</h6><h6 id="reset"><a href="#reset" class="headerlink" title="reset"></a><code>reset</code></h6><p>意义 ：回到指定节点（哈希值或者相对引用）</p>
 <p>表象：清理结点，这个节点之后记录的统统不要了，真正做到回到过去。</p>
@@ -195,7 +197,7 @@
 
 
 
-    <a data-url="onegoon.store/2020/03/07/git经验/" data-id="ck7ha4vfi0005rvck2ziypav8" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="onegoon.store/2020/03/07/git经验/" data-id="ck7hh01z3000aw8cktye2ojgz" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -266,20 +268,20 @@
             "name": "Ticat"
         },
         "headline": "git经验",
-        "image": "/onegoon.store",
+        "image": "onegoon.storehttps://git-scm.com/images/branching-illustration@2x.png",
         "keywords": "git",
         "genre": "",
         "datePublished": "2020-03-07",
         "dateCreated": "2020-03-07",
         "dateModified": "2020-03-07",
         "url": "/onegoon.store/2020/03/07/git经验/",
-        "description": "git checkout -b 
+        "description": "
 撤销git reset通过把分支记录回退几个提交记录来实现撤销改动。你可以将这想象成“改写历史”。向上移动分支，原来指向的提交记录就跟重来没有提交过一样。
 git revert两者的区别reset意义 ：回到指定节点（哈希值或者相对引用）
 表象：清理结点，这个节点之后记录的统统不要了，真正做到回到过去。
 revert意义：撤销指定结点的操作
-表象：提交一新个记录，",
-        "wordCount": 39
+表象：提交一新个记录，该次提交的作用为上一步的逆操作，",
+        "wordCount": 38
     }
 </script>
 
@@ -371,7 +373,7 @@ revert意义：撤销指定结点的操作
                             <a href="/2020/03/07/git经验/" class="thumbnail">
     
     
-        <span class="thumbnail-image thumbnail-none"></span>
+        <span style="background-image:url(https://git-scm.com/images/branching-illustration@2x.png)" alt="git经验" class="thumbnail-image"></span>
     
     
 </a>
