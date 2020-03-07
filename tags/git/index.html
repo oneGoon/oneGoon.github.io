@@ -6,26 +6,18 @@
     
 
     
-    <title>SF Symbols | WG&#39;s Lakeside</title>
+    <title>Tag: git | WG&#39;s Lakeside</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="iOS">
-    
-    <meta name="description" content="SF Symbols  Mac上的一款app 有超1500个符号可供使用，也可以自定义符号 可以导出文件，用sketch编辑">
-<meta name="keywords" content="iOS">
-<meta property="og:type" content="article">
-<meta property="og:title" content="SF Symbols">
-<meta property="og:url" content="onegoon.store/2019/12/26/SF-Symbols/index.html">
+    <meta name="keywords" content="swift">
+<meta property="og:type" content="website">
+<meta property="og:title" content="WG&#39;s Lakeside">
+<meta property="og:url" content="onegoon.store/tags/git/index.html">
 <meta property="og:site_name" content="WG&#39;s Lakeside">
-<meta property="og:description" content="SF Symbols  Mac上的一款app 有超1500个符号可供使用，也可以自定义符号 可以导出文件，用sketch编辑">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://tva1.sinaimg.cn/large/006tNbRwgy1gaa2273dbqj30m90i7tfn.jpg">
-<meta property="og:updated_time" content="2019-12-26T05:56:36.424Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SF Symbols">
-<meta name="twitter:description" content="SF Symbols  Mac上的一款app 有超1500个符号可供使用，也可以自定义符号 可以导出文件，用sketch编辑">
-<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/006tNbRwgy1gaa2273dbqj30m90i7tfn.jpg">
+<meta name="twitter:title" content="WG&#39;s Lakeside">
     
 
     
@@ -136,176 +128,78 @@
                         <div class="main-body-header">
     <h1 class="header">
     
-    uncategorized
+    <i class="icon fa fa-tag"></i>Tag: <em>git</em>
     </h1>
 </div>
 
                         <div class="main-body-content">
-                            <article id="post-SF-Symbols" class="article article-single article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
+                            
+
+    
+    
         
-            <header class="article-header">
-                
+        
+        <section class="archives-wrap">
+            <div class="archive-year-wrap">
+                <a href="/archives/2020" class="archive-year"><i class="icon fa fa-calendar-o"></i>2020</a>
+            </div>
+            <div class="archives">
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/2020/03/07/git经验/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span><a href="onegoon.store/2020/03/07/git经验/#isso-thread"></a></span>
+    
+</span>
+
+
+    
+</a>
+
+        
+        <div class="article-meta">
+            <div class="category">
+            
+            </div>
+            <div class="date"><time datetime="2020-03-07T05:57:26.000Z" itemprop="datePublished">2020-03-07</time></div>
+        </div>
+        
     
         <h1 class="article-title" itemprop="name">
-        SF Symbols
+        <a href="/2020/03/07/git经验/">git经验</a>
         </h1>
     
 
-            </header>
-        
-        
-            <div class="article-meta">
-                
-    <div class="article-date">
-      <i class="fa fa-calendar"></i>
-      <a href="/2019/12/26/SF-Symbols/" class="article-date">
-         <time datetime="2019-12-26T05:06:06.000Z" itemprop="datePublished">2019-12-26</time>
-      </a>
+        <p class="article-excerpt">
+            git checkout -b 
+撤销git reset通过把分支记录回退几个提交记录来实现撤销改动。你可以将这想象成“改写历史”。向上移动分支，原来指向的提交记录就跟重来没有提交过一样。
+git revert两者的区别reset意义 ：回到指定节点（哈希值或者相对引用）
+表象：清理结点，这个节点之后记录的统统不要了，真正做到回到过去。
+revert意义：撤销指定结点的操作
+表象：提交一新个记录，
+        </p>
     </div>
-
-
-                
-
-                
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/iOS/">iOS</a>
-    </div>
-
-                
-
-                
-
-            </div>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-            <p><a href="https://developer.apple.com/design/downloads/SF-Symbols.dmg" target="_blank" rel="noopener">SF Symbols</a>  Mac上的一款app</p>
-<p>有超1500个符号可供使用，也可以自定义符号</p>
-<p>可以导出文件，用sketch编辑</p>
-<p><img src="https://tva1.sinaimg.cn/large/006tNbRwgy1gaa2273dbqj30m90i7tfn.jpg" alt="SF Symbols Default"></p>
-<a id="more"></a>
-<p>UIKit 提供了两种API，一种是使用系统符号，另外一种是自定义</p>
-<ul>
-<li><code>init(systemName:)</code></li>
-<li><code>init(systemName:compatibleWith:)</code></li>
-<li><code>init(systemName:withConfiguration:)</code>methods of <code>UIImage</code>. </li>
-</ul>
-<ul>
-<li><code>init(named:)</code></li>
-<li><code>init(named:in:compatibleWith:)</code></li>
-<li><code>init(named:in:with:)</code></li>
-</ul>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> image = <span class="type">UIImage</span>(systemName: <span class="string">"square.and.arrow.up"</span>)</span><br></pre></td></tr></table></figure>
-<p>image 会加载<img src="https://tva1.sinaimg.cn/large/006tNbRwly1gaa2mjcpodj303c03jjr8.jpg" alt="image-20191226132926654">对应的符号</p>
-<p>也可以自定义符号</p>
-<p><img src="https://tva1.sinaimg.cn/large/006tNbRwly1gaa2oekrk3j30ha02wdh7.jpg" alt="image-20191226133109500"></p>
-<p>Assets.xcassets / + / New Symbol Image Set / </p>
-<p>拖拽编辑好的SVG文件到xcode中</p>
-<p>效果如图</p>
-<p><img src="https://tva1.sinaimg.cn/large/006tNbRwly1gaa2ns14jlj30rs06fmxm.jpg" alt="Assets"></p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> image = <span class="type">UIImage</span>(systemName: <span class="string">"arrowupfill"</span>)</span><br></pre></td></tr></table></figure>
-<p>#####link refer</p>
-<p><a href="https://developer.apple.com/documentation/xcode/creating_custom_symbol_images_for_your_app" target="_blank" rel="noopener">Creating Custom Symbol Images for Your App</a></p>
-
-        </div>
-        <footer class="article-footer">
-            
-
-
-
-    <a data-url="onegoon.store/2019/12/26/SF-Symbols/" data-id="ck7ha4vfg0004rvck1rshme1f" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-        </footer>
-    </div>
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "BlogPosting",
-        "author": {
-            "@type": "Person",
-            "name": "Ticat"
-        },
-        "headline": "SF Symbols",
-        "image": "onegoon.storehttps://tva1.sinaimg.cn/large/006tNbRwgy1gaa2273dbqj30m90i7tfn.jpg",
-        "keywords": "iOS",
-        "genre": "",
-        "datePublished": "2019-12-26",
-        "dateCreated": "2019-12-26",
-        "dateModified": "2019-12-26",
-        "url": "/onegoon.store/2019/12/26/SF-Symbols/",
-        "description": "SF Symbols  Mac上的一款app
-有超1500个符号可供使用，也可以自定义符号
-可以导出文件，用sketch编辑
-",
-        "wordCount": 68
-    }
-</script>
-
 </article>
-
-    <section id="comments">
     
-    </section>
+        </div>
+    
+
+
+    </div></section>
 
 
 
@@ -327,29 +221,6 @@
             
         </ul>
     </div>
-    
-        
-<nav id="article-nav">
-    
-        <a href="/2019/12/26/Mac-app-socket-server/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">newer</strong>
-        <p class="article-nav-title">
-        
-            Mac app socket server
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
-    
-    
-        <a href="/2019/11/27/iOS-URLSession-Request/" id="article-nav-older" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">older</strong>
-        <p class="article-nav-title">iOS URLSession Request</p>
-        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
-        </a>
-    
-</nav>
-
     
     <div class="widgets-container">
         
