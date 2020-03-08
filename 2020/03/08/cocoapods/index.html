@@ -21,7 +21,7 @@
 <meta property="og:description" content="What is CocoaPodsCocoaPods manages library dependencies for your Xcode projects. The dependencies for your projects are specified in a single text file called a Podfile. CocoaPods will resolve depend">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://raw.githubusercontent.com/oneGoon/Graphic/master/hexo-blog/CocoaPods/cocoapods.png">
-<meta property="og:updated_time" content="2020-03-08T16:00:04.403Z">
+<meta property="og:updated_time" content="2020-03-08T16:07:03.870Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="cocoapods">
 <meta name="twitter:description" content="What is CocoaPodsCocoaPods manages library dependencies for your Xcode projects. The dependencies for your projects are specified in a single text file called a Podfile. CocoaPods will resolve depend">
@@ -208,7 +208,7 @@
 <li><p>各个库依赖的版本不同问题</p>
 </li>
 </ul>
-<h6 id="查看细节-–verbose"><a href="#查看细节-–verbose" class="headerlink" title="查看细节 –verbose"></a>查看细节 –verbose</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pod install --verbose</span><br><span class="line"><span class="meta">#</span><span class="bash"> 不更新本地库 比如本地缓存有AFN2.0就不会自动更新到3.0</span></span><br><span class="line">pod install --verbose --no-repo-update</span><br></pre></td></tr></table></figure>
+<h6 id="查看细节-–verbose"><a href="#查看细节-–verbose" class="headerlink" title="查看细节 –verbose"></a>查看细节 –verbose</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pod install --verbose</span><br><span class="line"><span class="meta">#</span><span class="bash"> 不更新本地库 比如本地缓存有AFN2.0就不会自动更新到3.0</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> [-v | --verbose]</span></span><br><span class="line">pod install --verbose --no-repo-update</span><br></pre></td></tr></table></figure>
 <h4 id="Podfile-lock-（记录install的文件，不只是pod-install）"><a href="#Podfile-lock-（记录install的文件，不只是pod-install）" class="headerlink" title="Podfile.lock （记录install的文件，不只是pod install）"></a>Podfile.lock （记录install的文件，不只是pod install）</h4><p>这是 CocoaPods 创建的最重要的文件之一。它记录了需要被安装的 pod 的每个已安装的版本。如果你想知道已安装的 pod 是哪个版本，可以查看这个文件。推荐将 Podfile.lock 文件加入到版本控制中，这有助于整个团队的一致性。</p>
 <p><em>第一次pod install会创建.lock文件，之后pod install（如果Podfile没改变）则不会改动.lock文件</em></p>
 <p><em>而执行pod update 则会强行按照Podfile文件进行拉取依赖文件，并更新.lock文件。这样看来如果执行update指令还是有风险的</em></p>
@@ -319,7 +319,7 @@
         "description": "
 What is CocoaPodsCocoaPods manages library dependencies for your Xcode projects.
 The dependencies for your projects are specified in a single text file called a Podfile. CocoaPods will resolve depend",
-        "wordCount": 427
+        "wordCount": 434
     }
 </script>
 
