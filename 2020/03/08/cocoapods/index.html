@@ -12,19 +12,19 @@
     
     <meta name="keywords" content="CocoaPods">
     
-    <meta name="description" content="iOS 开发的框架管理工具">
+    <meta name="description" content="What is CocoaPodsCocoaPods manages library dependencies for your Xcode projects. The dependencies for your projects are specified in a single text file called a Podfile. CocoaPods will resolve depend">
 <meta name="keywords" content="CocoaPods">
 <meta property="og:type" content="article">
 <meta property="og:title" content="cocoapods">
 <meta property="og:url" content="onegoon.store/2020/03/08/cocoapods/index.html">
 <meta property="og:site_name" content="WG&#39;s Lakeside">
-<meta property="og:description" content="iOS 开发的框架管理工具">
+<meta property="og:description" content="What is CocoaPodsCocoaPods manages library dependencies for your Xcode projects. The dependencies for your projects are specified in a single text file called a Podfile. CocoaPods will resolve depend">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://raw.githubusercontent.com/oneGoon/Graphic/master/hexo-blog/CocoaPods/cocoapods.png">
-<meta property="og:updated_time" content="2020-03-08T14:16:54.269Z">
+<meta property="og:updated_time" content="2020-03-08T16:00:04.403Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="cocoapods">
-<meta name="twitter:description" content="iOS 开发的框架管理工具">
+<meta name="twitter:description" content="What is CocoaPodsCocoaPods manages library dependencies for your Xcode projects. The dependencies for your projects are specified in a single text file called a Podfile. CocoaPods will resolve depend">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/oneGoon/Graphic/master/hexo-blog/CocoaPods/cocoapods.png">
     
 
@@ -182,7 +182,55 @@
         
         <div class="article-entry" itemprop="articleBody">
             <p><img src="https://raw.githubusercontent.com/oneGoon/Graphic/master/hexo-blog/CocoaPods/cocoapods.png" alt="CocoaPods"></p>
-<p> iOS 开发的框架管理工具</p>
+<h2 id="What-is-CocoaPods"><a href="#What-is-CocoaPods" class="headerlink" title="What is CocoaPods"></a><a href="https://guides.cocoapods.org/using/getting-started.html#what-is-cocoapods" target="_blank" rel="noopener">What is CocoaPods</a></h2><p>CocoaPods manages library dependencies for your Xcode projects.</p>
+<p>The dependencies for your projects are specified in a single text file called a Podfile. CocoaPods will resolve dependencies between libraries, fetch the resulting source code, then link it together in an Xcode workspace to build your project.</p>
+<p>Ultimately the goal is to improve discoverability of, and engagement in, third party open-source libraries by creating a more centralised ecosystem.</p>
+<p><img src="https://cocoapods.org/images/app-task-switcher.png" alt></p>
+<p> iOS 开发的依赖管理工具</p>
+<p>cocoapods 的作用</p>
+<h2 id="Project-Goals"><a href="#Project-Goals" class="headerlink" title="Project Goals"></a>Project Goals</h2><p>CocoaPods aims to improve the engagement with, and discoverability of, third party open-source Cocoa libraries. These project goals influence and drive the design of CocoaPods:</p>
+<ul>
+<li>Create and share libraries, and use them in your own projects, without creating extra work for library authors. Integrate non-CocoaPods libraries and hack on your own fork of any CocoaPods library with a simple transparent <code>Podspec</code> standard.</li>
+<li>Allow library authors to structure their libraries however they like.</li>
+<li>Save time for library authors by automating a lot of Xcode work not related to their libraries’ functionality.</li>
+<li>Support any source management system. (Currently supported are <code>git</code>, <code>svn</code>, <code>mercurial</code>, <code>bazaar</code>, and various types of archives downloaded over HTTP.)</li>
+<li>Promote a culture of distributed collaboration on pods, but also provide features only possible with a centralised solution to foster a community.</li>
+<li>Build tools on top of the core Cocoa development system, including those typically deployed to other operating systems, such as web-services.</li>
+<li>Provide opinionated and automated integration, but make it completely optional. You may manually integrate your CocoaPods dependencies into your Xcode project as you see fit, with or without a workspace.</li>
+<li>Solve everyday problems for Cocoa and Xcode developers.</li>
+</ul>
+<p>解决的痛点</p>
+<ul>
+<li><p>自动集成，便于管理，解决了手动集成的弊端，如代码更新难以维护</p>
+</li>
+<li><p>依赖相互依赖递归依赖</p>
+</li>
+<li><p>各个库依赖的版本不同问题</p>
+</li>
+</ul>
+<h6 id="查看细节-–verbose"><a href="#查看细节-–verbose" class="headerlink" title="查看细节 –verbose"></a>查看细节 –verbose</h6><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pod install --verbose</span><br><span class="line"><span class="meta">#</span><span class="bash"> 不更新本地库 比如本地缓存有AFN2.0就不会自动更新到3.0</span></span><br><span class="line">pod install --verbose --no-repo-update</span><br></pre></td></tr></table></figure>
+<h4 id="Podfile-lock-（记录install的文件，不只是pod-install）"><a href="#Podfile-lock-（记录install的文件，不只是pod-install）" class="headerlink" title="Podfile.lock （记录install的文件，不只是pod install）"></a>Podfile.lock （记录install的文件，不只是pod install）</h4><p>这是 CocoaPods 创建的最重要的文件之一。它记录了需要被安装的 pod 的每个已安装的版本。如果你想知道已安装的 pod 是哪个版本，可以查看这个文件。推荐将 Podfile.lock 文件加入到版本控制中，这有助于整个团队的一致性。</p>
+<p><em>第一次pod install会创建.lock文件，之后pod install（如果Podfile没改变）则不会改动.lock文件</em></p>
+<p><em>而执行pod update 则会强行按照Podfile文件进行拉取依赖文件，并更新.lock文件。这样看来如果执行update指令还是有风险的</em></p>
+<h4 id="Manifest-lock-（为了校验Pods里的文件与Podfile-lock记录是否一致）"><a href="#Manifest-lock-（为了校验Pods里的文件与Podfile-lock记录是否一致）" class="headerlink" title="Manifest.lock （为了校验Pods里的文件与Podfile.lock记录是否一致）"></a>Manifest.lock （为了校验Pods里的文件与Podfile.lock记录是否一致）</h4><p>这是每次运行 <code>pod install</code> 命令时创建的 <code>Podfile.lock</code> 文件的副本。如果你遇见过这样的错误 <code>沙盒文件与 Podfile.lock 文件不同步 (The sandbox is not in sync with the Podfile.lock)</code>，这是因为 Manifest.lock 文件和 <code>Podfile.lock</code> 文件不一致所引起。由于 <code>Pods</code> 所在的目录并不总在版本控制之下，这样可以保证开发者运行 app 之前都能更新他们的 pods，否则 app 可能会 crash，或者在一些不太明显的地方编译失败。</p>
+<h6 id="日常工作中是否应把pod相关文件加到版本控制中"><a href="#日常工作中是否应把pod相关文件加到版本控制中" class="headerlink" title="日常工作中是否应把pod相关文件加到版本控制中"></a>日常工作中是否应把pod相关文件加到版本控制中</h6><p>Pods文件夹不要加</p>
+<p>Podfile 要加</p>
+<p><strong>Podfile.lock</strong> 要加到版本控制中</p>
+<blockquote>
+<p>假设我们在 Podfile 中写上: <code>pod &#39;AFNetWorking&#39;</code>，那么默认是安装 AFNetworking 的最新代码。这就导致用户 A 可能装的是 3.0 版本，而用户 B 再安装就变成了 4.0 版本。即使我们在 Podfile 中指定了库的具体版本，那也不能保证不出问题。因为一个第三方库还有可能依赖其他的第三方库，而且不保证它的依赖关系是具体到版本号的。</p>
+<p>因此 <strong>Podfile.lock</strong> 存在的意义是将某一次 <code>pod install</code> 时使用的各个库的版本，以及这个库依赖的其他第三方库的版本记录下来，以供别人使用。</p>
+<p>这样一来，<code>pod install</code> 的流程其实是:</p>
+<ol>
+<li>判断 Podfile.lock 是否存在，如果不存在，按照 Podfile 中指定的版本安装</li>
+<li>如果 Podfile.lock 存在，检查 Podfile 中每一个 Pod 在 Podfile.lock 中是否存在</li>
+<li>如果存在， 则忽略 Podfile 中的配置，使用 Podfile.lock 中的配置(实际上就是什么都不做)</li>
+<li>如果不存在，则使用 Podfile 中的配置，并写入 Podfile.lock 中</li>
+</ol>
+<p>而另一个常用命令 <code>pod update</code> 并不是一个日常更新命令。它的原理是忽略 Podfile.lock 文件，完全使用 Podfile 中的配置，并且更新 Podfile.lock。一旦决定使用 <code>pod update</code>，就必须所有团队成员一起更新。因此在使用 <code>update</code> 前请务必了解其背后发生的事情和对团队造成的影响，并且确保有必要这么做。</p>
+</blockquote>
+<h5 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h5><p><a href="https://cocoapods.org/" target="_blank" rel="noopener">cocoapods</a></p>
+<p><a href="https://objccn.io/issue-6-4/" target="_blank" rel="noopener">objccn.io 上的期刊《深入理解CocoaPods》</a></p>
+<p><a href="https://bestswifter.com/cocoapods/" target="_blank" rel="noopener">张星宇的博客</a></p>
 
         </div>
         <footer class="article-footer">
@@ -190,7 +238,7 @@
 
 
 
-    <a data-url="onegoon.store/2020/03/08/cocoapods/" data-id="ck7j4xjrv000ahsck7hazqo0c" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="onegoon.store/2020/03/08/cocoapods/" data-id="ck7j7ml2k0008g3ck9h18tgpn" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -266,12 +314,12 @@
         "genre": "",
         "datePublished": "2020-03-08",
         "dateCreated": "2020-03-08",
-        "dateModified": "2020-03-08",
+        "dateModified": "2020-03-09",
         "url": "/onegoon.store/2020/03/08/cocoapods/",
         "description": "
- iOS 开发的框架管理工具
-",
-        "wordCount": 5
+What is CocoaPodsCocoaPods manages library dependencies for your Xcode projects.
+The dependencies for your projects are specified in a single text file called a Podfile. CocoaPods will resolve depend",
+        "wordCount": 427
     }
 </script>
 
