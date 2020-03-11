@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: true,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Q: 两台服务器A和B的网络配置，     A B     IP address 192.168.26.129 192.168.26.3   Subnet mask 255.255.255.0 255.255.255.224   Default gateway 192.168.26.2 192.168.26.2    子网掩码本都为255.255.255.0， B的子网掩码不小心配成了255.25">
+<meta name="keywords" content="Internet, http">
+<meta property="og:type" content="article">
+<meta property="og:title" content=" 网络篇">
+<meta property="og:url" content="onegoon.store/2020/03/09/网络篇/index.html">
+<meta property="og:site_name" content="WG&#39;s Lakeside">
+<meta property="og:description" content="Q: 两台服务器A和B的网络配置，     A B     IP address 192.168.26.129 192.168.26.3   Subnet mask 255.255.255.0 255.255.255.224   Default gateway 192.168.26.2 192.168.26.2    子网掩码本都为255.255.255.0， B的子网掩码不小心配成了255.25">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="/Users/wanglele/Library/Application%20Support/typora-user-images/image-20191101003036937.png">
+<meta property="og:image" content="https://github.com/oneGoon/Graphic/blob/master/hexo-blog/Internet-IP/IP%E5%9C%B0%E5%9D%80%E5%88%86%E7%B1%BB.png?raw=true">
+<meta property="og:image" content="https://github.com/oneGoon/Graphic/blob/master/hexo-blog/Internet-IP/IP-%E5%AD%90%E7%BD%91%E5%AF%BB%E5%9D%80.png?raw=true">
+<meta property="og:image" content="https://github.com/oneGoon/Graphic/blob/master/hexo-blog/Internet-IP/IP%E5%9C%B0%E5%9D%80-%E7%AC%AC%203%20%E9%A1%B5.png?raw=true">
+<meta property="og:image" content="/Users/wanglele/Library/Application%20Support/typora-user-images/image-20191031221257509.png">
+<meta property="og:image" content="https://github.com/oneGoon/Graphic/blob/master/hexo-blog/Internet-IP/IP%E5%9C%B0%E5%9D%80-%E7%AC%AC%204%20%E9%A1%B5.png?raw=true">
+<meta property="og:image" content="/Users/wanglele/Library/Application%20Support/typora-user-images/image-20191101003105903.png">
+<meta property="og:image" content="/Users/wanglele/Library/Application%20Support/typora-user-images/image-20191031221257509.png">
+<meta property="og:image" content="/Users/wanglele/Library/Application%20Support/typora-user-images/image-20191101014051134.png">
+<meta property="og:image" content="/Users/wanglele/Library/Application%20Support/typora-user-images/image-20191101015510162.png">
+<meta property="og:image" content="/Users/wanglele/Library/Application%20Support/typora-user-images/image-20191101021148782.png">
+<meta property="og:image" content="/Users/wanglele/Library/Application%20Support/typora-user-images/image-20191101021650331.png">
+<meta property="og:image" content="/Users/wanglele/Library/Application%20Support/typora-user-images/image-20191101023839284.png">
+<meta property="og:image" content="/Users/wanglele/Library/Application%20Support/typora-user-images/image-20191101090609233.png">
+<meta property="og:image" content="/Users/wanglele/Library/Application%20Support/typora-user-images/image-20191101112058582.png">
+<meta property="og:image" content="/Users/wanglele/Library/Application%20Support/typora-user-images/image-20191101130158739.png">
+<meta property="og:image" content="/Users/wanglele/Library/Application%20Support/typora-user-images/image-20191101104254605.png">
+<meta property="og:image" content="/Users/wanglele/Library/Application%20Support/typora-user-images/image-20191101104356561.png">
+<meta property="og:image" content="/Users/wanglele/Library/Application%20Support/typora-user-images/image-20191101104838995.png">
+<meta property="og:image" content="/Users/wanglele/Library/Application%20Support/typora-user-images/image-20191101113229195.png">
+<meta property="og:image" content="/Users/wanglele/Library/Application%20Support/typora-user-images/image-20191101113600236.png">
+<meta property="og:image" content="/Users/wanglele/Library/Application%20Support/typora-user-images/image-20191101115416349.png">
+<meta property="og:image" content="/Users/wanglele/Library/Application%20Support/typora-user-images/image-20191101115845757.png">
+<meta property="og:image" content="/Users/wanglele/Library/Application%20Support/typora-user-images/image-20191101090154723.png">
+<meta property="og:image" content="/Users/wanglele/Library/Application%20Support/typora-user-images/image-20191101090039663.png">
+<meta property="og:updated_time" content="2020-03-11T16:06:15.123Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content=" 网络篇">
+<meta name="twitter:description" content="Q: 两台服务器A和B的网络配置，     A B     IP address 192.168.26.129 192.168.26.3   Subnet mask 255.255.255.0 255.255.255.224   Default gateway 192.168.26.2 192.168.26.2    子网掩码本都为255.255.255.0， B的子网掩码不小心配成了255.25">
+<meta name="twitter:image" content="/Users/wanglele/Library/Application%20Support/typora-user-images/image-20191101003036937.png">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="onegoon.store/2020/03/09/网络篇/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title> 网络篇 | WG's Lakeside</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">WG's Lakeside</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">只是想显点粗浅技艺，那是我的初衷</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+
+  
+
+  <a href="https://github.com/onegoon" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="onegoon.store/2020/03/09/网络篇/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ticat">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WG's Lakeside">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline"> 网络篇
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2020-03-09 15:38:51" itemprop="dateCreated datePublished" datetime="2020-03-09T15:38:51+08:00">2020-03-09</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2020-03-12 00:06:15" itemprop="dateModified" datetime="2020-03-12T00:06:15+08:00">2020-03-12</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Q: 两台服务器A和B的网络配置，</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IP address</td>
+<td>192.168.26.129</td>
+<td>192.168.26.3</td>
+</tr>
+<tr>
+<td>Subnet mask</td>
+<td>255.255.255.0</td>
+<td>255.255.255.224</td>
+</tr>
+<tr>
+<td>Default gateway</td>
+<td>192.168.26.2</td>
+<td>192.168.26.2</td>
+</tr>
+</tbody>
+</table>
+<p>子网掩码本都为<code>255.255.255.0</code>， B的子网掩码不小心配成了<code>255.255.255.224</code>。它们还能正常通信吗？</p>
+<p>如果看到这个问题能自信回答。下文无须再看。</p>
+<h4 id="名词理解"><a href="#名词理解" class="headerlink" title="名词理解"></a>名词理解</h4><h5 id="IP"><a href="#IP" class="headerlink" title="IP"></a>IP</h5><p>ip地址</p>
+<p>不要被地址前的ip吓到，ip地址也是地址，位置的标识。</p>
+<p>比如在没有地图导航的年代，我们第一次去外国拜访某位好友，手里的只有地址</p>
+<p>韩国庆尚南道金海市金宽路1 ~ 66号路3-14乙(内东郑德艺术第101号)</p>
+<p>单看这个地址有点懵，我只知道韩国在哪。</p>
+<p>ip的设计大抵也是如此</p>
+<p>先来感受一下</p>
+<p>IPv4地址 </p>
+<p>192.168.18.4</p>
+<p>账面上分析：由3个点分为4组，可以是16进制也可以是10进制，32位</p>
+<p>IPv6地址</p>
+<p>2020:8210:242a:f270:1ca2:3f7:6ff:18af</p>
+<p>账面上分析：由7个冒号分为8块也叫字段，16进制表示，128位</p>
+<p>在IPv6中地址长度是128位，是IPv4的四倍。</p>
+<p>1.在一个块中前导的零不必书写</p>
+<p>2.全零的块可以省略，用符号::代替，为了避免歧义，一个IPv6地址中::只能用一次。</p>
+<p>在某些情况下（例如表示一个包含地址的URL时），IPv6地址中的冒号分隔符可能与其他分隔符混淆，例如IP地址和端口号之间使用的冒号。这时候用<code>[</code>和<code>]</code>包围IPv6地址。例如，URL</p>
+<p>​    http://[2001:0db8:85a3:08d3:1319:8a2e:0370:7344]:443/</p>
+<p>是指IPv6主机<code>2001:0db8:85a3:08d3:1319:8a2e:0370:7344</code>中的端口号443使用HTTP 、TCP和IPv6协议</p>
+<p>增加的这些灵活性随之而来的就是会造成不必要的混淆性，同一个IP地址有多种的表示方式。</p>
+<p>为了弥补这种情况，还要兼容特性，制定了规则，保证IP地址表示的唯一性</p>
+<ol>
+<li><p>前导的零必须压缩。</p>
+</li>
+<li><p>符号<code>::</code>只能用于影响最大的地方（压缩最多的零），如果多少块中包含等长度的零，顺序靠前的块被替换为<code>::</code>。</p>
+</li>
+<li>a到f的十六进制数字应该用小写表示。</li>
+</ol>
+<p>互联网上的每个接口必须有一个唯一的 I n t e r n e t 地址,也称作 I P 地址</p>
+<h4 id="IP地址的历史演变"><a href="#IP地址的历史演变" class="headerlink" title="IP地址的历史演变"></a>IP地址的历史演变</h4><p>最初定义  <code>Internet地址结构 = 网络号 + 主机号</code></p>
+<p><code>网络号</code>： 用于识别接口使用的IP地址在哪个网络中可被发现；</p>
+<p><code>主机号</code>：用于识别由网络部分给出的网络中的特定主机；</p>
+<p>当时，大多数主机只有一个网络接口，因此术语接口地址和主机地址有时交替使用。</p>
+<h5 id="分类寻址"><a href="#分类寻址" class="headerlink" title="分类寻址"></a>分类寻址</h5><blockquote>
+<p><strong>column</strong></p>
+<p><strong>避免歧义，论证我的观点</strong></p>
+<p>IP地址分为A、B、C、D、E五类这是没有争议的。</p>
+<p>但是我对E的前缀码有所怀疑</p>
+<p>下表来自Wikipedia <a href="https://zh.wikipedia.org/wiki/IP地址" target="_blank" rel="noopener">https://zh.wikipedia.org/wiki/IP%E5%9C%B0%E5%9D%80</a></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th style="text-align:center"><strong>A类IPv4地址</strong></th>
+<th style="text-align:center"><strong>B类IPv4地址</strong></th>
+<th style="text-align:center"><strong>C类IPv4地址</strong></th>
+<th style="text-align:center"><strong>D类IPv4地址</strong></th>
+<th style="text-align:center"><strong>E类IPv4地址</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>网络标志位</strong></td>
+<td style="text-align:center"><strong>0</strong></td>
+<td style="text-align:center"><strong>10</strong></td>
+<td style="text-align:center"><strong>110</strong></td>
+<td style="text-align:center"><strong>1110</strong></td>
+<td style="text-align:center"><strong>11110</strong></td>
+</tr>
+<tr>
+<td><strong>IP地址范围</strong></td>
+<td style="text-align:center"><strong>1.0.0.0~127.255.255.255</strong></td>
+<td style="text-align:center"><strong>128.0.0.0~191.255.255.255</strong></td>
+<td style="text-align:center"><strong>192.0.0.0~223.255.255.255</strong></td>
+<td style="text-align:center"><strong>224.0.0.0~239.255.255.255</strong></td>
+<td style="text-align:center"><strong>240.0.0.0~247.255.255.255</strong></td>
+</tr>
+<tr>
+<td><strong>可用IP地址范围</strong></td>
+<td style="text-align:center"><strong>1.0.0.1~127.255.255.254</strong></td>
+<td style="text-align:center"><strong>128.0.0.1~191.255.255.254</strong></td>
+<td style="text-align:center"><strong>192.0.0.1~223.255.255.254</strong></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td><strong>是否可以分配给主机使用</strong></td>
+<td style="text-align:center"><strong>是</strong></td>
+<td style="text-align:center"><strong>是</strong></td>
+<td style="text-align:center"><strong>是</strong></td>
+<td style="text-align:center"><strong>否</strong></td>
+<td style="text-align:center"><strong>否</strong></td>
+</tr>
+<tr>
+<td><strong>网络数量（个）</strong></td>
+<td style="text-align:center"><strong>126 (27-2)</strong></td>
+<td style="text-align:center"><strong>16384 (214)</strong></td>
+<td style="text-align:center"><strong>2097152 (221)</strong></td>
+<td style="text-align:center"><strong>—</strong></td>
+<td style="text-align:center"><strong>—</strong></td>
+</tr>
+<tr>
+<td><strong>每个网络中可容纳主机数（个）</strong></td>
+<td style="text-align:center"><strong>16777214 (224-2)</strong></td>
+<td style="text-align:center"><strong>65534 (216-2)</strong></td>
+<td style="text-align:center"><strong>254 (28-2)</strong></td>
+<td style="text-align:center"><strong>—</strong></td>
+<td style="text-align:center"><strong>—</strong></td>
+</tr>
+<tr>
+<td><strong>适用范围</strong></td>
+<td style="text-align:center"><strong>大量主机的大型网络</strong></td>
+<td style="text-align:center"><strong>中等规模主机数的网络</strong></td>
+<td style="text-align:center"><strong>小型局域网</strong></td>
+<td style="text-align:center"><strong>留给Internet体系结构委员会(IAB)使用【组播地址】</strong></td>
+<td style="text-align:center"><strong>保留，仅作为搜索、Internet的实验和开发用</strong></td>
+</tr>
+</tbody>
+</table>
+<p>下图信息来自《TCP/IP详解 卷1：协议》译者: 范建华等</p>
+<p><img src="/Users/wanglele/Library/Application Support/typora-user-images/image-20191101003036937.png" alt="图IP地址的分类-1"></p>
+<p>以上两处信息表达一致。但是我得疑问是如果E的前缀码是<code>11110</code> 那么剩下的那个区间的地址算什么</p>
+<p>1111<strong>1</strong>000 00000000 00000000 00000000 ~ 11111111 11111111 11111111 11111111</p>
+<p>248.0.0.0 ~255.255.255.255 </p>
+<p>又查阅了《TCP/IP详解 卷1：协议》第二版，吴英等译 吴功宜 审校</p>
+<p>E类的 地址范围 240.0.0.0 ~ 255.255.255.255 高位序 1111 </p>
+<p>我还是倾向于后者,所以之后的理论基于此，尽管这无关紧要。</p>
+</blockquote>
+<p>现实中的不同网络可能有不同数量的主机，每台主机都需要一个唯一IP地址。</p>
+<p>地址空间的划分涉及五大类，每类都基于网络中可容纳的主机数量，确定在一个32位的IPv地址中分配给网络号和主机号的位数。</p>
+<p><img src="https://github.com/oneGoon/Graphic/blob/master/hexo-blog/Internet-IP/IP%E5%9C%B0%E5%9D%80%E5%88%86%E7%B1%BB.png?raw=true" alt="网络地址分类"></p>
+<p>由上图的信息可以算得下表数据</p>
+<table>
+<thead>
+<tr>
+<th>类</th>
+<th>地址范围</th>
+<th>高序位</th>
+<th>用途</th>
+<th>百分比</th>
+<th>网络数</th>
+<th>主机数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>0.0.0.0~127.255.255.255</td>
+<td>0</td>
+<td>单播/特殊</td>
+<td>1/2</td>
+<td>128 (2^7)</td>
+<td>16777216 (2^24)</td>
+</tr>
+<tr>
+<td>B</td>
+<td>128.0.0.0~191.255.255.255</td>
+<td>10</td>
+<td>单播/特殊</td>
+<td>1/4</td>
+<td>16384 (2^14)</td>
+<td>65536 (2^16)</td>
+</tr>
+<tr>
+<td>C</td>
+<td>192.0.0.0~223.255.255.255</td>
+<td>110</td>
+<td>单播/特殊</td>
+<td>1/8</td>
+<td>2097152 (2^21)</td>
+<td>256 (2^8)</td>
+</tr>
+<tr>
+<td>D</td>
+<td>224.0.0.0~239.255.255.255</td>
+<td>1110</td>
+<td>组播</td>
+<td>1/16</td>
+<td>N/A</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>E</td>
+<td>240.0.0.0~255.255.255.255</td>
+<td>1111</td>
+<td>保留</td>
+<td>1/16</td>
+<td>N/A</td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
+<p>百分比的计算可以 画棵哈夫曼树， 比如 0为左子树1为右子树</p>
+<p>各类的网络数呈几何倍的递增，而网络数却呈几何倍递减，这样的分类有些脱离现实过于数字化了。</p>
+<p>A类和B类网络号通常浪费太多主机号，而C类网络号则不能为很多站点提供足够的主机号。</p>
+<p>比如C类网络号主机过少，而B类网络号主机又过多，如果想选择一个千为单位的网络号则十分尴尬了。</p>
+<h5 id="子网寻址"><a href="#子网寻址" class="headerlink" title="子网寻址"></a>子网寻址</h5><p>背负历史包袱，负重前行</p>
+<p>为了在不改变Internet核心路由基础设施的情况下解决这个问题，人们很自然想到一种方式，在一个站点接入Internet后为其分配一个<strong>网络号</strong>，然后又站点管理员进一步划分本地的<strong>子网</strong>数。</p>
+<p>实现这个想法需要改变IP地址的网路部分和主机部分的限制，但这样做只是针对一个站点自身而言；Internet其余部分将只能’看到‘传统的A类、B类和C类部分。支持此功能的方法称为<code>子网寻址</code>。</p>
+<p>解释一下，一个站点可能申请到了B类网络号，也就是IP地址的前16位确定了，余下16位自由位，</p>
+<p>如果按照传统思维（分类寻址）那么剩下的16位就是主机号，</p>
+<p>而按照子网寻址的逻辑，这16位对于Internet其他部分看来依然是主机号，对于站点自身来看，可通过子网掩码自由再划分成网络号与主机号。如下图一种可能的格式</p>
+<p><img src="https://github.com/oneGoon/Graphic/blob/master/hexo-blog/Internet-IP/IP-%E5%AD%90%E7%BD%91%E5%AF%BB%E5%9D%80.png?raw=true" alt="IP-子网寻址"></p>
+<p>这个例子中为一个B类地址被划分子网。它使用8位作为子网ID，提供256个子网和每个子网中254台主机（当前每个子网的第一个和最后一个地址无效，即从整个分配范围中去除第一个和最后一个地址）。这种划分可由网络管理员改变</p>
+<p>前16位有权威机构分配。该站点的每个地址前16位固定不变，后16位由管理员分配。</p>
+<p>注意只有划分子网的网络中的主机和路由器知道子网结构，在进行子网寻址前，Internet其他部分仍将它作为站点相关地址来看待。</p>
+<p>下图展示如何工作</p>
+<p><img src="https://github.com/oneGoon/Graphic/blob/master/hexo-blog/Internet-IP/IP%E5%9C%B0%E5%9D%80-%E7%AC%AC%203%20%E9%A1%B5.png?raw=true" alt="IPAddr-3"></p>
+<p>某个站点被分配一个典型的B类网络号128.32 。 网络管理员决定用于站点范围内的子网掩码为255.255.255.0,提供256个子网，每个子网可容纳256-2 = 254台主机。同一子网中每台主机的IPv4地址拥有相同子网号。左侧的局域网段中主机的IPv4地址开始于128.32.1，右侧的所有主机开始于128.32.2 。 Internet中其他站点要访问这个站点目的地址以128.32开始的所有流量直接由Internet路由系统交给边界路由器，如137.64.23.30要访问128.32.1.1 则先访问到站点边界路由器，边界路由器区分128.32网络中的不同子网。比如图中，它则要区分目的地址为128.32.1.x和目的地址为128.32.2.x的流量。这些地址分别表示子网号1和2，它们都采用128.32的B类网络号。那么路由器如何在地址中找到子网ID，这就需要子网掩码了。</p>
+<h6 id="子网掩码"><a href="#子网掩码" class="headerlink" title="子网掩码"></a>子网掩码</h6><p>子网掩码是由一台主机或路由器使用的分配位，以确定如何从一台主机对应IP地址中获得网络和子网信息。IP子网掩码与对应的IP地址长度相同（IPv4为32位，IPv6为128位）。它们通常在一台主机或路由器中以IP地址相同的方式配置，既可以是静态的（通常是路由器），也可以是动态的（例如动态主机配置协议DHCP）。</p>
+<p><img src="/Users/wanglele/Library/Application Support/typora-user-images/image-20191031221257509.png" alt="image-20191031221257509" style="zoom:50%;"></p>
+<p>子网掩码表示网络号与主机号的边界，全是1的那边表示网络号全是0的表示主机号</p>
+<p>如IPv4地址为128.32.1.14/255.255.255.0</p>
+<p>地址（128.32.1.14）              10000000 00100000 00000001 00001110</p>
+<p>掩码（255.255.255.0）          11111111 11111111 11111111 00000000</p>
+<p>按位与结果 （128.32.1.0）        10000000 00100000 00000001 00000000</p>
+<p>（网络号和地址）按位异或结果  00000000 00000000 00000000 00001110</p>
+<p>网络号为 128.32.1.0</p>
+<p>子网主机ID为 14</p>
+<h6 id="可变长度子网掩码VLSM"><a href="#可变长度子网掩码VLSM" class="headerlink" title="可变长度子网掩码VLSM"></a>可变长度子网掩码VLSM</h6><p>同一站点的不同部分，可将不同长度的子网掩码应用于相同网络号</p>
+<p><img src="https://github.com/oneGoon/Graphic/blob/master/hexo-blog/Internet-IP/IP%E5%9C%B0%E5%9D%80-%E7%AC%AC%204%20%E9%A1%B5.png?raw=true" alt="VLSM"></p>
+<h5 id="CIDR和聚合"><a href="#CIDR和聚合" class="headerlink" title="CIDR和聚合"></a>CIDR和聚合</h5><p>20世纪90年代初，采用子网寻址缓解增长带来的痛苦后，Internet开始面临更严重的规模问题。有三个问题尤为重要。</p>
+<ol>
+<li>到1994年，一半以上的B类地址已被分配。预计B类地址空间大约在1995年将被用尽。</li>
+<li>32位的IPv4地址被认为不足以应付Internet在21世纪的初期规模。</li>
+<li>全球性路由表的条目数（每个网络数对应一条），1995年大约为65000个条目，目前仍在增长。伴随着越来越多的ABC类路由条目出现，路由性能受到影响。</li>
+</ol>
+<h6 id="前缀"><a href="#前缀" class="headerlink" title="前缀"></a>前缀</h6><h6 id="聚合"><a href="#聚合" class="headerlink" title="聚合"></a>聚合</h6><h2 id="Private-IPv4-addresses"><a href="#Private-IPv4-addresses" class="headerlink" title="Private IPv4 addresses"></a>Private IPv4 addresses</h2><p>The Internet Engineering Task Force (IETF) has directed the Internet Assigned Numbers Authority (IANA) to reserve the following IPv4 address ranges for private networks</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">RFC1918 name</th>
+<th style="text-align:center">IP address range</th>
+<th style="text-align:center">Number of addresses</th>
+<th style="text-align:center">Largest <a href="https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing" target="_blank" rel="noopener">CIDR</a> block (subnet mask)</th>
+<th style="text-align:center">Host ID size</th>
+<th style="text-align:center">Mask bits</th>
+<th style="text-align:center"><em><a href="https://en.wikipedia.org/wiki/Classful_network" target="_blank" rel="noopener">Classful</a></em> description<a href="https://en.wikipedia.org/wiki/Private_network#cite_note-4" target="_blank" rel="noopener">[Note 1]</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">24-bit block</td>
+<td style="text-align:center">10.0.0.0 – 10.255.255.255</td>
+<td style="text-align:center">16777216</td>
+<td style="text-align:center">10.0.0.0/8 (255.0.0.0)</td>
+<td style="text-align:center">24 bits</td>
+<td style="text-align:center">8 bits</td>
+<td style="text-align:center">single class A network</td>
+</tr>
+<tr>
+<td style="text-align:center">20-bit block</td>
+<td style="text-align:center">172.16.0.0 – 172.31.255.255</td>
+<td style="text-align:center">1048576</td>
+<td style="text-align:center">172.16.0.0/12 (255.240.0.0)</td>
+<td style="text-align:center">20 bits</td>
+<td style="text-align:center">12 bits</td>
+<td style="text-align:center">16 contiguous class B networks</td>
+</tr>
+<tr>
+<td style="text-align:center">16-bit block</td>
+<td style="text-align:center">192.168.0.0 – 192.168.255.255</td>
+<td style="text-align:center">65536</td>
+<td style="text-align:center">192.168.0.0/16 (255.255.0.0)</td>
+<td style="text-align:center">16 bits</td>
+<td style="text-align:center">16 bits</td>
+<td style="text-align:center">256 contiguous class C networks</td>
+</tr>
+</tbody>
+</table>
+<p>简化后如下图</p>
+<p><img src="/Users/wanglele/Library/Application Support/typora-user-images/image-20191101003105903.png" alt="image-20191101003105903"></p>
+<p>只要兼容分类寻址，最大主机数就已经固定了（第一个和最后一个无效，有特殊用处）</p>
+<p>IP地址结构</p>
+<p>大多数IPv4地址块最终被细分为一个地址用于识别连接Internet或者某些专用的内联网的计算机网络接口，这些地址称为单播地址。除了单播地址，其他类型的地址包括广播、组播和任播地址，它们可能涉及多个接口，还有一些特殊用途的地址。而我们主要围绕讨论的是单播地址</p>
+<p>IP地址的种类</p>
+<p>前缀码**</p>
+<p>地址空间划分</p>
+<p>无类型域间选路（CIDR）</p>
+<p><img src="/Users/wanglele/Library/Application Support/typora-user-images/image-20191031221257509.png" alt="image-20191031221257509"></p>
+<p>广播地址 ，如果发送这个地址，所有10.11.12 网络里面的设备都可以收到 </p>
+<p>网络号， 子网掩码和IP按位与就可得到网络号 </p>
+<p>IP地址的主机号 </p>
+<p>​    全0：表示整个子网</p>
+<p>​    全1：表示向子网上所有设备发送包，即“广播”</p>
+<h5 id="IP怎么来的"><a href="#IP怎么来的" class="headerlink" title="IP怎么来的"></a>IP怎么来的</h5><p>如何配置IP地址？</p>
+<p>往往我们上网不会为了IP而担忧，打开wifi，IP就自动设置好了。</p>
+<p>其实就是使用默认的DHCP</p>
+<p>##### 第一个协议</p>
+<h5 id="DHCP-Dynamic-Host-Configuration-Protocol-动态主机配置协议，-一个自动配置的协议"><a href="#DHCP-Dynamic-Host-Configuration-Protocol-动态主机配置协议，-一个自动配置的协议" class="headerlink" title="DHCP(Dynamic Host Configuration Protocol) 动态主机配置协议， 一个自动配置的协议"></a>DHCP(Dynamic Host Configuration Protocol) 动态主机配置协议， 一个自动配置的协议</h5><p>有了这个协议，网络管理员就轻松多了。他只需要配置一段共享的 IP 地址。每一台新接入的机器都通过 DHCP 协议，来这个共享的 IP 地址里申请，然后自动配置好就可以了。等人走了，或者用完了，还回去，这样其他的机器也能用</p>
+<p>DHCP 的方式就相当于租房。你不用装修，都是帮你配置好的。你暂时用一下，用完退租就可以了</p>
+<p>#####解析 DHCP 的工作方式</p>
+<p><strong><strong>1.DHCP Discover</strong></strong></p>
+<p>新来的机器使用 IP 地址 0.0.0.0 发送了一个广播包，目的 IP 地址为 255.255.255.255。广播包封装了 UDP，UDP 封装了 BOOTP。其实 DHCP 是 BOOTP 的增强版</p>
+<p> Boot request 我的 MAC 地址是这个，我还没有 IP，谁能给租给我个 IP 地址！</p>
+<p>DHCP Offer</p>
+<p>ip </p>
+<p>DHCP Request</p>
+<p>ip </p>
+<p>ACK</p>
+<p><img src="/Users/wanglele/Library/Application Support/typora-user-images/image-20191101014051134.png" alt="image-20191101014051134"></p>
+<p><img src="/Users/wanglele/Library/Application Support/typora-user-images/image-20191101015510162.png" alt="image-20191101015510162"></p>
+<p><img src="/Users/wanglele/Library/Application Support/typora-user-images/image-20191101021148782.png" alt="image-20191101021148782"></p>
+<p><img src="/Users/wanglele/Library/Application Support/typora-user-images/image-20191101021650331.png" alt="image-20191101021650331"></p>
+<p><img src="/Users/wanglele/Library/Application Support/typora-user-images/image-20191101023839284.png" alt="image-20191101023839284"></p>
+<p><img src="/Users/wanglele/Library/Application Support/typora-user-images/image-20191101090609233.png" alt="image-20191101090609233"></p>
+<p>Socket库提供查询IP地址的功能 询问 DNS 服务器 获取IP ，端口号</p>
+<p>Socket 存有 描述符，IP，端口号</p>
+<p>通过“描述符”来识别socket</p>
+<p>还没有MAC地址</p>
+<p>ARP 通过IP找MAC</p>
+<p>同网段广播</p>
+<p><img src="/Users/wanglele/Library/Application Support/typora-user-images/image-20191101112058582.png" alt="image-20191101112058582"></p>
+<p>套接字的实体就是通信控制信息</p>
+<p>协议栈是根据套接字中记录的控制信息来工作的。</p>
+<p>连接是什么意思</p>
+<p>连接实际上是通信双方交换控制信息</p>
+<p><img src="/Users/wanglele/Library/Application Support/typora-user-images/image-20191101130158739.png" alt=" "></p>
+<p>收据收发</p>
+<p>数据小</p>
+<p>首先，协议栈并不关心应用程序传来的数据是什么内容。应用程序在 调用 write 时会指定发送数据的长度，在协议栈看来，要发送的数据就是 一定长度的二进制字节序列而已。</p>
+<p>其次，协议栈并不是一收到数据就马上发送出去，而是会将数据存放在内部的发送缓冲区中，并等待应用程序的下一段数据。这样做是有道理的。应用程序交给协议栈发送的数据长度是由应用程序本身来决定的，不同的应用程序在实现上有所不同，有些程序会一次性传递所有的数据，有些程序则会逐字节或者逐行传递数据。总之，一次将多少数据交给协议栈是由应用程序自行决定的，协议栈并不能控制这一行为。在这样的情况下，如果一收到数据就马上发送出去，就可能会发送大量的小包，导致网络效率下降，因此需要在数据积累到一定量时再发送出去。至于要积累多少数据才能发送，不同种类和版本的操作系统会有所不同，不能一概而论，但都是根据下面几个要素来判断的。</p>
+<p>第一个判断要素是每个网络包能容纳的数据长度，协议栈会根据一个 叫作MTU的参数来进行判断。MTU 表示一个网络包的最大长度，在以太网中一般是 1500 字节。MTU 是包含头部的总长度，因此需要从MTU 减去头部的长度，然后得到的长度就是一个网络包中所能容纳的最大数据长度，这一长度叫作 MSS。当从应用程序收到的数据长度超过或者接近 MSS 时再发送出去，就可以避免发送大量小包的问题了。</p>
+<p>另一个判断要素是时间。当应用程序发送数据的频率不高的时候，如果每次都等到长度接近 MSS 时再发送，可能会因为等待时间太长而造成发送延迟，这种情况下，即便缓冲区中的数据长度没有达到 MSS，也应该果 断发送出去。为此，协议栈的内部有一个计时器，当经过一定时间之后，就会把网络包发送出去 A。</p>
+<p>判断要素就是这两个，但它们其实是互相矛盾的。如果长度优先，那么网络的效率会提高，但可能会因为等待填满缓冲区而产生延迟;相反地，如果时间优先，那么延迟时间会变少，但又会降低网络的效率。因此，在进行发送操作时需要综合考虑这两个要素以达到平衡。不过，TCP 协议规 格中并没有告诉我们怎样才能平衡，因此实际如何判断是由协议栈的开发者来决定的，也正是由于这个原因，不同种类和版本的操作系统在相关操 作上也就存在差异。</p>
+<p>正如前面所说，如果仅靠协议栈来判断发送的时机可能会带来一些问 题，因此协议栈也给应用程序保留了控制发送时机的余地。应用程序在发送数据时可以指定一些选项，比如如果指定“不等待填满缓冲区直接发送”，则协议栈就会按照要求直接发送数据。像浏览器这种会话型的应用程 序在向服务器发送数据时，等待填满缓冲区导致延迟会产生很大影响，因 此一般会使用直接发送的选项。</p>
+<p>MTU:Maximum Transmission Unit:一个网络包的最大长度，以太网中一般为1500字节。</p>
+<p>MSS:Maximum Segment Size:除去头部之后，一个网络包所能容纳的TCP数据的最大长度。</p>
+<p>最大分段大小。 TCP 和 IP 的头部加起来一般是 40 字节，因此 MTU 减去这个长度就是 MSS。例如，在以太网中，</p>
+<p>MTU 为 1500，因此 MSS 就是 1460。TCP/IP 可以使用一些可选参数 (protocol option)，如加密等，这时头部的长度会增加，那么 MSS 就会随着头部长度增加而相应缩短。</p>
+<p><img src="/Users/wanglele/Library/Application Support/typora-user-images/image-20191101104254605.png" alt="image-20191101104254605"></p>
+<p><img src="/Users/wanglele/Library/Application Support/typora-user-images/image-20191101104356561.png" alt="image-20191101104356561"></p>
+<p><img src="/Users/wanglele/Library/Application Support/typora-user-images/image-20191101104838995.png" alt="image-20191101104838995"></p>
+<p>数据大</p>
+<p><img src="/Users/wanglele/Library/Application Support/typora-user-images/image-20191101113229195.png" alt="image-20191101113229195"></p>
+<p><img src="/Users/wanglele/Library/Application Support/typora-user-images/image-20191101113600236.png" alt="image-20191101113600236"></p>
+<p>滑动窗口</p>
+<p>所谓滑动窗口，就是在发送一 个包之后，不等待 ACK 号返回，而是直接发送后续的一系列包。</p>
+<p><img src="/Users/wanglele/Library/Application Support/typora-user-images/image-20191101115416349.png" alt="image-20191101115416349"></p>
+<p>TCP整体流程</p>
+<p><img src="/Users/wanglele/Library/Application Support/typora-user-images/image-20191101115845757.png" alt="image-20191101115845757"></p>
+<p><img src="/Users/wanglele/Library/Application Support/typora-user-images/image-20191101090154723.png" alt="image-20191101090154723"></p>
+<p><img src="/Users/wanglele/Library/Application Support/typora-user-images/image-20191101090039663.png" alt="image-20191101090039663"></p>
+<p>UDP</p>
+<p>作为iOS出身，深受那一代人影响。所以第一个抓包工具使用的是Charles 俗称青花瓷，有免费版本，不过会定时的弹框。受限于中间人抓包法，注定无法捕获全部的包。</p>
+<h5 id="抓包神器-Wireshark"><a href="#抓包神器-Wireshark" class="headerlink" title="抓包神器 Wireshark"></a>抓包神器 <strong>Wireshark</strong></h5><p>参考资料</p>
+<p><a href="https://en.wikipedia.org/wiki/Private_network" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Private_network</a></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Internet-http/" rel="tag"># Internet, http</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/03/08/Swift-Packages/" rel="next" title="Swift Packages">
+                <i class="fa fa-chevron-left"></i> Swift Packages
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Ticat</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-name">tags</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#名词理解"><span class="nav-number">1.</span> <span class="nav-text">名词理解</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#IP"><span class="nav-number">1.1.</span> <span class="nav-text">IP</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IP地址的历史演变"><span class="nav-number">2.</span> <span class="nav-text">IP地址的历史演变</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#分类寻址"><span class="nav-number">2.1.</span> <span class="nav-text">分类寻址</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#子网寻址"><span class="nav-number">2.2.</span> <span class="nav-text">子网寻址</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#子网掩码"><span class="nav-number">2.2.1.</span> <span class="nav-text">子网掩码</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#可变长度子网掩码VLSM"><span class="nav-number">2.2.2.</span> <span class="nav-text">可变长度子网掩码VLSM</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#CIDR和聚合"><span class="nav-number">2.3.</span> <span class="nav-text">CIDR和聚合</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#前缀"><span class="nav-number">2.3.1.</span> <span class="nav-text">前缀</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#聚合"><span class="nav-number">2.3.2.</span> <span class="nav-text">聚合</span></a></li></ol></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#Private-IPv4-addresses"><span class="nav-number"></span> <span class="nav-text">Private IPv4 addresses</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#IP怎么来的"><span class="nav-number">0.1.</span> <span class="nav-text">IP怎么来的</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#DHCP-Dynamic-Host-Configuration-Protocol-动态主机配置协议，-一个自动配置的协议"><span class="nav-number">0.2.</span> <span class="nav-text">DHCP(Dynamic Host Configuration Protocol) 动态主机配置协议， 一个自动配置的协议</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#抓包神器-Wireshark"><span class="nav-number">0.3.</span> <span class="nav-text">抓包神器 Wireshark</span></a></li></ol></li></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ticat</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.1"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.1"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
