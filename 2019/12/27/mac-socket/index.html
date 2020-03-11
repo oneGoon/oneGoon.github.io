@@ -108,7 +108,7 @@
 <meta property="og:site_name" content="WG&#39;s Lakeside">
 <meta property="og:description" content="###   套接字接口的起源 套接字接口是加州大学伯克利分校的研究员在20世纪80年代早期提出来的。因为这个原因，它也常被叫做伯克利套接字。伯克利的研究者使得套接字接口适用于任何底层的协议。第一个实现的就是针对TCP/IP协议的，他们把它包括在Unix 4.2BSD的内核里，并且分发给许多学校和实验室。这在因特网的历史上是一个重大事件。几乎一夜之间，成千上万的人们接触到了TCP/IP和它的源代码。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-12-29T15:06:49.204Z">
+<meta property="og:updated_time" content="2020-03-11T16:13:11.540Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mac socket">
 <meta name="twitter:description" content="###   套接字接口的起源 套接字接口是加州大学伯克利分校的研究员在20世纪80年代早期提出来的。因为这个原因，它也常被叫做伯克利套接字。伯克利的研究者使得套接字接口适用于任何底层的协议。第一个实现的就是针对TCP/IP协议的，他们把它包括在Unix 4.2BSD的内核里，并且分发给许多学校和实验室。这在因特网的历史上是一个重大事件。几乎一夜之间，成千上万的人们接触到了TCP/IP和它的源代码。">
@@ -365,7 +365,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-12-29 23:06:49" itemprop="dateModified" datetime="2019-12-29T23:06:49+08:00">2019-12-29</time>
+                <time title="Modified: 2020-03-12 00:13:11" itemprop="dateModified" datetime="2020-03-12T00:13:11+08:00">2020-03-12</time>
               
             
           </span>
@@ -408,6 +408,7 @@
 </blockquote>
 <p>Core Foundation通过CFNetwork提供了封装套接字的CFSocket和CFStream，此外还进一步提供了一些协议的封装，例如CFFTP、CFHTTP等</p>
 <p>BSD套接字是XNU中所有网络组件的核心</p>
+<a id="more"></a>
 <h5 id="socket-函数"><a href="#socket-函数" class="headerlink" title="socket 函数"></a>socket 函数</h5><p>客户端和服务器使用socket函数来创建一个套接字描述符</p>
 <p>在&lt;sys/socket.h&gt;中定义<code>int socket(int, int, int);</code></p>
 <p>在bsd&gt;kern&gt;syscalls.master 中<code>97  AUE_SOCKET  ALL { int socket(int domain, int type, int protocol); }</code></p>

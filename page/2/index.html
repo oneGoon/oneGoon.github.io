@@ -347,12 +347,24 @@
                 
               
 
-              <time title="Created: 2019-12-31 23:22:21 / Modified: 23:24:47" itemprop="dateCreated datePublished" datetime="2019-12-31T23:22:21+08:00">2019-12-31</time>
+              <time title="Created: 2019-12-31 23:22:21" itemprop="dateCreated datePublished" datetime="2019-12-31T23:22:21+08:00">2019-12-31</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2020-03-12 00:14:21" itemprop="dateModified" datetime="2020-03-12T00:14:21+08:00">2020-03-12</time>
               
             
           </span>
@@ -387,26 +399,16 @@
 
       
         
+          <h3 id="工作上"><a href="#工作上" class="headerlink" title="工作上"></a>工作上</h3><h4 id="技术长进"><a href="#技术长进" class="headerlink" title="技术长进"></a>技术长进</h4><p>学会了如何团队开发</p>
+          <!--noindex-->
           
-            <h3 id="工作上"><a href="#工作上" class="headerlink" title="工作上"></a>工作上</h3><h4 id="技术长进"><a href="#技术长进" class="headerlink" title="技术长进"></a>技术长进</h4><p>学会了如何团队开发</p>
-<p><strong>iOS</strong>的技能点 点的比较多</p>
-<p>​    单元测试写了不少，对单元测试有了另一番的理解感悟，code容易片面，test来补全</p>
-<p>​    Swift 较为精进毕竟日常开发，编译了Swift并阅读了部分源码，如网络部分，json解析，数据结构部分等</p>
-<p>​    Darwin-xnu, pthread, dyld, Foundation.混个面熟吧。</p>
-<p>​    从头跟了MonkeyDev的逆向，会使用逆向工具，更加了解了iOS&amp;macOS的运行机制，</p>
-<p>​    对MachO的解析也实践了一段，配合阅读《程序员的自我修养》《深入理解计算系统》。</p>
-<p>​    </p>
-<p><strong>汇编</strong>，要想理解、验证一些底层的东西还是绕不开汇编的。但是Risc实在太精简了</p>
-<p><strong>数据结构与算法</strong>，多数的还处于思想上。能手写的只有那几个排序，，base huffman实现了一个解压缩算法</p>
-<p><strong>操作系统</strong>也学了些，了解CPU的一些机制流水线，多发射，超标量，分支预测，多核协作等。    </p>
-<p><strong>网络</strong> 组内分享了一次TCP/IP，继续阅读POSIX的源码，目前仅完成了用户态 socket的demo，其实还是在应用层。后续要深入到内核态看看。</p>
-<p><em>Wireshark真是个好东西，大家能看到的才有说服力。</em></p>
-<h3 id="生活上"><a href="#生活上" class="headerlink" title="生活上"></a>生活上</h3><p>程序员离开了电脑如丧失了大脑，编码之外的其他人情世故似乎不差了不少。（也仅可能是我吧，个人感受）。</p>
-<p>跑了不少次医院，对医院的流程，对世故的处理有所感悟</p>
-<p>篮球，年龄将长，身体越发虚弱~~··。适当锻炼，身体倍棒，远离CS</p>
-<p>马上要见家长了，紧张</p>
-
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/12/31/19年总结/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
           
+          <!--/noindex-->
         
       
     </div>
@@ -523,7 +525,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-12-29 23:06:49" itemprop="dateModified" datetime="2019-12-29T23:06:49+08:00">2019-12-29</time>
+                <time title="Modified: 2020-03-12 00:13:11" itemprop="dateModified" datetime="2020-03-12T00:13:11+08:00">2020-03-12</time>
               
             
           </span>
@@ -558,8 +560,7 @@
 
       
         
-          
-            <p>### </p>
+          <p>### </p>
 <blockquote>
 <p>套接字接口的起源</p>
 <p>套接字接口是加州大学伯克利分校的研究员在20世纪80年代早期提出来的。因为这个原因，它也常被叫做伯克利套接字。伯克利的研究者使得套接字接口适用于任何底层的协议。第一个实现的就是针对TCP/IP协议的，他们把它包括在Unix 4.2BSD的内核里，并且分发给许多学校和实验室。这在因特网的历史上是一个重大事件。几乎一夜之间，成千上万的人们接触到了TCP/IP和它的源代码。它引起了巨大的轰动，并激发了新的网络和网络互联研究的浪潮</p>
@@ -568,16 +569,15 @@
 </blockquote>
 <p>Core Foundation通过CFNetwork提供了封装套接字的CFSocket和CFStream，此外还进一步提供了一些协议的封装，例如CFFTP、CFHTTP等</p>
 <p>BSD套接字是XNU中所有网络组件的核心</p>
-<h5 id="socket-函数"><a href="#socket-函数" class="headerlink" title="socket 函数"></a>socket 函数</h5><p>客户端和服务器使用socket函数来创建一个套接字描述符</p>
-<p>在&lt;sys/socket.h&gt;中定义<code>int socket(int, int, int);</code></p>
-<p>在bsd&gt;kern&gt;syscalls.master 中<code>97  AUE_SOCKET  ALL { int socket(int domain, int type, int protocol); }</code></p>
-<p><em>若成功则为非负描述符，若出错则为-1</em></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* domain 套接字域（地址/协议族）</span></span><br><span class="line"><span class="comment">通常指的是 AF（Address Family）或者PF(Protocol Family)</span></span><br><span class="line"><span class="comment">表示第2层或第3层地址对应的套接字地址模式。常见的IP协议，即PF_INET或AF_INET</span></span><br><span class="line"><span class="comment">传统上使用的是AF_*常量，PF_*常量只不过是通过AF_*常量#define得到的</span></span><br><span class="line"><span class="comment">* type </span></span><br><span class="line"><span class="comment">* protocol   所在文件bsd &gt; netinet &gt; in.h </span></span><br><span class="line"><span class="comment">Xcode里面也能看见注释</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">socket</span><span class="params">(<span class="keyword">int</span> domain, <span class="keyword">int</span> type, <span class="keyword">int</span> protocol)</span></span></span><br></pre></td></tr></table></figure>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// socket.h 114~123</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Types</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span>	SOCK_STREAM	1		<span class="comment">/* stream socket */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span>	SOCK_DGRAM	2		<span class="comment">/* datagram socket */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span>	SOCK_RAW	3		<span class="comment">/* raw-protocol interface */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">if</span> !defined(_POSIX_C_SOURCE) || defined(_DARWIN_C_SOURCE)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span>	SOCK_RDM	4		<span class="comment">/* reliably-delivered message */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span>	<span class="comment">/* (!_POSIX_C_SOURCE || _DARWIN_C_SOURCE) */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span>	SOCK_SEQPACKET	5		<span class="comment">/* sequenced packet stream */</span></span></span><br></pre></td></tr></table></figure>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// socket.h 528~586</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Address families.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span>	AF_UNSPEC	0		<span class="comment">/* unspecified */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span>	AF_UNIX		1		<span class="comment">/* local to host (pipes) */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">if</span> !defined(_POSIX_C_SOURCE) || defined(_DARWIN_C_SOURCE)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span>	AF_LOCAL	AF_UNIX		<span class="comment">/* backward compatibility */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span>	<span class="comment">/* (!_POSIX_C_SOURCE || _DARWIN_C_SOURCE) */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span>	AF_INET		2		<span class="comment">/* internetwork: UDP, TCP, etc. */</span></span></span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span>	AF_INET6	30		<span class="comment">/* IPv6 */</span></span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// socket.h 632~680</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Protocol families, same as address families for now.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span>	PF_UNSPEC	AF_UNSPEC</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span>	PF_LOCAL	AF_LOCAL</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span>	PF_UNIX		PF_LOCAL	<span class="comment">/* backward compatibility */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span>	PF_INET		AF_INET</span></span><br><span class="line">...</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span>	PF_INET6	AF_INET6</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/12/27/mac-socket/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -1174,7 +1174,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-12-26 17:18:01" itemprop="dateModified" datetime="2019-12-26T17:18:01+08:00">2019-12-26</time>
+                <time title="Modified: 2020-03-12 00:13:47" itemprop="dateModified" datetime="2020-03-12T00:13:47+08:00">2020-03-12</time>
               
             
           </span>
