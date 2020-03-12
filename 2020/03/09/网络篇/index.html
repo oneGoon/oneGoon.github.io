@@ -114,6 +114,9 @@
 <meta property="og:image" content="https://github.com/oneGoon/Graphic/blob/master/hexo-blog/Internet-IP/IP%E5%9C%B0%E5%9D%80-%E7%AC%AC%203%20%E9%A1%B5.png?raw=true">
 <meta property="og:image" content="/Users/wanglele/Library/Application%20Support/typora-user-images/image-20191031221257509.png">
 <meta property="og:image" content="https://github.com/oneGoon/Graphic/blob/master/hexo-blog/Internet-IP/IP%E5%9C%B0%E5%9D%80-%E7%AC%AC%204%20%E9%A1%B5.png?raw=true">
+<meta property="og:image" content="https://github.com/oneGoon/Graphic/blob/master/hexo-blog/Internet-IP/IP%E5%9C%B0%E5%9D%80-%E7%AC%AC%205%20%E9%A1%B5.png?raw=true">
+<meta property="og:image" content="https://github.com/oneGoon/Graphic/blob/master/hexo-blog/Internet-IP/IP%E5%9C%B0%E5%9D%80-%E7%AC%AC%206%20%E9%A1%B5.png?raw=true">
+<meta property="og:image" content="https://github.com/oneGoon/Graphic/blob/master/hexo-blog/Internet-IP/IP%E5%9C%B0%E5%9D%80-%E7%AC%AC%207%20%E9%A1%B5.png?raw=true">
 <meta property="og:image" content="/Users/wanglele/Library/Application%20Support/typora-user-images/image-20191101003105903.png">
 <meta property="og:image" content="/Users/wanglele/Library/Application%20Support/typora-user-images/image-20191031221257509.png">
 <meta property="og:image" content="/Users/wanglele/Library/Application%20Support/typora-user-images/image-20191101014051134.png">
@@ -133,7 +136,7 @@
 <meta property="og:image" content="/Users/wanglele/Library/Application%20Support/typora-user-images/image-20191101115845757.png">
 <meta property="og:image" content="/Users/wanglele/Library/Application%20Support/typora-user-images/image-20191101090154723.png">
 <meta property="og:image" content="/Users/wanglele/Library/Application%20Support/typora-user-images/image-20191101090039663.png">
-<meta property="og:updated_time" content="2020-03-11T16:12:07.136Z">
+<meta property="og:updated_time" content="2020-03-12T14:37:21.413Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content=" 网络篇">
 <meta name="twitter:description" content="Q: 两台服务器A和B的网络配置，     A B     IP address 192.168.26.129 192.168.26.3   Subnet mask 255.255.255.0 255.255.255.224   Default gateway 192.168.26.2 192.168.26.2    子网掩码本都为255.255.255.0， B的子网掩码不小心配成了255.25">
@@ -391,7 +394,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-03-12 00:12:07" itemprop="dateModified" datetime="2020-03-12T00:12:07+08:00">2020-03-12</time>
+                <time title="Modified: 2020-03-12 22:37:21" itemprop="dateModified" datetime="2020-03-12T22:37:21+08:00">2020-03-12</time>
               
             
           </span>
@@ -455,19 +458,15 @@
 <p>子网掩码本都为<code>255.255.255.0</code>， B的子网掩码不小心配成了<code>255.255.255.224</code>。它们还能正常通信吗？</p>
 <p>如果看到这个问题能自信回答。下文无须再看。</p>
 <a id="more"></a>
-<h4 id="名词理解"><a href="#名词理解" class="headerlink" title="名词理解"></a>名词理解</h4><h5 id="IP"><a href="#IP" class="headerlink" title="IP"></a>IP</h5><p>ip地址</p>
+<h4 id="名词理解"><a href="#名词理解" class="headerlink" title="名词理解"></a>名词理解</h4><h2 id="IP"><a href="#IP" class="headerlink" title="IP"></a>IP</h2><p>ip地址</p>
 <p>不要被地址前的ip吓到，ip地址也是地址，位置的标识。</p>
-<p>比如在没有地图导航的年代，我们第一次去外国拜访某位好友，手里的只有地址</p>
-<p>韩国庆尚南道金海市金宽路1 ~ 66号路3-14乙(内东郑德艺术第101号)</p>
-<p>单看这个地址有点懵，我只知道韩国在哪。</p>
-<p>ip的设计大抵也是如此</p>
 <p>先来感受一下</p>
 <p>IPv4地址 </p>
 <p>192.168.18.4</p>
-<p>账面上分析：由3个点分为4组，可以是16进制也可以是10进制，32位</p>
+<p>字面上分析：由3个点分为4组，可以是16进制也可以是10进制，32位</p>
 <p>IPv6地址</p>
 <p>2020:8210:242a:f270:1ca2:3f7:6ff:18af</p>
-<p>账面上分析：由7个冒号分为8块也叫字段，16进制表示，128位</p>
+<p>字面上分析：由7个冒号分为8块也叫字段，16进制表示，128位</p>
 <p>在IPv6中地址长度是128位，是IPv4的四倍。</p>
 <p>1.在一个块中前导的零不必书写</p>
 <p>2.全零的块可以省略，用符号::代替，为了避免歧义，一个IPv6地址中::只能用一次。</p>
@@ -484,11 +483,11 @@
 <li>a到f的十六进制数字应该用小写表示。</li>
 </ol>
 <p>互联网上的每个接口必须有一个唯一的 I n t e r n e t 地址,也称作 I P 地址</p>
-<h4 id="IP地址的历史演变"><a href="#IP地址的历史演变" class="headerlink" title="IP地址的历史演变"></a>IP地址的历史演变</h4><p>最初定义  <code>Internet地址结构 = 网络号 + 主机号</code></p>
+<h3 id="IP地址的历史演变"><a href="#IP地址的历史演变" class="headerlink" title="IP地址的历史演变"></a>IP地址的历史演变</h3><p>最初定义  <code>Internet地址结构 = 网络号 + 主机号</code></p>
 <p><code>网络号</code>： 用于识别接口使用的IP地址在哪个网络中可被发现；</p>
 <p><code>主机号</code>：用于识别由网络部分给出的网络中的特定主机；</p>
 <p>当时，大多数主机只有一个网络接口，因此术语接口地址和主机地址有时交替使用。</p>
-<h5 id="分类寻址"><a href="#分类寻址" class="headerlink" title="分类寻址"></a>分类寻址</h5><blockquote>
+<h4 id="分类寻址"><a href="#分类寻址" class="headerlink" title="分类寻址"></a>分类寻址</h4><blockquote>
 <p><strong>column</strong></p>
 <p><strong>避免歧义，论证我的观点</strong></p>
 <p>IP地址分为A、B、C、D、E五类这是没有争议的。</p>
@@ -641,7 +640,7 @@
 <p>各类的网络数呈几何倍的递增，而网络数却呈几何倍递减，这样的分类有些脱离现实过于数字化了。</p>
 <p>A类和B类网络号通常浪费太多主机号，而C类网络号则不能为很多站点提供足够的主机号。</p>
 <p>比如C类网络号主机过少，而B类网络号主机又过多，如果想选择一个千为单位的网络号则十分尴尬了。</p>
-<h5 id="子网寻址"><a href="#子网寻址" class="headerlink" title="子网寻址"></a>子网寻址</h5><p>背负历史包袱，负重前行</p>
+<h4 id="子网寻址"><a href="#子网寻址" class="headerlink" title="子网寻址"></a>子网寻址</h4><p>背负历史包袱，负重前行</p>
 <p>为了在不改变Internet核心路由基础设施的情况下解决这个问题，人们很自然想到一种方式，在一个站点接入Internet后为其分配一个<strong>网络号</strong>，然后又站点管理员进一步划分本地的<strong>子网</strong>数。</p>
 <p>实现这个想法需要改变IP地址的网路部分和主机部分的限制，但这样做只是针对一个站点自身而言；Internet其余部分将只能’看到‘传统的A类、B类和C类部分。支持此功能的方法称为<code>子网寻址</code>。</p>
 <p>解释一下，一个站点可能申请到了B类网络号，也就是IP地址的前16位确定了，余下16位自由位，</p>
@@ -654,7 +653,7 @@
 <p>下图展示如何工作</p>
 <p><img src="https://github.com/oneGoon/Graphic/blob/master/hexo-blog/Internet-IP/IP%E5%9C%B0%E5%9D%80-%E7%AC%AC%203%20%E9%A1%B5.png?raw=true" alt="IPAddr-3"></p>
 <p>某个站点被分配一个典型的B类网络号128.32 。 网络管理员决定用于站点范围内的子网掩码为255.255.255.0,提供256个子网，每个子网可容纳256-2 = 254台主机。同一子网中每台主机的IPv4地址拥有相同子网号。左侧的局域网段中主机的IPv4地址开始于128.32.1，右侧的所有主机开始于128.32.2 。 Internet中其他站点要访问这个站点目的地址以128.32开始的所有流量直接由Internet路由系统交给边界路由器，如137.64.23.30要访问128.32.1.1 则先访问到站点边界路由器，边界路由器区分128.32网络中的不同子网。比如图中，它则要区分目的地址为128.32.1.x和目的地址为128.32.2.x的流量。这些地址分别表示子网号1和2，它们都采用128.32的B类网络号。那么路由器如何在地址中找到子网ID，这就需要子网掩码了。</p>
-<h6 id="子网掩码"><a href="#子网掩码" class="headerlink" title="子网掩码"></a>子网掩码</h6><p>子网掩码是由一台主机或路由器使用的分配位，以确定如何从一台主机对应IP地址中获得网络和子网信息。IP子网掩码与对应的IP地址长度相同（IPv4为32位，IPv6为128位）。它们通常在一台主机或路由器中以IP地址相同的方式配置，既可以是静态的（通常是路由器），也可以是动态的（例如动态主机配置协议DHCP）。</p>
+<h4 id="子网掩码"><a href="#子网掩码" class="headerlink" title="子网掩码"></a>子网掩码</h4><p>子网掩码是由一台主机或路由器使用的分配位，以确定如何从一台主机对应IP地址中获得网络和子网信息。IP子网掩码与对应的IP地址长度相同（IPv4为32位，IPv6为128位）。它们通常在一台主机或路由器中以IP地址相同的方式配置，既可以是静态的（通常是路由器），也可以是动态的（例如动态主机配置协议DHCP）。</p>
 <p><img src="/Users/wanglele/Library/Application Support/typora-user-images/image-20191031221257509.png" alt="image-20191031221257509" style="zoom:50%;"></p>
 <p>子网掩码表示网络号与主机号的边界，全是1的那边表示网络号全是0的表示主机号</p>
 <p>如IPv4地址为128.32.1.14/255.255.255.0</p>
@@ -664,15 +663,74 @@
 <p>（网络号和地址）按位异或结果  00000000 00000000 00000000 00001110</p>
 <p>网络号为 128.32.1.0</p>
 <p>子网主机ID为 14</p>
-<h6 id="可变长度子网掩码VLSM"><a href="#可变长度子网掩码VLSM" class="headerlink" title="可变长度子网掩码VLSM"></a>可变长度子网掩码VLSM</h6><p>同一站点的不同部分，可将不同长度的子网掩码应用于相同网络号</p>
+<h4 id="可变长度子网掩码VLSM"><a href="#可变长度子网掩码VLSM" class="headerlink" title="可变长度子网掩码VLSM"></a>可变长度子网掩码VLSM</h4><p>同一站点的不同部分，可将不同长度的子网掩码应用于相同网络号</p>
 <p><img src="https://github.com/oneGoon/Graphic/blob/master/hexo-blog/Internet-IP/IP%E5%9C%B0%E5%9D%80-%E7%AC%AC%204%20%E9%A1%B5.png?raw=true" alt="VLSM"></p>
-<h5 id="CIDR和聚合"><a href="#CIDR和聚合" class="headerlink" title="CIDR和聚合"></a>CIDR和聚合</h5><p>20世纪90年代初，采用子网寻址缓解增长带来的痛苦后，Internet开始面临更严重的规模问题。有三个问题尤为重要。</p>
+<p>回顾前文的问题</p>
+<p>Q: 两台服务器A和B的网络配置，</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>A</th>
+<th>B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IP address</td>
+<td>192.168.26.129</td>
+<td>192.168.26.3</td>
+</tr>
+<tr>
+<td>Subnet mask</td>
+<td>255.255.255.0</td>
+<td>255.255.255.224</td>
+</tr>
+<tr>
+<td>Default gateway</td>
+<td>192.168.26.2</td>
+<td>192.168.26.2</td>
+</tr>
+</tbody>
+</table>
+<p>子网掩码本都为<code>255.255.255.0</code>， B的子网掩码不小心配成了<code>255.255.255.224</code>。它们还能正常通信吗？</p>
+<p>A的地址 192.169.26.129/24 如果没有配置错则A与B在同一个子网内192.168.26.0</p>
+<p>而现在B地址为 192.168.26.3/27</p>
+<p>已经了解历史VLSM的原理 ，我们可以简单的绘制网络拓扑</p>
+<p><img src="https://github.com/oneGoon/Graphic/blob/master/hexo-blog/Internet-IP/IP%E5%9C%B0%E5%9D%80-%E7%AC%AC%205%20%E9%A1%B5.png?raw=true" alt="IPAddr-5"></p>
+<p>A与B掩码不同处于不同层次的子网，但是依然处于192.168.26.x的结点下。通信是一定可以的，只是方式有所转变。</p>
+<p>当讲解完Wireshark后，后再抓包分析这个流程</p>
+<h4 id="CIDR和聚合"><a href="#CIDR和聚合" class="headerlink" title="CIDR和聚合"></a>CIDR和聚合</h4><p>20世纪90年代初，采用子网寻址缓解增长带来的痛苦后，Internet开始面临更严重的规模问题。有三个问题尤为重要。</p>
 <ol>
 <li>到1994年，一半以上的B类地址已被分配。预计B类地址空间大约在1995年将被用尽。</li>
 <li>32位的IPv4地址被认为不足以应付Internet在21世纪的初期规模。</li>
 <li>全球性路由表的条目数（每个网络数对应一条），1995年大约为65000个条目，目前仍在增长。伴随着越来越多的ABC类路由条目出现，路由性能受到影响。</li>
 </ol>
-<h6 id="前缀"><a href="#前缀" class="headerlink" title="前缀"></a>前缀</h6><h6 id="聚合"><a href="#聚合" class="headerlink" title="聚合"></a>聚合</h6><h2 id="Private-IPv4-addresses"><a href="#Private-IPv4-addresses" class="headerlink" title="Private IPv4 addresses"></a>Private IPv4 addresses</h2><p>The Internet Engineering Task Force (IETF) has directed the Internet Assigned Numbers Authority (IANA) to reserve the following IPv4 address ranges for private networks</p>
+<h5 id="前缀"><a href="#前缀" class="headerlink" title="前缀"></a>前缀</h5><p>前文讲到的子网寻址方式base于分类寻址之上的。虽然对站点内的情况有所改善，但是对于整体Internet依然面临着严峻的问题（如为新站点选择网络号）</p>
+<p>为了缓解IPv4的地址的压力，无类别域间路由<code>CIDR</code>应运而生。</p>
+<h6 id="CIDR无类别域间路由"><a href="#CIDR无类别域间路由" class="headerlink" title="CIDR无类别域间路由"></a>CIDR无类别域间路由</h6><p>顾名思义，CIDR意在消除类别，即消除IP地址中网络和主机号的预定义分隔，将更细粒度的IP地址分配范围成为可能。</p>
+<p>使用CIDR，未经过预定义的任何地址范围可作为一个类的一部分，但需要一个类似于子网掩码的掩码，有时也称为CIDR掩码。使用CIDR掩码不再局限于一个站点，而对全球路由系统都是可见的。因此，除了网络号之外，核心Internet路由器必须能解释和处理掩码。这个数字组合称为<code>网络前缀</code>,它用于IPv4和IPv6地址管理。</p>
+<p>暂且理解为 CIDR 为 子网掩码的Internet版。</p>
+<h5 id="聚合"><a href="#聚合" class="headerlink" title="聚合"></a>聚合</h5><p>通过取消分类结构的IP地址，能分配各种尺寸的IP地址块。但是，这样做没有解决问题3. 它并未有助于减少路由条目数。</p>
+<p><em>路由条目：路由器发送流量的指向</em></p>
+<p>从本质上来说，路由器检查每个到达的数据报中的目的IP地址，找到一条匹配的路由表条目，并从该条目中提取数据报的”下一跳“。</p>
+<h6 id="分层路由"><a href="#分层路由" class="headerlink" title="分层路由"></a>分层路由</h6><p>20世纪70年代末，由Kleinrock和Kamoun发表的分层路由研究</p>
+<p>如果将网络拓扑排列为一棵树，并且以对网络拓扑敏感的方式来分配地址，可获得一个非常小的路由表，同时保持到所有目的地最短路径，下图举个例子</p>
+<p><img src="https://github.com/oneGoon/Graphic/blob/master/hexo-blog/Internet-IP/IP%E5%9C%B0%E5%9D%80-%E7%AC%AC%206%20%E9%A1%B5.png?raw=true" alt="ipaddr-6"></p>
+<p>左侧a)图中的树根是标记为19.12.4.8的路由器。为了知道每个可能的目的地的下一跳，它需要知道一棵树中在其下面的所有路由的条目，所以其存有的路由条目共9条。</p>
+<p>右侧b)图中的树根是标记为19.0.0.1，并要求其路由表中只3个条目（二叉树）左子树中所有路由器（节点）以前缀19.1开始，右侧的所有路由器以19.2开始。因此。路由器19.0.0.1的表中只需将19.1开始的目的地显示下一跳为19.1.0.1而将以19.2开始的目的地下一跳显示为19.2.0.1 。 任何其他的目的地址都被路由到标有”网络其他部分“的云中。结果共有3个条目（父结点，子结点）</p>
+<h6 id="路由聚合"><a href="#路由聚合" class="headerlink" title="路由聚合"></a>路由聚合</h6><p>通过将相邻的多个IP前缀合并成一个短前缀称为一个聚合或汇聚</p>
+<p><img src="https://github.com/oneGoon/Graphic/blob/master/hexo-blog/Internet-IP/IP%E5%9C%B0%E5%9D%80-%E7%AC%AC%207%20%E9%A1%B5.png?raw=true" alt="ipaddr-7"></p>
+<p>前两个（190.154.27.0/26与190.154.27.64/26）数值相邻，因此可被聚合。前缀190.154.27.192/26不能被聚合，由于它们并非数值相邻。</p>
+<p>这样原来的三个前缀和两个新增的前缀可聚合成一个前缀。</p>
+<h4 id="特殊用途地址"><a href="#特殊用途地址" class="headerlink" title="特殊用途地址"></a>特殊用途地址</h4><p>IPv4和IPv6地址空间中都包括几个地址范围，它们被用于特殊用途，因此不能用于单播地址分配。 这些特殊地址不详谈了。</p>
+<p>还有一些单播地址被用于构建专用网络，来自这些范围的地址可用于一个站点或组织内部的主机和路由器之间的通信，但不能用于Internet中。因此这些地址有时也被称为不可路由的地址。</p>
+<p>专用、不可路由的地址空间管理完全由本地决定。IPv4专用地址在家庭网络、中等规模、大型企业内部网络中很常见。它们经常与网络地址转换（NAT）结合使用，在IP数据报进入Internet时修改其中的IP地址。</p>
+<p>这些构建内网的IP常称为私有IP</p>
+<p>IPv4前缀 10/8  172.16/12和192.168/16，</p>
+<p>IPv6前缀 fc00::/7</p>
+<p> Private IPv4 addresses</p>
+<p>The Internet Engineering Task Force (IETF) has directed the Internet Assigned Numbers Authority (IANA) to reserve the following IPv4 address ranges for private networks</p>
 <table>
 <thead>
 <tr>
@@ -717,13 +775,8 @@
 </table>
 <p>简化后如下图</p>
 <p><img src="/Users/wanglele/Library/Application Support/typora-user-images/image-20191101003105903.png" alt="image-20191101003105903"></p>
-<p>只要兼容分类寻址，最大主机数就已经固定了（第一个和最后一个无效，有特殊用处）</p>
 <p>IP地址结构</p>
 <p>大多数IPv4地址块最终被细分为一个地址用于识别连接Internet或者某些专用的内联网的计算机网络接口，这些地址称为单播地址。除了单播地址，其他类型的地址包括广播、组播和任播地址，它们可能涉及多个接口，还有一些特殊用途的地址。而我们主要围绕讨论的是单播地址</p>
-<p>IP地址的种类</p>
-<p>前缀码**</p>
-<p>地址空间划分</p>
-<p>无类型域间选路（CIDR）</p>
 <p><img src="/Users/wanglele/Library/Application Support/typora-user-images/image-20191031221257509.png" alt="image-20191031221257509"></p>
 <p>广播地址 ，如果发送这个地址，所有10.11.12 网络里面的设备都可以收到 </p>
 <p>网络号， 子网掩码和IP按位与就可得到网络号 </p>
@@ -982,7 +1035,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#名词理解"><span class="nav-number">1.</span> <span class="nav-text">名词理解</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#IP"><span class="nav-number">1.1.</span> <span class="nav-text">IP</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IP地址的历史演变"><span class="nav-number">2.</span> <span class="nav-text">IP地址的历史演变</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#分类寻址"><span class="nav-number">2.1.</span> <span class="nav-text">分类寻址</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#子网寻址"><span class="nav-number">2.2.</span> <span class="nav-text">子网寻址</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#子网掩码"><span class="nav-number">2.2.1.</span> <span class="nav-text">子网掩码</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#可变长度子网掩码VLSM"><span class="nav-number">2.2.2.</span> <span class="nav-text">可变长度子网掩码VLSM</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#CIDR和聚合"><span class="nav-number">2.3.</span> <span class="nav-text">CIDR和聚合</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#前缀"><span class="nav-number">2.3.1.</span> <span class="nav-text">前缀</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#聚合"><span class="nav-number">2.3.2.</span> <span class="nav-text">聚合</span></a></li></ol></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#Private-IPv4-addresses"><span class="nav-number"></span> <span class="nav-text">Private IPv4 addresses</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#IP怎么来的"><span class="nav-number">0.1.</span> <span class="nav-text">IP怎么来的</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#DHCP-Dynamic-Host-Configuration-Protocol-动态主机配置协议，-一个自动配置的协议"><span class="nav-number">0.2.</span> <span class="nav-text">DHCP(Dynamic Host Configuration Protocol) 动态主机配置协议， 一个自动配置的协议</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#抓包神器-Wireshark"><span class="nav-number">0.3.</span> <span class="nav-text">抓包神器 Wireshark</span></a></li></ol></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#名词理解"><span class="nav-number">1.</span> <span class="nav-text">名词理解</span></a></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#IP"><span class="nav-number"></span> <span class="nav-text">IP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#IP地址的历史演变"><span class="nav-number"></span> <span class="nav-text">IP地址的历史演变</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#分类寻址"><span class="nav-number">1.</span> <span class="nav-text">分类寻址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#子网寻址"><span class="nav-number">2.</span> <span class="nav-text">子网寻址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#子网掩码"><span class="nav-number">3.</span> <span class="nav-text">子网掩码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#可变长度子网掩码VLSM"><span class="nav-number">4.</span> <span class="nav-text">可变长度子网掩码VLSM</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CIDR和聚合"><span class="nav-number">5.</span> <span class="nav-text">CIDR和聚合</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#前缀"><span class="nav-number">5.1.</span> <span class="nav-text">前缀</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#CIDR无类别域间路由"><span class="nav-number">5.1.1.</span> <span class="nav-text">CIDR无类别域间路由</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#聚合"><span class="nav-number">5.2.</span> <span class="nav-text">聚合</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#分层路由"><span class="nav-number">5.2.1.</span> <span class="nav-text">分层路由</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#路由聚合"><span class="nav-number">5.2.2.</span> <span class="nav-text">路由聚合</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#特殊用途地址"><span class="nav-number">6.</span> <span class="nav-text">特殊用途地址</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#IP怎么来的"><span class="nav-number">6.1.</span> <span class="nav-text">IP怎么来的</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#DHCP-Dynamic-Host-Configuration-Protocol-动态主机配置协议，-一个自动配置的协议"><span class="nav-number">6.2.</span> <span class="nav-text">DHCP(Dynamic Host Configuration Protocol) 动态主机配置协议， 一个自动配置的协议</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#抓包神器-Wireshark"><span class="nav-number">6.3.</span> <span class="nav-text">抓包神器 Wireshark</span></a></li></ol></li></ol></li></ol></li></div>
             
 
           </div>
