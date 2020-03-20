@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link rel="stylesheet" href="/lib/fancybox/source/jquery.fancybox.css">
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: true,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="80x86指令系统指令格式[标号：] 操作码[操作数,...] [;注释] 整数指令 浮点数指令 操作系统行指令7类寻址 立即寻址 寄存器寻址 直接寻址 寄存器间接寻址 相对寄存器间接寻址 基址加变址寻址 相对基址加变址寻址  立即寻址把立即数送到寄存器中 123MOV BL, 56H;					56H -&amp;gt; BLMOV AX, 2056H; 				2056H -&amp;gt; AXMOV EC">
+<meta name="keywords" content="assembly">
+<meta property="og:type" content="article">
+<meta property="og:title" content="汇编篇">
+<meta property="og:url" content="onegoon.store/2020/03/19/汇编篇/index.html">
+<meta property="og:site_name" content="WG&#39;s Lakeside">
+<meta property="og:description" content="80x86指令系统指令格式[标号：] 操作码[操作数,...] [;注释] 整数指令 浮点数指令 操作系统行指令7类寻址 立即寻址 寄存器寻址 直接寻址 寄存器间接寻址 相对寄存器间接寻址 基址加变址寻址 相对基址加变址寻址  立即寻址把立即数送到寄存器中 123MOV BL, 56H;					56H -&amp;gt; BLMOV AX, 2056H; 				2056H -&amp;gt; AXMOV EC">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-03-20T08:00:12.487Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="汇编篇">
+<meta name="twitter:description" content="80x86指令系统指令格式[标号：] 操作码[操作数,...] [;注释] 整数指令 浮点数指令 操作系统行指令7类寻址 立即寻址 寄存器寻址 直接寻址 寄存器间接寻址 相对寄存器间接寻址 基址加变址寻址 相对基址加变址寻址  立即寻址把立即数送到寄存器中 123MOV BL, 56H;					56H -&amp;gt; BLMOV AX, 2056H; 				2056H -&amp;gt; AXMOV EC">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="onegoon.store/2020/03/19/汇编篇/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>汇编篇 | WG's Lakeside</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">WG's Lakeside</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">只是想显点粗浅技艺，那是我的初衷</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+
+  
+
+  <a href="https://github.com/onegoon" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewbox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a>
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="onegoon.store/2020/03/19/汇编篇/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ticat">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WG's Lakeside">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">汇编篇
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2020-03-19 19:07:54" itemprop="dateCreated datePublished" datetime="2020-03-19T19:07:54+08:00">2020-03-19</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2020-03-20 16:00:12" itemprop="dateModified" datetime="2020-03-20T16:00:12+08:00">2020-03-20</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="80x86"><a href="#80x86" class="headerlink" title="80x86"></a>80x86</h3><h4 id="指令系统"><a href="#指令系统" class="headerlink" title="指令系统"></a>指令系统</h4><h5 id="指令格式"><a href="#指令格式" class="headerlink" title="指令格式"></a>指令格式</h5><p><code>[标号：] 操作码[操作数,...] [;注释]</code></p>
+<p>整数指令</p>
+<p>浮点数指令</p>
+<h5 id="操作系统行指令"><a href="#操作系统行指令" class="headerlink" title="操作系统行指令"></a>操作系统行指令</h5><h4 id="7类寻址"><a href="#7类寻址" class="headerlink" title="7类寻址"></a>7类寻址</h4><ol>
+<li>立即寻址</li>
+<li>寄存器寻址</li>
+<li>直接寻址</li>
+<li>寄存器间接寻址</li>
+<li>相对寄存器间接寻址</li>
+<li>基址加变址寻址</li>
+<li>相对基址加变址寻址</li>
+</ol>
+<h5 id="立即寻址"><a href="#立即寻址" class="headerlink" title="立即寻址"></a>立即寻址</h5><p>把立即数送到寄存器中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">MOV BL, 56H;					56H -&gt; BL</span><br><span class="line">MOV AX, 2056H; 				2056H -&gt; AX</span><br><span class="line">MOV ECX, 12345678H;   12345678 -&gt; ECX</span><br></pre></td></tr></table></figure>
+<p>立即数只能作源操作数，不能作目的操作数。</p>
+<h5 id="寄存器寻址"><a href="#寄存器寻址" class="headerlink" title="寄存器寻址"></a>寄存器寻址</h5><p>操作数在CPU的寄存器中，而寄存器的名由指令指出。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">INC CL;</span><br><span class="line">MOV AX, BX;   (BX) -&gt; AX  BX的内容给AX</span><br></pre></td></tr></table></figure>
+<h5 id="直接寻址"><a href="#直接寻址" class="headerlink" title="直接寻址"></a>直接寻址</h5><p>操作数有效地址直接包含在指令中，它位于操作码之后，存放在代码段中。如果指令无前缀指明在哪一段，则默认操作数存放在数据段。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MOV AX, [2000H];  DS段2000H的内容送AL，2001H的内容送AH。</span><br></pre></td></tr></table></figure>
+<p>逻辑地址 = 段基址 + 偏移地址</p>
+<p><code>[]</code>里面是偏移地址</p>
+<p>段基址默认DS段</p>
+<p>指定段加冒号</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MOV AX, ES: [2000H]; ES段2000H的内容送AL，2001H的内容送AH。</span><br></pre></td></tr></table></figure>
+<h5 id="寄存器间接寻址"><a href="#寄存器间接寻址" class="headerlink" title="寄存器间接寻址"></a>寄存器间接寻址</h5><p>操作数的偏移地址存放在寄存器中，而操作数存放在存储器中。    </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">MOV AX, [BX];      	AX &lt;- (DS*10H+(BX))  白话：比如存储器中有个数a地址为0x12345678 寄存器BX中存放的就是0x12345678 执行结果是把存放在BX中的0x12345678传送给AX</span><br><span class="line">MOV AX, [BP];				AX &lt;- (SS*10H+(BP))</span><br><span class="line">MOV AX, ES: [BX];   AX &lt;- ()</span><br><span class="line">MOV AX, DS: [BP];</span><br></pre></td></tr></table></figure>
+<p>SS：堆栈段的段寄存器</p>
+<h5 id="相对寄存器间接寻址"><a href="#相对寄存器间接寻址" class="headerlink" title="相对寄存器间接寻址"></a>相对寄存器间接寻址</h5><p>寄存器内容与位移量之和形成操作数的有效地址。即</p>
+<p>​    <code>EA = [寄存器]+位移量</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MOV ECX, 1500H[EAX]; DS段(EAX)+1500H中的双字数据送到ECX。</span><br><span class="line">MOV ECX, [EAX + 1500H];</span><br></pre></td></tr></table></figure>
+<h5 id="基址加变址寻址"><a href="#基址加变址寻址" class="headerlink" title="基址加变址寻址"></a>基址加变址寻址</h5><p>基址寄存器内容与变址寄存器内容之和形成操作数的偏移地址。即</p>
+<p><code>EA = [基址寄存器] + [变址寄存器]</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">基址寄存器：任何一个32位通用寄存器</span><br><span class="line">变址寄存器：除ESP之外的任一个32位通用寄存器</span><br><span class="line">MOV AX, [EBX+ECX];   DS段(EBX)+(ECX)中的字数据送AX</span><br><span class="line">MOV AX, [EBX][ECX];</span><br></pre></td></tr></table></figure>
+<h5 id="相对基址加变址寻址"><a href="#相对基址加变址寻址" class="headerlink" title="相对基址加变址寻址"></a>相对基址加变址寻址</h5><p>EA ==  有效地址 == 偏移地址</p>
+<p>基址寄存器内容与变址寄存器内容再加偏移量之和形成操作数的有效地址。</p>
+<p><code>EA = [基址寄存器]+[变址寄存器]+偏移量</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">MOV AX, 1234H[BX+DI];</span><br><span class="line">MOV AX, [BX+DI+1234H];</span><br><span class="line">MOV AX, 1234H[BX][DI];</span><br><span class="line"># 几种方式等效，DS段(BX)+(DI)+1234H 中的字数据送AX</span><br></pre></td></tr></table></figure>
+<h4 id="与跳转有关的寻址方式"><a href="#与跳转有关的寻址方式" class="headerlink" title="与跳转有关的寻址方式"></a>与跳转有关的寻址方式</h4><p>无条件转移：</p>
+<p>调用语句：</p>
+<h5 id="交换指令XCHG"><a href="#交换指令XCHG" class="headerlink" title="交换指令XCHG"></a>交换指令XCHG</h5><p>可以是存储器或寄存器</p>
+<h5 id="I-O指令-IN-和-OUT"><a href="#I-O指令-IN-和-OUT" class="headerlink" title="I/O指令 IN 和 OUT"></a>I/O指令 IN 和 OUT</h5><p>IN OP1, OP2   OUT OP1, OP2</p>
+<h5 id="装入有效地址指令LEA"><a href="#装入有效地址指令LEA" class="headerlink" title="装入有效地址指令LEA"></a>装入有效地址指令LEA</h5><p>LEA OP1, OP2</p>
+<p>将有效地址（偏移地址）送通用寄存器。</p>
+<p>装入全地址指令</p>
+<p>LDS，LES，LFS，LGS，LSS</p>
+<p>比如段基址和偏移地址都是16位，段基址送段寄存器，偏移地址动reg中。</p>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">X DD 12345678H</span><br><span class="line"></span><br><span class="line">​		  LDS SI , X; DS =1234H, SI = 5678H</span><br></pre></td></tr></table></figure>
+<p>对于16位和32位保护方式，选择符送段寄存器，偏移地址送reg中</p>
+<p>例如 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">X DD 12345678H; 32位偏移值</span><br><span class="line"></span><br><span class="line">​		DW 0010H; 16位选择符</span><br><span class="line"></span><br><span class="line">​		LDS ESI, X; ESI=12345678H,DS=0010H</span><br></pre></td></tr></table></figure>
+<p>压栈/弹栈指令PUSH/POP</p>
+<p><code>PUSH OP1</code></p>
+<p><code>POP OP1</code></p>
+<p><code>SS</code> 堆栈段的第一个地址</p>
+<p><code>SP</code> 栈顶</p>
+<h5 id="全部通用寄存器压栈和出栈指令"><a href="#全部通用寄存器压栈和出栈指令" class="headerlink" title="全部通用寄存器压栈和出栈指令"></a>全部通用寄存器压栈和出栈指令</h5><p>PUSHA/POPA: 16位通用寄存器压栈和出栈指令。</p>
+<p>入栈顺序为：AX、CX、BX、DX、SP、BP、SI和DI。</p>
+<p>PUSHAD/POPAD: 32位通用寄存器压栈和出栈指令</p>
+<p>入栈顺序为：EAX、ECX、EBX、EDX、ESP、EBP、ESI和EDI。</p>
+<p>其中：SP和ESP为操作前的栈顶指针。</p>
+<h5 id="查表转换指令XLAT"><a href="#查表转换指令XLAT" class="headerlink" title="查表转换指令XLAT"></a>查表转换指令XLAT</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">XLAT;  AL &lt;- ((BX)+(AL)) BX的内容加上AL的内容 得出一个地址，那个地址指向的内容传送给AL</span><br></pre></td></tr></table></figure>
+<h4 id="算术运算类"><a href="#算术运算类" class="headerlink" title="算术运算类"></a>算术运算类</h4><p>与运算有关的标志</p>
+<p><code>CF</code>: 进位/借位标志。加、减运算最高位产生进位/借位时置1</p>
+<p><code>AF</code>: 辅助进位/借位标志。加、减运算时低半字节产生进位/借位是置1。</p>
+<p><code>OF</code>: 溢出标志。有符号二进制加、减运算结果超出范围时置1。（最高位，次高位只有一个有进位则溢出）</p>
+<p><code>ZF</code>: 零标志。结果为零时置1。</p>
+<p><code>SF</code>: 符号标志。结果为负时置1。（最高位为1）</p>
+<p><code>PF</code>: 奇偶标志。 结果”1“的个数为偶数时置1。</p>
+<h5 id="加法和减法指令ADD-SUB"><a href="#加法和减法指令ADD-SUB" class="headerlink" title="加法和减法指令ADD/SUB"></a>加法和减法指令ADD/SUB</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ADD OP1, OP2;  OP1 &lt;- OP1+OP2, 置标志位</span><br><span class="line">SUB OP1, OP2;  OP1 &lt;- OP1-OP2，置标志位</span><br></pre></td></tr></table></figure>
+<p>例如：AL=64H，AH=0A8H,求执行下列指令的结果和标志位的状态。</p>
+<p>（1）ADD AL. AH</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">  0110 0100  // 100D 										通过补码运算		0110 0100</span><br><span class="line"></span><br><span class="line"> +1010 1000  // -88D																-	0101 1000</span><br><span class="line"></span><br><span class="line">1 0000 1100  // 12D （高位1舍弃）											  0000 1100	</span><br><span class="line"></span><br><span class="line">| OF   | SF   | ZF   | AF   | PF   | CF   |</span><br><span class="line">| ---- | ---- | ---- | ---- | ---- | ---- |</span><br><span class="line">| 0    | 0    | 0    | 0    | 1    | 1    |</span><br></pre></td></tr></table></figure>
+<p>1010 1000 最高位1为负数 求补码（取反加1）取反 0101 0111 -&gt; 加1  0101 1000 -&gt;  -88D</p>
+<p>（2）SUB AL,  AH; </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> 1  0110 0100  // 100D 高位借1            0110 0100</span><br><span class="line"></span><br><span class="line"> 	 -1010 1000  // -88D								+  0101 1000</span><br><span class="line"></span><br><span class="line">	  1011 1100  // -68D (188D)            1011 1100   //-68D 最高位为1负数，补码0100 0100 68D</span><br><span class="line"></span><br><span class="line">| OF   | SF   | ZF   | AF   | PF   | CF   |</span><br><span class="line">| ---- | ---- | ---- | ---- | ---- | ---- |</span><br><span class="line">| 1    | 1    | 0    | 1    | 0    | 1    |</span><br></pre></td></tr></table></figure>
+<h5 id="带进位加法-减法指令-ADC-SBB"><a href="#带进位加法-减法指令-ADC-SBB" class="headerlink" title="带进位加法/减法指令 ADC/SBB"></a>带进位加法/减法指令 ADC/SBB</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ADC OP1, OP2; OP1 &lt;- OP1 + OP2 + CF</span><br><span class="line"></span><br><span class="line">SBB OP1, OP2; OP1 &lt;- OP1 - OP2 - CF</span><br></pre></td></tr></table></figure>
+<p><em>比如实现128位数相加 可以拆分为64 64 利用进位标志</em></p>
+<h5 id="加1-减1指令-INC-DEC"><a href="#加1-减1指令-INC-DEC" class="headerlink" title="加1/减1指令 INC/DEC"></a>加1/减1指令 INC/DEC</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">INC OP1; OP1 &lt;- OP1 + 1</span><br><span class="line">DEC OP1; OP1 &lt;- OP1 - 1</span><br></pre></td></tr></table></figure>
+<h5 id="交换加法指令XADD"><a href="#交换加法指令XADD" class="headerlink" title="交换加法指令XADD"></a>交换加法指令XADD</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">XADD OP1, OP2; OP1 &lt;- OP1+OP2  </span><br><span class="line">						 ; OP2 &lt;- OP1</span><br></pre></td></tr></table></figure>
+<h5 id="变反指令NEG"><a href="#变反指令NEG" class="headerlink" title="变反指令NEG"></a>变反指令NEG</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NEG OP1; OP1 &lt;- -OP1 置标志位</span><br></pre></td></tr></table></figure>
+<p>例子:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">NEG AL；</span><br><span class="line">若(AL) = 13H, 执行NEG指令后， </span><br><span class="line">(AL) = EDH</span><br><span class="line"></span><br><span class="line">13H =&gt; 0001 0011</span><br><span class="line">补码 =&gt; 1110 1101 =&gt;  EDH</span><br><span class="line"></span><br><span class="line">所以AL的内容为EDH</span><br></pre></td></tr></table></figure>
+<p>1110 1101</p>
+<p>ED</p>
+<h5 id="比较指令CMP"><a href="#比较指令CMP" class="headerlink" title="比较指令CMP"></a>比较指令CMP</h5><p>将OP1减去OP2，但结果不存在OP1中，只使结果影响标志位。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CMP OP1, OP2; OP1 - OP2, 置标志位</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>A - B</th>
+<th></th>
+<th>CF</th>
+<th>ZF</th>
+<th>SF</th>
+<th>OF</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>A = B</td>
+<td>-</td>
+<td>1</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>无符号数（看CF）</td>
+<td>A &lt; B</td>
+<td>1</td>
+<td>0</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td></td>
+<td>A &gt; B</td>
+<td>0</td>
+<td>0</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>有符号数</td>
+<td>A &lt; B</td>
+<td>-</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td></td>
+<td>A &gt; B</td>
+<td>-</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<h5 id="无符号乘法指令MUL"><a href="#无符号乘法指令MUL" class="headerlink" title="无符号乘法指令MUL"></a>无符号乘法指令MUL</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MUL OP1</span><br></pre></td></tr></table></figure>
+<p>被乘数隐含在累加器中（AL,AX,EAX）,OP1为乘数。字节运算时乘积返回到AX；字运算乘积返回到DX：AX； 双字运算时乘积返回到EDX：EAX。</p>
+<p>影响标志位OF和CF：</p>
+<p>若积的高字节、字或双字为0，则OF、CF清0.否则OF、CF置1</p>
+<p>比如8位乘8位结果还是8位则CF、OF为0</p>
+<p>有符号乘法指令IMUL</p>
+<p>单操作数 </p>
+<p>IMUL OP1</p>
+<p>被乘数隐含在累加器中（AL,AX,EAX） </p>
+<p>字节运算结果返回到AX</p>
+<p>字运算 DX:AX</p>
+<p>双字运算 EDX:EAX</p>
+<p>双操作数</p>
+<p>IMUL OP1, OP2;  OP1 &lt;- OP1 * OP2</p>
+<p>三操作数</p>
+<p>IMUL OP1, OP2, OP3; OP1 &lt;- OP2 * OP3</p>
+<p>若积的高字节、字或双字不是积的<code>符号位扩展</code>，则OF、CF置1，否则OF、CF请0。</p>
+<h5 id="除法指令DIV-IDIV"><a href="#除法指令DIV-IDIV" class="headerlink" title="除法指令DIV/IDIV"></a>除法指令DIV/IDIV</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DIV OP1; 无符号除法</span><br><span class="line">IDIV OP1;  有符号除法</span><br></pre></td></tr></table></figure>
+<p>被除数隐含在AX中，</p>
+<table>
+<thead>
+<tr>
+<th>OP1 （除数）</th>
+<th>被除数</th>
+<th>余数</th>
+<th>余数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>字节</td>
+<td>AX</td>
+<td>AL</td>
+<td>AH</td>
+</tr>
+<tr>
+<td>字</td>
+<td>DX:AX</td>
+<td>AX</td>
+<td>DX</td>
+</tr>
+<tr>
+<td>双字</td>
+<td>EDX:EAX</td>
+<td>EAX</td>
+<td>EDX</td>
+</tr>
+</tbody>
+</table>
+<p>注意被除数位数要是除数的二倍16/8 32/16 64/32</p>
+<p>那么8位被除数怎么办</p>
+<h5 id="符号扩展指令"><a href="#符号扩展指令" class="headerlink" title="符号扩展指令"></a>符号扩展指令</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">CBW; 将AL中8位带符号数扩展为16位存入AX。</span><br><span class="line"></span><br><span class="line">CWD; 将AX中16位带符号数扩展为32位存入DX:AX</span><br><span class="line"></span><br><span class="line">CWDE; 将AX中16位带符号数扩展为32位存入EAX。</span><br><span class="line"></span><br><span class="line">CDQ;  将EAX中32位带符号数扩展为64位存入EDX:EAX。</span><br></pre></td></tr></table></figure>
+<p>Tips：无论地址的位数如何，所指向的一个存储单元大小为1Byte（字节）</p>
+<h5 id="十进制（BCD码）调整指令"><a href="#十进制（BCD码）调整指令" class="headerlink" title="十进制（BCD码）调整指令"></a>十进制（BCD码）调整指令</h5><p>压缩BCD码运算：将压缩BCD数用二进制加、减指令（ADD,SUB,ADC,SBC）运算，运算结果必须用一下调整指令调整为压缩BCD数的结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">DAA; 将AL中的和调整为压缩BCD数</span><br><span class="line">DAS; 将AL中的差调整为压缩BCD数</span><br><span class="line">非压缩BCD字节数加减乘除（ASCII调整）</span><br><span class="line">非压缩BCD码运算：将非压缩BCD数用二进制加减乘除指令运算，配合相应的调整。</span><br><span class="line">AAA; (+)将AL中的和调整为非压缩BCD数</span><br><span class="line">AAS; (-)将AL中的差调整为非压缩BCD数</span><br><span class="line">AAM; (*)将AL中的积调整为非压缩BCD数</span><br><span class="line">AAD; (/)调整AX中的被除数，相除的商即为非压缩BCD数</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># 两个ASCII数想减（7-5）</span><br><span class="line">MOV AL, &apos;7&apos;; 37H</span><br><span class="line">SUB AL, &apos;5&apos;; 37H-35H</span><br><span class="line">AAS        ; 调整，(AL)=02H</span><br><span class="line"># 非组合BCD数6*8=48</span><br><span class="line">MOV AL, O6H</span><br><span class="line">MOV	BL, 08H</span><br><span class="line">MUL BL			; AX &lt;- (AL)*(BL)</span><br><span class="line">AAM					; 调整(AX)=0408H</span><br><span class="line"># 非组合BCD数17/5=3余2</span><br><span class="line">MOV AX, 0107H</span><br><span class="line">MOV BL, 05H</span><br><span class="line">AAD					 ; 调整被除数，(AX)=0011H</span><br><span class="line">DIV BL			 ; 相除，(AL)=03,(AH)=02</span><br></pre></td></tr></table></figure>
+<h5 id="二进制负数运算"><a href="#二进制负数运算" class="headerlink" title="二进制负数运算"></a>二进制负数运算</h5><p>二进制数中表示负数值时，一般会把最高位作为符号来使用，因此我们把这个最高位称为符号位。符号位是 0 时表示正数 ，符号位 是 1 时表示负数。那么－1 用 8 位二进制数来表示的话是什么样的呢？可能很多人会认为“1 的二进制数是 00000001，因此－1 就是 10000001”，但这个答案是错的，正确答案是 11111111。</p>
+<p>计算机在做减法运算时，实际上内部是在做加法运算。用加法运算来实现减法运算，是不是很新奇呢？为此，在表示负数时就需要使用“二进制的补数”。补数就是用正数来表示负数，很不可思议吧。</p>
+<p>为了获得补数，我们需要将二进制数的各数位的数值全部取反，然后再将结果加 1。例如，用 8 位二进制数表示－1 时，只需求得 1，也就是 00000001 的补数即可。具体来说，就是将各数位的 0 取反成 1，1 取反成 0，然后再将取反的结果加 1，最后就转化成了 11111111</p>
+<p>“当然，结果不为 0 的运算同样可以通过使用补数来得到正确的结果。不过，有一点需要注意，当运算结果为负数时，计算结果的值也是以补数的形式来表示的。比如 3－5 这个运算，用 8 位二进制数表示 3 时为 00000011，而 5 = 00000101 的补数为“取反＋1”，也就是 11111011。因此 3－5 其实就是 00000011＋11111011 的运算。</p>
+<p>00000011 + 11111011 的运算结果为 11111110，最高位变成了 1。这就表示结果是一个负数，这点大家应该都能理解。那么 11111110 表示的负数是多少大家知道吗？这时我们可以利用负负得正这个性质。假若 11111110 是负△△，那么 11111110 的补数就是正△△。通过求解补数的补数，就可知该值的绝对值。11111110 的补数，取反加 1 后为 00000010。这个是 2 的十进制数。因此，11111110 表示的就是－2。</p>
+<p>仔细思考一下补数的机制，大家就会明白像－32768～32767 这样负数比正数多一个的原因了。最高位是 0 的正数，有 0～32767 共 32768 个，这其中也包含 0。最高位是 1 的负数，有－1～－32768 共 32768 个，这其中不包含 0。也就是说，0 包含在正数范围内，所以负数就要比正数多 1 个。虽然 0 不是正数，但考虑到符号位，就将其划分到了正数中。</p>
+<h5 id="符号拓展位"><a href="#符号拓展位" class="headerlink" title="符号拓展位"></a>符号拓展位</h5><h6 id="符号扩充（又名符号扩展）"><a href="#符号扩充（又名符号扩展）" class="headerlink" title="符号扩充（又名符号扩展）"></a>符号扩充（又名符号扩展）</h6><p>是计算机算术中，在保留数字的符号（正负性）及数值的情况下，增加二进制数字位数的操作。此操作根据使用的特定有符号数处理方式，通过在数字的最高有效位端添加位数的方式完成。</p>
+<p>举个例子，若计算机使用六位二进制数表示数字“00 1010”（十进制的正10），且此数字需要将字长符号扩充至十六位，则扩充后的值为“0000 0000 0000 1010”。此时，数值与符号均保留了下来。</p>
+<p>若计算机使用十位数及二补数表示数字“11 1111 0001”（十进制的负15），且此值需要扩充至十六位，则扩充后的值为“1111 1111 1111 0001”。 此时，负号及原数字数值通过将左侧填充为1的方式保留了下来。</p>
+<h6 id="在英特尔的x86指令集中，符号扩充有两种方式："><a href="#在英特尔的x86指令集中，符号扩充有两种方式：" class="headerlink" title="在英特尔的x86指令集中，符号扩充有两种方式："></a>在英特尔的x86指令集中，符号扩充有两种方式：</h6><p>使用指令<code>cbw</code>、<code>cwd</code>、<code>cwde</code>及<code>cdq</code>：分别将字节转化为字、字转化为双字、字转化为扩充双字、双字转化为四倍长字（x86环境中，一个字节为8位、一个字16位、双字与扩充双字均为32位、四倍长字64位）；<br>使用符号扩展移动指令，可通过<code>movsx</code>（“带符号移动”）指令族完成。</p>
+<h6 id="零扩展"><a href="#零扩展" class="headerlink" title="零扩展"></a>零扩展</h6><p>是与符号扩展类似的概念。在移动操作或转换操作中，零扩展指的是将目标的高位数设置为零，而不是将高位数设置成原数字的最高有效位。零扩展通常用于将无符号数字移动至较大的字段中，同时保留其数值；而符号扩展通常用于有符号的数字。</p>
+<p>在x86及x64指令集中，movzx指令（“使用零扩展移动”）将执行零扩展移动。举个例子，movzx ebx, al会复制al中的一个字节至ebx的低位字节，随后使用0填充ebx的剩余字节。</p>
+<p>在x64平台上，大多数写入通用寄存器的低32位的指令将使用0填充目标寄存器的上半部分。举个例子，指令<code>mov eax, 1234</code> 将清除rax寄存器的上32位。</p>
+<p>###### </p>
+<h5 id="移位运算"><a href="#移位运算" class="headerlink" title="移位运算"></a>移位运算</h5><p>移位运算指的是将二进制数值的各数位进行左右移位</p>
+<p><code>&lt;&lt;</code>左移</p>
+<p><code>&gt;&gt;</code>右移</p>
+<h6 id="逻辑右移和算术右移的区别"><a href="#逻辑右移和算术右移的区别" class="headerlink" title="逻辑右移和算术右移的区别"></a>逻辑右移和算术右移的区别</h6><p>右移有移位后在最高位补0和最高位补1两种情况</p>
+<p><strong>逻辑右移</strong>：移位后需要在最高位补 0。</p>
+<p>当二进制数的值表示图形模式而非数值时，类似于霓虹灯往右滚动的效果。</p>
+<p><strong>算术右移</strong>：移位后要在最高位填充移位前符号位的值（0 或 1）</p>
+<p>当二进制数作为带符号的数值进行运算时，如果数值是用补数表示的负数值，那么右移后在空出来的最高位补 1，如果是正数，只需在最高位补 0 即可。</p>
+<p><strong>PS</strong> 只有在右移时才必须区分逻辑位移和算术位移。左移时，无论是图形模式（逻辑左移）还是相乘运算（算术左移），都只需在空出来的低位补 0 即可</p>
+<h5 id="BCD码"><a href="#BCD码" class="headerlink" title="BCD码"></a>BCD码</h5><p><strong>压缩BCD码</strong>：4位二进制表示一个十进制位</p>
+<p>需要注意的是每个十进制数都用一组四位二进制数来表示。不足4位者(十进制数0到7)加添0字开头，以凑足4位。还有六种数码：1010，1011，1100，1101，1110，1111，是不用的。</p>
+<p><strong>非压缩BCD码</strong>：一个字节（8位二进制位）表示一个十进制位</p>
+<p>非压缩型BCD码一个字节可存放一个一位十进制数，其中高4位的内容不做规定（也有部分书籍要求为0，二者均可），低4位二进制表示该位十进制数。如5的非压缩型BCD码是0000 0101，必须存放在一个字节中，56的非压缩型BCD码是00000101 00000110，必须存放在一个字中；</p>
+<p>参考资料</p>
+<p>《微机原理与接口技术》 戴胜华</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/assembly/" rel="tag"># assembly</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/03/17/iOS中的对象/" rel="next" title="iOS中的对象">
+                <i class="fa fa-chevron-left"></i> iOS中的对象
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/03/20/lldb/" rel="prev" title="lldb">
+                lldb <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Ticat</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">27</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">15</span>
+                    <span class="site-state-item-name">tags</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#80x86"><span class="nav-number">1.</span> <span class="nav-text">80x86</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#指令系统"><span class="nav-number">1.1.</span> <span class="nav-text">指令系统</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#指令格式"><span class="nav-number">1.1.1.</span> <span class="nav-text">指令格式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#操作系统行指令"><span class="nav-number">1.1.2.</span> <span class="nav-text">操作系统行指令</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7类寻址"><span class="nav-number">1.2.</span> <span class="nav-text">7类寻址</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#立即寻址"><span class="nav-number">1.2.1.</span> <span class="nav-text">立即寻址</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#寄存器寻址"><span class="nav-number">1.2.2.</span> <span class="nav-text">寄存器寻址</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#直接寻址"><span class="nav-number">1.2.3.</span> <span class="nav-text">直接寻址</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#寄存器间接寻址"><span class="nav-number">1.2.4.</span> <span class="nav-text">寄存器间接寻址</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#相对寄存器间接寻址"><span class="nav-number">1.2.5.</span> <span class="nav-text">相对寄存器间接寻址</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#基址加变址寻址"><span class="nav-number">1.2.6.</span> <span class="nav-text">基址加变址寻址</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#相对基址加变址寻址"><span class="nav-number">1.2.7.</span> <span class="nav-text">相对基址加变址寻址</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#与跳转有关的寻址方式"><span class="nav-number">1.3.</span> <span class="nav-text">与跳转有关的寻址方式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#交换指令XCHG"><span class="nav-number">1.3.1.</span> <span class="nav-text">交换指令XCHG</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#I-O指令-IN-和-OUT"><span class="nav-number">1.3.2.</span> <span class="nav-text">I/O指令 IN 和 OUT</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#装入有效地址指令LEA"><span class="nav-number">1.3.3.</span> <span class="nav-text">装入有效地址指令LEA</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#全部通用寄存器压栈和出栈指令"><span class="nav-number">1.3.4.</span> <span class="nav-text">全部通用寄存器压栈和出栈指令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#查表转换指令XLAT"><span class="nav-number">1.3.5.</span> <span class="nav-text">查表转换指令XLAT</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算术运算类"><span class="nav-number">1.4.</span> <span class="nav-text">算术运算类</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#加法和减法指令ADD-SUB"><span class="nav-number">1.4.1.</span> <span class="nav-text">加法和减法指令ADD/SUB</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#带进位加法-减法指令-ADC-SBB"><span class="nav-number">1.4.2.</span> <span class="nav-text">带进位加法/减法指令 ADC/SBB</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#加1-减1指令-INC-DEC"><span class="nav-number">1.4.3.</span> <span class="nav-text">加1/减1指令 INC/DEC</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#交换加法指令XADD"><span class="nav-number">1.4.4.</span> <span class="nav-text">交换加法指令XADD</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#变反指令NEG"><span class="nav-number">1.4.5.</span> <span class="nav-text">变反指令NEG</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#比较指令CMP"><span class="nav-number">1.4.6.</span> <span class="nav-text">比较指令CMP</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#无符号乘法指令MUL"><span class="nav-number">1.4.7.</span> <span class="nav-text">无符号乘法指令MUL</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#除法指令DIV-IDIV"><span class="nav-number">1.4.8.</span> <span class="nav-text">除法指令DIV/IDIV</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#符号扩展指令"><span class="nav-number">1.4.9.</span> <span class="nav-text">符号扩展指令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#十进制（BCD码）调整指令"><span class="nav-number">1.4.10.</span> <span class="nav-text">十进制（BCD码）调整指令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#二进制负数运算"><span class="nav-number">1.4.11.</span> <span class="nav-text">二进制负数运算</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#符号拓展位"><span class="nav-number">1.4.12.</span> <span class="nav-text">符号拓展位</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#符号扩充（又名符号扩展）"><span class="nav-number">1.4.12.1.</span> <span class="nav-text">符号扩充（又名符号扩展）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#在英特尔的x86指令集中，符号扩充有两种方式："><span class="nav-number">1.4.12.2.</span> <span class="nav-text">在英特尔的x86指令集中，符号扩充有两种方式：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#零扩展"><span class="nav-number">1.4.12.3.</span> <span class="nav-text">零扩展</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#移位运算"><span class="nav-number">1.4.13.</span> <span class="nav-text">移位运算</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#逻辑右移和算术右移的区别"><span class="nav-number">1.4.13.1.</span> <span class="nav-text">逻辑右移和算术右移的区别</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#BCD码"><span class="nav-number">1.4.14.</span> <span class="nav-text">BCD码</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ticat</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.1"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.1"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

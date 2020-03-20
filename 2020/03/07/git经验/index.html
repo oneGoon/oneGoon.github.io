@@ -107,7 +107,7 @@
 <meta property="og:site_name" content="WG&#39;s Lakeside">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://git-scm.com/images/branching-illustration@2x.png">
-<meta property="og:updated_time" content="2020-03-13T08:24:44.319Z">
+<meta property="og:updated_time" content="2020-03-14T14:59:46.793Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git经验">
 <meta name="twitter:image" content="https://git-scm.com/images/branching-illustration@2x.png">
@@ -364,7 +364,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-03-13 16:24:44" itemprop="dateModified" datetime="2020-03-13T16:24:44+08:00">2020-03-13</time>
+                <time title="Modified: 2020-03-14 22:59:46" itemprop="dateModified" datetime="2020-03-14T22:59:46+08:00">2020-03-14</time>
               
             
           </span>
@@ -408,8 +408,16 @@
 <h6 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h6><p>得到的结果是一样的，但是在work tree 上表现不同，</p>
 <p>reset为不留痕迹</p>
 <p>revert保留完整的操作记录</p>
-<p>以图表形式查看分支</p>
-<p><code>git log --graph</code></p>
+<h4 id="查看log"><a href="#查看log" class="headerlink" title="查看log"></a>查看log</h4><h6 id="以图表形式查看分支"><a href="#以图表形式查看分支" class="headerlink" title="以图表形式查看分支"></a>以图表形式查看分支</h6><p><code>git log --graph</code></p>
+<h6 id="只显示第一行"><a href="#只显示第一行" class="headerlink" title="只显示第一行"></a>只显示第一行</h6><p><code>git log --pretty=short</code></p>
+<h6 id="只显示指定文件的日志"><a href="#只显示指定文件的日志" class="headerlink" title="只显示指定文件的日志"></a>只显示指定文件的日志</h6><p><code>git log  &lt;filename&gt;</code></p>
+<h6 id="显示文件的改动"><a href="#显示文件的改动" class="headerlink" title="显示文件的改动"></a>显示文件的改动</h6><p><code>git log -p</code></p>
+<p><code>git log -p &lt;filename&gt;</code></p>
+<h6 id="查看更改前后的差别"><a href="#查看更改前后的差别" class="headerlink" title="查看更改前后的差别"></a>查看更改前后的差别</h6><p><code>git diff</code></p>
+<h5 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h5><p><code>git checkout -b &lt;branchname&gt;</code></p>
+<p>提交</p>
+<p>添加与提交一起完成</p>
+<p><code>git commit -a -m</code></p>
 
       
     </div>
@@ -527,7 +535,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">24</span>
+                    <span class="site-state-item-count">27</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -566,7 +574,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">12</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">tags</span>
                   
                 </div>
@@ -604,7 +618,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#撤销"><span class="nav-number">1.</span> <span class="nav-text">撤销</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#git-reset"><span class="nav-number">1.1.</span> <span class="nav-text">git reset</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#git-revert"><span class="nav-number">1.2.</span> <span class="nav-text">git revert</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#两者的区别"><span class="nav-number">1.2.1.</span> <span class="nav-text">两者的区别</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#reset"><span class="nav-number">1.2.2.</span> <span class="nav-text">reset</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#revert"><span class="nav-number">1.2.3.</span> <span class="nav-text">revert</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#总结"><span class="nav-number">1.2.4.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#撤销"><span class="nav-number">1.</span> <span class="nav-text">撤销</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#git-reset"><span class="nav-number">1.1.</span> <span class="nav-text">git reset</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#git-revert"><span class="nav-number">1.2.</span> <span class="nav-text">git revert</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#两者的区别"><span class="nav-number">1.2.1.</span> <span class="nav-text">两者的区别</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#reset"><span class="nav-number">1.2.2.</span> <span class="nav-text">reset</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#revert"><span class="nav-number">1.2.3.</span> <span class="nav-text">revert</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#总结"><span class="nav-number">1.2.4.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#查看log"><span class="nav-number">2.</span> <span class="nav-text">查看log</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#以图表形式查看分支"><span class="nav-number">2.0.1.</span> <span class="nav-text">以图表形式查看分支</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#只显示第一行"><span class="nav-number">2.0.2.</span> <span class="nav-text">只显示第一行</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#只显示指定文件的日志"><span class="nav-number">2.0.3.</span> <span class="nav-text">只显示指定文件的日志</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#显示文件的改动"><span class="nav-number">2.0.4.</span> <span class="nav-text">显示文件的改动</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#查看更改前后的差别"><span class="nav-number">2.0.5.</span> <span class="nav-text">查看更改前后的差别</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#分支"><span class="nav-number">2.1.</span> <span class="nav-text">分支</span></a></li></ol></div>
             
 
           </div>
