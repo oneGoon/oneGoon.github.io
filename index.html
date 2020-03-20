@@ -509,7 +509,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-03-20 16:37:46" itemprop="dateModified" datetime="2020-03-20T16:37:46+08:00">2020-03-20</time>
+                <time title="Modified: 2020-03-20 16:46:42" itemprop="dateModified" datetime="2020-03-20T16:46:42+08:00">2020-03-20</time>
               
             
           </span>
@@ -570,7 +570,7 @@
 <p>指定段加冒号</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MOV AX, ES: [2000H]; ES段2000H的内容送AL，2001H的内容送AH。</span><br></pre></td></tr></table></figure>
 <h5 id="寄存器间接寻址"><a href="#寄存器间接寻址" class="headerlink" title="寄存器间接寻址"></a>寄存器间接寻址</h5><p>操作数的偏移地址存放在寄存器中，而操作数存放在存储器中。    </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">MOV AX, [BX];      	AX &lt;- (DS*10H+(BX))  </span><br><span class="line">MOV AX, [BP];				AX &lt;- (SS*10H+(BP))</span><br><span class="line">MOV AX, ES: [BX];   AX &lt;- ()</span><br><span class="line">MOV AX, DS: [BP];</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">MOV AX, [BX];       AX &lt;- (DS*10H+(BX))  </span><br><span class="line">MOV AX, [BP];       AX &lt;- (SS*10H+(BP))</span><br><span class="line">MOV AX, ES: [BX];   AX &lt;- ()</span><br><span class="line">MOV AX, DS: [BP];</span><br></pre></td></tr></table></figure>
 <p><em>白话：比如存储器中有个数a地址为0x12345678 寄存器BX中存放的就是0x12345678 执行结果是把存放在BX中的0x12345678传送给AX</em></p>
 <p>SS：堆栈段的段寄存器</p>
 <h5 id="相对寄存器间接寻址"><a href="#相对寄存器间接寻址" class="headerlink" title="相对寄存器间接寻址"></a>相对寄存器间接寻址</h5><p>寄存器内容与位移量之和形成操作数的有效地址。即</p>
@@ -583,9 +583,9 @@
 <p>基址寄存器内容与变址寄存器内容再加偏移量之和形成操作数的有效地址。</p>
 <p><code>EA = [基址寄存器]+[变址寄存器]+偏移量</code></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">MOV AX, 1234H[BX+DI];</span><br><span class="line">MOV AX, [BX+DI+1234H];</span><br><span class="line">MOV AX, 1234H[BX][DI];</span><br><span class="line"># 几种方式等效，DS段(BX)+(DI)+1234H 中的字数据送AX</span><br></pre></td></tr></table></figure>
-<h4 id="与跳转有关的寻址方式"><a href="#与跳转有关的寻址方式" class="headerlink" title="与跳转有关的寻址方式"></a>与跳转有关的寻址方式</h4><p>无条件转移：JMP dst; dst:转移目标</p>
+<h5 id="与跳转有关的寻址方式"><a href="#与跳转有关的寻址方式" class="headerlink" title="与跳转有关的寻址方式"></a>与跳转有关的寻址方式</h5><p>无条件转移：JMP dst; dst:转移目标</p>
 <p>调用语句： CALL  dst; dst:调用目标</p>
-<h5 id="交换指令XCHG"><a href="#交换指令XCHG" class="headerlink" title="交换指令XCHG"></a>交换指令XCHG</h5><p>用于交换两个操作数</p>
+<h4 id="数据传送指令"><a href="#数据传送指令" class="headerlink" title="数据传送指令"></a>数据传送指令</h4><h5 id="交换指令XCHG"><a href="#交换指令XCHG" class="headerlink" title="交换指令XCHG"></a>交换指令XCHG</h5><p>用于交换两个操作数</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">XCHG OP1, OP2</span><br></pre></td></tr></table></figure>
 <p>注意可以是两个寄存器或者一个寄存器与一个存储器。但不能是两个存储器</p>
 <h5 id="I-O指令-IN-和-OUT"><a href="#I-O指令-IN-和-OUT" class="headerlink" title="I/O指令 IN 和 OUT"></a>I/O指令 IN 和 OUT</h5><p>用于在I/O端口和AL、AX或EAX累加器之间交换数据。</p>
@@ -611,7 +611,7 @@
 <p>入栈顺序为：EAX、ECX、EBX、EDX、ESP、EBP、ESI和EDI。</p>
 <p>其中：SP和ESP为操作前的栈顶指针。</p>
 <h5 id="查表转换指令XLAT"><a href="#查表转换指令XLAT" class="headerlink" title="查表转换指令XLAT"></a>查表转换指令XLAT</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">XLAT;  AL &lt;- ((BX)+(AL)) BX的内容加上AL的内容 得出一个地址，那个地址指向的内容传送给AL</span><br></pre></td></tr></table></figure>
-<h4 id="算术运算类"><a href="#算术运算类" class="headerlink" title="算术运算类"></a>算术运算类</h4><p>与运算有关的标志</p>
+<h4 id="算术运算指令"><a href="#算术运算指令" class="headerlink" title="算术运算指令"></a>算术运算指令</h4><p>与运算有关的标志</p>
 <p><code>CF</code>: 进位/借位标志。加、减运算最高位产生进位/借位时置1</p>
 <p><code>AF</code>: 辅助进位/借位标志。加、减运算时低半字节产生进位/借位是置1。</p>
 <p><code>OF</code>: 溢出标志。有符号二进制加、减运算结果超出范围时置1。（最高位，次高位只有一个有进位则溢出）</p>
@@ -742,7 +742,7 @@
 <h5 id="十进制（BCD码）调整指令"><a href="#十进制（BCD码）调整指令" class="headerlink" title="十进制（BCD码）调整指令"></a>十进制（BCD码）调整指令</h5><p>压缩BCD码运算：将压缩BCD数用二进制加、减指令（ADD,SUB,ADC,SBC）运算，运算结果必须用一下调整指令调整为压缩BCD数的结果</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">DAA; 将AL中的和调整为压缩BCD数</span><br><span class="line">DAS; 将AL中的差调整为压缩BCD数</span><br><span class="line">非压缩BCD字节数加减乘除（ASCII调整）</span><br><span class="line">非压缩BCD码运算：将非压缩BCD数用二进制加减乘除指令运算，配合相应的调整。</span><br><span class="line">AAA; (+)将AL中的和调整为非压缩BCD数</span><br><span class="line">AAS; (-)将AL中的差调整为非压缩BCD数</span><br><span class="line">AAM; (*)将AL中的积调整为非压缩BCD数</span><br><span class="line">AAD; (/)调整AX中的被除数，相除的商即为非压缩BCD数</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># 两个ASCII数想减（7-5）</span><br><span class="line">MOV AL, &apos;7&apos;; 37H</span><br><span class="line">SUB AL, &apos;5&apos;; 37H-35H</span><br><span class="line">AAS        ; 调整，(AL)=02H</span><br><span class="line"># 非组合BCD数6*8=48</span><br><span class="line">MOV AL, O6H</span><br><span class="line">MOV	BL, 08H</span><br><span class="line">MUL BL			; AX &lt;- (AL)*(BL)</span><br><span class="line">AAM					; 调整(AX)=0408H</span><br><span class="line"># 非组合BCD数17/5=3余2</span><br><span class="line">MOV AX, 0107H</span><br><span class="line">MOV BL, 05H</span><br><span class="line">AAD					 ; 调整被除数，(AX)=0011H</span><br><span class="line">DIV BL			 ; 相除，(AL)=03,(AH)=02</span><br></pre></td></tr></table></figure>
-<h5 id="二进制负数运算"><a href="#二进制负数运算" class="headerlink" title="二进制负数运算"></a>二进制负数运算</h5><p>二进制数中表示负数值时，一般会把最高位作为符号来使用，因此我们把这个最高位称为符号位。符号位是 0 时表示正数 ，符号位 是 1 时表示负数。那么－1 用 8 位二进制数来表示的话是什么样的呢？可能很多人会认为“1 的二进制数是 00000001，因此－1 就是 10000001”，但这个答案是错的，正确答案是 11111111。</p>
+<h3 id="名词理解"><a href="#名词理解" class="headerlink" title="名词理解"></a>名词理解</h3><h5 id="二进制负数运算"><a href="#二进制负数运算" class="headerlink" title="二进制负数运算"></a>二进制负数运算</h5><p>二进制数中表示负数值时，一般会把最高位作为符号来使用，因此我们把这个最高位称为符号位。符号位是 0 时表示正数 ，符号位 是 1 时表示负数。那么－1 用 8 位二进制数来表示的话是什么样的呢？可能很多人会认为“1 的二进制数是 00000001，因此－1 就是 10000001”，但这个答案是错的，正确答案是 11111111。</p>
 <p>计算机在做减法运算时，实际上内部是在做加法运算。用加法运算来实现减法运算，是不是很新奇呢？为此，在表示负数时就需要使用“二进制的补数”。补数就是用正数来表示负数，很不可思议吧。</p>
 <p>为了获得补数，我们需要将二进制数的各数位的数值全部取反，然后再将结果加 1。例如，用 8 位二进制数表示－1 时，只需求得 1，也就是 00000001 的补数即可。具体来说，就是将各数位的 0 取反成 1，1 取反成 0，然后再将取反的结果加 1，最后就转化成了 11111111</p>
 <p>“当然，结果不为 0 的运算同样可以通过使用补数来得到正确的结果。不过，有一点需要注意，当运算结果为负数时，计算结果的值也是以补数的形式来表示的。比如 3－5 这个运算，用 8 位二进制数表示 3 时为 00000011，而 5 = 00000101 的补数为“取反＋1”，也就是 11111011。因此 3－5 其实就是 00000011＋11111011 的运算。</p>
@@ -768,8 +768,7 @@
 <p>需要注意的是每个十进制数都用一组四位二进制数来表示。不足4位者(十进制数0到7)加添0字开头，以凑足4位。还有六种数码：1010，1011，1100，1101，1110，1111，是不用的。</p>
 <p><strong>非压缩BCD码</strong>：一个字节（8位二进制位）表示一个十进制位</p>
 <p>非压缩型BCD码一个字节可存放一个一位十进制数，其中高4位的内容不做规定（也有部分书籍要求为0，二者均可），低4位二进制表示该位十进制数。如5的非压缩型BCD码是0000 0101，必须存放在一个字节中，56的非压缩型BCD码是00000101 00000110，必须存放在一个字中；</p>
-<p>参考资料</p>
-<p>《微机原理与接口技术》 戴胜华</p>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><p>《微机原理与接口技术》 戴胜华</p>
 
           
         
