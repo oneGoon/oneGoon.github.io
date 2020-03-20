@@ -509,7 +509,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-03-20 16:11:46" itemprop="dateModified" datetime="2020-03-20T16:11:46+08:00">2020-03-20</time>
+                <time title="Modified: 2020-03-20 16:29:07" itemprop="dateModified" datetime="2020-03-20T16:29:07+08:00">2020-03-20</time>
               
             
           </span>
@@ -583,20 +583,23 @@
 <p>基址寄存器内容与变址寄存器内容再加偏移量之和形成操作数的有效地址。</p>
 <p><code>EA = [基址寄存器]+[变址寄存器]+偏移量</code></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">MOV AX, 1234H[BX+DI];</span><br><span class="line">MOV AX, [BX+DI+1234H];</span><br><span class="line">MOV AX, 1234H[BX][DI];</span><br><span class="line"># 几种方式等效，DS段(BX)+(DI)+1234H 中的字数据送AX</span><br></pre></td></tr></table></figure>
-<h4 id="与跳转有关的寻址方式"><a href="#与跳转有关的寻址方式" class="headerlink" title="与跳转有关的寻址方式"></a>与跳转有关的寻址方式</h4><p>无条件转移：</p>
-<p>调用语句：</p>
-<h5 id="交换指令XCHG"><a href="#交换指令XCHG" class="headerlink" title="交换指令XCHG"></a>交换指令XCHG</h5><p>可以是存储器或寄存器</p>
-<h5 id="I-O指令-IN-和-OUT"><a href="#I-O指令-IN-和-OUT" class="headerlink" title="I/O指令 IN 和 OUT"></a>I/O指令 IN 和 OUT</h5><p>IN OP1, OP2   OUT OP1, OP2</p>
-<h5 id="装入有效地址指令LEA"><a href="#装入有效地址指令LEA" class="headerlink" title="装入有效地址指令LEA"></a>装入有效地址指令LEA</h5><p>LEA OP1, OP2</p>
+<h4 id="与跳转有关的寻址方式"><a href="#与跳转有关的寻址方式" class="headerlink" title="与跳转有关的寻址方式"></a>与跳转有关的寻址方式</h4><p>无条件转移：JMP dst; dst:转移目标</p>
+<p>调用语句： CALL  dst; dst:调用目标</p>
+<h5 id="交换指令XCHG"><a href="#交换指令XCHG" class="headerlink" title="交换指令XCHG"></a>交换指令XCHG</h5><p>用于交换两个操作数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">XCHG OP1, OP2</span><br></pre></td></tr></table></figure>
+<p>注意可以是两个寄存器或者一个寄存器与一个存储器。但不能是两个存储器</p>
+<h5 id="I-O指令-IN-和-OUT"><a href="#I-O指令-IN-和-OUT" class="headerlink" title="I/O指令 IN 和 OUT"></a>I/O指令 IN 和 OUT</h5><p>用于在I/O端口和AL、AX或EAX累加器之间交换数据。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">IN OP1, OP2   </span><br><span class="line">OUT OP1, OP2</span><br></pre></td></tr></table></figure>
+<h5 id="装入有效地址指令LEA"><a href="#装入有效地址指令LEA" class="headerlink" title="装入有效地址指令LEA"></a>装入有效地址指令LEA</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LEA OP1, OP2</span><br></pre></td></tr></table></figure>
 <p>将有效地址（偏移地址）送通用寄存器。</p>
-<p>装入全地址指令</p>
-<p>LDS，LES，LFS，LGS，LSS</p>
+<h5 id="装入全地址指令LDS，LES，LFS，LGS，LSS"><a href="#装入全地址指令LDS，LES，LFS，LGS，LSS" class="headerlink" title="装入全地址指令LDS，LES，LFS，LGS，LSS"></a>装入全地址指令<code>LDS</code>，<code>LES</code>，<code>LFS</code>，<code>LGS</code>，<code>LSS</code></h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">LDS reg, mem</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>取mem指示的32位或48位全地址指针（即一个16位段选择符和一个16位或32位偏移地址）装入段寄存器和16位或32位reg中</p>
 <p>比如段基址和偏移地址都是16位，段基址送段寄存器，偏移地址动reg中。</p>
 <p>例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">X DD 12345678H</span><br><span class="line"></span><br><span class="line">​		  LDS SI , X; DS =1234H, SI = 5678H</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">X DD 12345678H</span><br><span class="line">LDS SI , X; DS =1234H, SI = 5678H</span><br></pre></td></tr></table></figure>
 <p>对于16位和32位保护方式，选择符送段寄存器，偏移地址送reg中</p>
 <p>例如 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">X DD 12345678H; 32位偏移值</span><br><span class="line"></span><br><span class="line">​		DW 0010H; 16位选择符</span><br><span class="line"></span><br><span class="line">​		LDS ESI, X; ESI=12345678H,DS=0010H</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">X DD 12345678H; 32位偏移值</span><br><span class="line"></span><br><span class="line">DW 0010H; 16位选择符</span><br><span class="line"></span><br><span class="line">LDS ESI, X; ESI=12345678H,DS=0010H</span><br></pre></td></tr></table></figure>
 <p>压栈/弹栈指令PUSH/POP</p>
 <p><code>PUSH OP1</code></p>
 <p><code>POP OP1</code></p>
