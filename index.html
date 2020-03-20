@@ -509,7 +509,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-03-20 16:00:12" itemprop="dateModified" datetime="2020-03-20T16:00:12+08:00">2020-03-20</time>
+                <time title="Modified: 2020-03-20 16:11:46" itemprop="dateModified" datetime="2020-03-20T16:11:46+08:00">2020-03-20</time>
               
             
           </span>
@@ -570,7 +570,8 @@
 <p>指定段加冒号</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MOV AX, ES: [2000H]; ES段2000H的内容送AL，2001H的内容送AH。</span><br></pre></td></tr></table></figure>
 <h5 id="寄存器间接寻址"><a href="#寄存器间接寻址" class="headerlink" title="寄存器间接寻址"></a>寄存器间接寻址</h5><p>操作数的偏移地址存放在寄存器中，而操作数存放在存储器中。    </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">MOV AX, [BX];      	AX &lt;- (DS*10H+(BX))  白话：比如存储器中有个数a地址为0x12345678 寄存器BX中存放的就是0x12345678 执行结果是把存放在BX中的0x12345678传送给AX</span><br><span class="line">MOV AX, [BP];				AX &lt;- (SS*10H+(BP))</span><br><span class="line">MOV AX, ES: [BX];   AX &lt;- ()</span><br><span class="line">MOV AX, DS: [BP];</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">MOV AX, [BX];      	AX &lt;- (DS*10H+(BX))  </span><br><span class="line">MOV AX, [BP];				AX &lt;- (SS*10H+(BP))</span><br><span class="line">MOV AX, ES: [BX];   AX &lt;- ()</span><br><span class="line">MOV AX, DS: [BP];</span><br></pre></td></tr></table></figure>
+<p><em>白话：比如存储器中有个数a地址为0x12345678 寄存器BX中存放的就是0x12345678 执行结果是把存放在BX中的0x12345678传送给AX</em></p>
 <p>SS：堆栈段的段寄存器</p>
 <h5 id="相对寄存器间接寻址"><a href="#相对寄存器间接寻址" class="headerlink" title="相对寄存器间接寻址"></a>相对寄存器间接寻址</h5><p>寄存器内容与位移量之和形成操作数的有效地址。即</p>
 <p>​    <code>EA = [寄存器]+位移量</code></p>
@@ -691,17 +692,13 @@
 <p>影响标志位OF和CF：</p>
 <p>若积的高字节、字或双字为0，则OF、CF清0.否则OF、CF置1</p>
 <p>比如8位乘8位结果还是8位则CF、OF为0</p>
-<p>有符号乘法指令IMUL</p>
-<p>单操作数 </p>
-<p>IMUL OP1</p>
+<h5 id="有符号乘法指令IMUL"><a href="#有符号乘法指令IMUL" class="headerlink" title="有符号乘法指令IMUL"></a>有符号乘法指令IMUL</h5><h6 id="单操作数"><a href="#单操作数" class="headerlink" title="单操作数"></a>单操作数</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">IMUL OP1</span><br></pre></td></tr></table></figure>
 <p>被乘数隐含在累加器中（AL,AX,EAX） </p>
 <p>字节运算结果返回到AX</p>
 <p>字运算 DX:AX</p>
 <p>双字运算 EDX:EAX</p>
-<p>双操作数</p>
-<p>IMUL OP1, OP2;  OP1 &lt;- OP1 * OP2</p>
-<p>三操作数</p>
-<p>IMUL OP1, OP2, OP3; OP1 &lt;- OP2 * OP3</p>
+<h6 id="双操作数"><a href="#双操作数" class="headerlink" title="双操作数"></a>双操作数</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">IMUL OP1, OP2;  OP1 &lt;- OP1 * OP2</span><br></pre></td></tr></table></figure>
+<h6 id="三操作数"><a href="#三操作数" class="headerlink" title="三操作数"></a>三操作数</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">IMUL OP1, OP2, OP3; OP1 &lt;- OP2 * OP3</span><br></pre></td></tr></table></figure>
 <p>若积的高字节、字或双字不是积的<code>符号位扩展</code>，则OF、CF置1，否则OF、CF请0。</p>
 <h5 id="除法指令DIV-IDIV"><a href="#除法指令DIV-IDIV" class="headerlink" title="除法指令DIV/IDIV"></a>除法指令DIV/IDIV</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DIV OP1; 无符号除法</span><br><span class="line">IDIV OP1;  有符号除法</span><br></pre></td></tr></table></figure>
 <p>被除数隐含在AX中，</p>
