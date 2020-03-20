@@ -509,7 +509,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-03-20 16:33:05" itemprop="dateModified" datetime="2020-03-20T16:33:05+08:00">2020-03-20</time>
+                <time title="Modified: 2020-03-20 16:37:46" itemprop="dateModified" datetime="2020-03-20T16:37:46+08:00">2020-03-20</time>
               
             
           </span>
@@ -558,7 +558,7 @@
 <li>相对基址加变址寻址</li>
 </ol>
 <h5 id="立即寻址"><a href="#立即寻址" class="headerlink" title="立即寻址"></a>立即寻址</h5><p>把立即数送到寄存器中</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">MOV BL, 56H;          56H -&gt; BL</span><br><span class="line">MOV AX, 2056H;        2056H -&gt; AX</span><br><span class="line">MOV ECX, 12345678H;   12345678 -&gt; ECX</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">MOV BL, 56H         ; 56H -&gt; BL</span><br><span class="line">MOV AX, 2056H       ; 2056H -&gt; AX</span><br><span class="line">MOV ECX, 12345678H  ; 12345678 -&gt; ECX</span><br></pre></td></tr></table></figure>
 <p>立即数只能作源操作数，不能作目的操作数。</p>
 <h5 id="寄存器寻址"><a href="#寄存器寻址" class="headerlink" title="寄存器寻址"></a>寄存器寻址</h5><p>操作数在CPU的寄存器中，而寄存器的名由指令指出。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">INC CL;</span><br><span class="line">MOV AX, BX;   (BX) -&gt; AX  BX的内容给AX</span><br></pre></td></tr></table></figure>
@@ -574,7 +574,7 @@
 <p><em>白话：比如存储器中有个数a地址为0x12345678 寄存器BX中存放的就是0x12345678 执行结果是把存放在BX中的0x12345678传送给AX</em></p>
 <p>SS：堆栈段的段寄存器</p>
 <h5 id="相对寄存器间接寻址"><a href="#相对寄存器间接寻址" class="headerlink" title="相对寄存器间接寻址"></a>相对寄存器间接寻址</h5><p>寄存器内容与位移量之和形成操作数的有效地址。即</p>
-<p>​    <code>EA = [寄存器]+位移量</code></p>
+<p><code>EA = [寄存器]+位移量</code></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">MOV ECX, 1500H[EAX]; DS段(EAX)+1500H中的双字数据送到ECX。</span><br><span class="line">MOV ECX, [EAX + 1500H];</span><br></pre></td></tr></table></figure>
 <h5 id="基址加变址寻址"><a href="#基址加变址寻址" class="headerlink" title="基址加变址寻址"></a>基址加变址寻址</h5><p>基址寄存器内容与变址寄存器内容之和形成操作数的偏移地址。即</p>
 <p><code>EA = [基址寄存器] + [变址寄存器]</code></p>
@@ -755,7 +755,6 @@
 <h6 id="零扩展"><a href="#零扩展" class="headerlink" title="零扩展"></a>零扩展</h6><p>是与符号扩展类似的概念。在移动操作或转换操作中，零扩展指的是将目标的高位数设置为零，而不是将高位数设置成原数字的最高有效位。零扩展通常用于将无符号数字移动至较大的字段中，同时保留其数值；而符号扩展通常用于有符号的数字。</p>
 <p>在x86及x64指令集中，movzx指令（“使用零扩展移动”）将执行零扩展移动。举个例子，movzx ebx, al会复制al中的一个字节至ebx的低位字节，随后使用0填充ebx的剩余字节。</p>
 <p>在x64平台上，大多数写入通用寄存器的低32位的指令将使用0填充目标寄存器的上半部分。举个例子，指令<code>mov eax, 1234</code> 将清除rax寄存器的上32位。</p>
-<p>###### </p>
 <h5 id="移位运算"><a href="#移位运算" class="headerlink" title="移位运算"></a>移位运算</h5><p>移位运算指的是将二进制数值的各数位进行左右移位</p>
 <p><code>&lt;&lt;</code>左移</p>
 <p><code>&gt;&gt;</code>右移</p>
