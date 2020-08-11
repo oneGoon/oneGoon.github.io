@@ -102,12 +102,12 @@
 
   <meta name="keywords" content="swift">
 <meta property="og:type" content="website">
-<meta property="og:title" content="WG&#39;s Lakeside">
+<meta property="og:title" content="斗扣年华">
 <meta property="og:url" content="onegoon.store/index.html">
-<meta property="og:site_name" content="WG&#39;s Lakeside">
+<meta property="og:site_name" content="斗扣年华">
 <meta property="og:locale" content="en">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="WG&#39;s Lakeside">
+<meta name="twitter:title" content="斗扣年华">
 
 
 
@@ -125,7 +125,7 @@
   };
 </script>
 
-  <title>WG's Lakeside</title>
+  <title>斗扣年华</title>
   
 
 
@@ -185,13 +185,13 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">WG's Lakeside</span>
+        <span class="site-title">斗扣年华</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
     
       
-        <p class="site-subtitle">只是想显点粗浅技艺，那是我的初衷</p>
+        <p class="site-subtitle">与扣斗，其乐无穷</p>
       
     
     
@@ -302,16 +302,833 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="onegoon.store/2020/04/21/iOS-weak/">
+    <link itemprop="mainEntityOfPage" href="onegoon.store/2020/06/05/属性访问/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ticat">
+      <meta itemprop="name" content="douCodeLife">
       <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WG's Lakeside">
+      <meta itemprop="name" content="斗扣年华">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2020/06/05/属性访问/" class="post-title-link" itemprop="url">属性访问</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2020-06-05 10:55:19" itemprop="dateCreated datePublished" datetime="2020-06-05T10:55:19+08:00">2020-06-05</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2020-06-14 15:30:21" itemprop="dateModified" datetime="2020-06-14T15:30:21+08:00">2020-06-14</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>“对象”就是“基本构造单元”。开发者可以通过对象来存储并传递数据。</p>
+<p>在对象之间传递数据并执行任务的过程就叫做“消息传递”</p>
+<p>当程序裕兴起来以后，为其提供相关支持的代码叫做“Objective-C运行时环境”</p>
+<p>它提供了一些使得对象之间能够传递消息的重要函数，并且包含创建类实例所用的全部逻辑。</p>
+<h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h3><p>property 是OC一项特性，用于封装对象中的数据。</p>
+<p>尽量描述所有关于属性相关的问题</p>
+<p>属性访问的点语法 </p>
+<p>属性由何而来</p>
+<p>编译器自动合成</p>
+<p>编译器生成getter setter 实例变量</p>
+<p>@synthesize 指定实例变量名</p>
+<p>@dynamic 告诉编译器不要自动创建实现属性的存取方法，不会报错，相信运行时一定能找到</p>
+<p>1.@property 的本质是什么？ivar、getter、setter 是如何生成并添加到这个类中的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@interface Person : NSObject</span><br><span class="line">@property NSString *firstName;</span><br><span class="line">@property NSString *lastName;</span><br><span class="line">@end</span><br><span class="line">//与</span><br><span class="line">@interface Person : NSObject</span><br><span class="line">- (NSString *)firstName;</span><br><span class="line">- (void)setFirstName:(NSString *)firstName;</span><br><span class="line">- (NSString *)lastName;</span><br><span class="line">- (void)setLastName:(NSString *)lastName;</span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+<p>编译识别一样，都能通过点语法访问属性，但是后者没有实现实例变量</p>
+<h5 id="读写权限readonly-readwrite"><a href="#读写权限readonly-readwrite" class="headerlink" title="读写权限readonly readwrite"></a>读写权限readonly readwrite</h5><p>默认是readwrite  getter setter方法都会生成</p>
+<p>readonly 只生成getter方法</p>
+<h5 id="原子性访问-atomic-noatomic"><a href="#原子性访问-atomic-noatomic" class="headerlink" title="原子性访问 atomic noatomic"></a>原子性访问 atomic noatomic</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">id objc_getProperty(id self, SEL _cmd, ptrdiff_t offset, BOOL atomic) &#123;</span><br><span class="line">    if (offset == 0) &#123;</span><br><span class="line">        return object_getClass(self);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // Retain release world</span><br><span class="line">    id *slot = (id*) ((char*)self + offset);</span><br><span class="line">    if (!atomic) return *slot;</span><br><span class="line">        </span><br><span class="line">    // Atomic retain release world</span><br><span class="line">    spinlock_t&amp; slotlock = PropertyLocks[slot];</span><br><span class="line">    slotlock.lock();</span><br><span class="line">    id value = objc_retain(*slot);</span><br><span class="line">    slotlock.unlock();</span><br><span class="line">    </span><br><span class="line">    // for performance, we (safely) issue the autorelease OUTSIDE of the spinlock.</span><br><span class="line">    return objc_autoreleaseReturnValue(value);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">static inline void reallySetProperty(id self, SEL _cmd, id newValue, ptrdiff_t offset, bool atomic, bool copy, bool mutableCopy) __attribute__((always_inline));</span><br><span class="line"></span><br><span class="line">static inline void reallySetProperty(id self, SEL _cmd, id newValue, ptrdiff_t offset, bool atomic, bool copy, bool mutableCopy)</span><br><span class="line">&#123;</span><br><span class="line">    if (offset == 0) &#123;</span><br><span class="line">        object_setClass(self, newValue);</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    id oldValue;</span><br><span class="line">    id *slot = (id*) ((char*)self + offset);</span><br><span class="line"></span><br><span class="line">    if (copy) &#123;</span><br><span class="line">        newValue = [newValue copyWithZone:nil];</span><br><span class="line">    &#125; else if (mutableCopy) &#123;</span><br><span class="line">        newValue = [newValue mutableCopyWithZone:nil];</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        if (*slot == newValue) return;</span><br><span class="line">        newValue = objc_retain(newValue);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if (!atomic) &#123;</span><br><span class="line">        oldValue = *slot;</span><br><span class="line">        *slot = newValue;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        spinlock_t&amp; slotlock = PropertyLocks[slot];</span><br><span class="line">        slotlock.lock();</span><br><span class="line">        oldValue = *slot;</span><br><span class="line">        *slot = newValue;        </span><br><span class="line">        slotlock.unlock();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    objc_release(oldValue);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void objc_setProperty(id self, SEL _cmd, ptrdiff_t offset, id newValue, BOOL atomic, signed char shouldCopy) </span><br><span class="line">&#123;</span><br><span class="line">    bool copy = (shouldCopy &amp;&amp; shouldCopy != MUTABLE_COPY);</span><br><span class="line">    bool mutableCopy = (shouldCopy == MUTABLE_COPY);</span><br><span class="line">    reallySetProperty(self, _cmd, newValue, offset, atomic, copy, mutableCopy);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void objc_setProperty_atomic(id self, SEL _cmd, id newValue, ptrdiff_t offset)</span><br><span class="line">&#123;</span><br><span class="line">    reallySetProperty(self, _cmd, newValue, offset, true, false, false);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void objc_setProperty_nonatomic(id self, SEL _cmd, id newValue, ptrdiff_t offset)</span><br><span class="line">&#123;</span><br><span class="line">    reallySetProperty(self, _cmd, newValue, offset, false, false, false);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">void objc_setProperty_atomic_copy(id self, SEL _cmd, id newValue, ptrdiff_t offset)</span><br><span class="line">&#123;</span><br><span class="line">    reallySetProperty(self, _cmd, newValue, offset, true, true, false);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void objc_setProperty_nonatomic_copy(id self, SEL _cmd, id newValue, ptrdiff_t offset)</span><br><span class="line">&#123;</span><br><span class="line">    reallySetProperty(self, _cmd, newValue, offset, false, true, false);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可见编译器编译代码时，通过attribute识别在属性访问方法中插入对应方法</p>
+<p><code>id *slot = (id*)((char*)self + offset)</code></p>
+<p>slot 二级指针存储属性地址</p>
+<p>分析atomic</p>
+<p>set方法中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">if (!atomic) &#123;</span><br><span class="line">      oldValue = *slot;</span><br><span class="line">      *slot = newValue;</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">      spinlock_t&amp; slotlock = PropertyLocks[slot];</span><br><span class="line">      slotlock.lock();</span><br><span class="line">      oldValue = *slot;</span><br><span class="line">      *slot = newValue;        </span><br><span class="line">      slotlock.unlock();</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>如果是atomic 会在临界区加入自旋锁</p>
+<p>oldValue 存储旧值指针</p>
+<p>然后赋新值</p>
+<p>get方法中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">spinlock_t&amp; slotlock = PropertyLocks[slot];</span><br><span class="line">  slotlock.lock();</span><br><span class="line">  id value = objc_retain(*slot);</span><br><span class="line">  slotlock.unlock();</span><br></pre></td></tr></table></figure>
+<p>那么，atomic能保证属性访问的线程安全吗</p>
+<p>可以看到 在setter方法中，获取新值newValue时并未加锁，当多线程写的时候，并不能保证线程安全。</p>
+<p>换句话说，它保证的是内存管理的安全。</p>
+<h5 id="内存管理语义"><a href="#内存管理语义" class="headerlink" title="内存管理语义"></a>内存管理语义</h5><h6 id="assign"><a href="#assign" class="headerlink" title="assign"></a>assign</h6><h6 id="通常针对“纯量类型”-的简单赋值操作"><a href="#通常针对“纯量类型”-的简单赋值操作" class="headerlink" title="通常针对“纯量类型” 的简单赋值操作"></a>通常针对“纯量类型” 的简单赋值操作</h6><h6 id="strong"><a href="#strong" class="headerlink" title="strong"></a>strong</h6><p>此特质表明该属性定义了一种“拥有关系”，为这种属性设置新值时，设置方法会先保留新值，释放旧值，然后再将新值设置上去</p>
+<h6 id="weak"><a href="#weak" class="headerlink" title="weak"></a>weak</h6><h6 id="unsafe-unretained"><a href="#unsafe-unretained" class="headerlink" title="unsafe_unretained"></a>unsafe_unretained</h6><h6 id="copy"><a href="#copy" class="headerlink" title="copy"></a>copy</h6><p>方法中的self msg_send 传进来的类</p>
+<p>ARC </p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="onegoon.store/2020/05/30/RxSwift/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="douCodeLife">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="斗扣年华">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2020/05/30/RxSwift/" class="post-title-link" itemprop="url">RxSwift</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2020-05-30 20:15:32 / Modified: 20:15:56" itemprop="dateCreated datePublished" datetime="2020-05-30T20:15:32+08:00">2020-05-30</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="onegoon.store/2020/05/21/你的答案/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="douCodeLife">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="斗扣年华">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2020/05/21/你的答案/" class="post-title-link" itemprop="url">你的答案</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2020-05-21 21:06:08" itemprop="dateCreated datePublished" datetime="2020-05-21T21:06:08+08:00">2020-05-21</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2020-06-27 15:47:28" itemprop="dateModified" datetime="2020-06-27T15:47:28+08:00">2020-06-27</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>0.AOP</p>
+<p>1.copy、mutableCopy</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// swift中的NSArray实现的copy与mutableCopy</span></span><br><span class="line"><span class="keyword">open</span> <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">copy</span><span class="params">()</span></span> -&gt; <span class="type">Any</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> copy(with: <span class="literal">nil</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">open</span> <span class="function"><span class="keyword">func</span> <span class="title">copy</span><span class="params">(with zone: NSZone? = <span class="literal">nil</span>)</span></span> -&gt; <span class="type">Any</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> type(of: <span class="keyword">self</span>) === <span class="type">NSArray</span>.<span class="keyword">self</span> &#123;</span><br><span class="line">            <span class="comment">// return self for immutable type</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">self</span></span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> type(of: <span class="keyword">self</span>) === <span class="type">NSMutableArray</span>.<span class="keyword">self</span> &#123;</span><br><span class="line">            <span class="keyword">let</span> array = <span class="type">NSArray</span>()</span><br><span class="line">            array._storage = <span class="keyword">self</span>._storage</span><br><span class="line">            <span class="keyword">return</span> array</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="type">NSArray</span>(array: <span class="keyword">self</span>.allObjects)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">open</span> <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">mutableCopy</span><span class="params">()</span></span> -&gt; <span class="type">Any</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> mutableCopy(with: <span class="literal">nil</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">open</span> <span class="function"><span class="keyword">func</span> <span class="title">mutableCopy</span><span class="params">(with zone: NSZone? = <span class="literal">nil</span>)</span></span> -&gt; <span class="type">Any</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> type(of: <span class="keyword">self</span>) === <span class="type">NSArray</span>.<span class="keyword">self</span> || type(of: <span class="keyword">self</span>) === <span class="type">NSMutableArray</span>.<span class="keyword">self</span> &#123;</span><br><span class="line">            <span class="comment">// always create and return an NSMutableArray</span></span><br><span class="line">            <span class="keyword">let</span> mutableArray = <span class="type">NSMutableArray</span>()</span><br><span class="line">            mutableArray._storage = <span class="keyword">self</span>._storage</span><br><span class="line">            <span class="keyword">return</span> mutableArray</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="type">NSMutableArray</span>(array: <span class="keyword">self</span>.allObjects)</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>可见如果属性修饰用了copy， 如果属性上声明NSArray， 即便在赋值时使用NSMutableArray， 属性新值依然得到NSArray的实例,而容器的内存也会是新开辟的。</p>
+<p>这就是常说的浅拷贝</p>
+<p>而copy与mutableCopy的区别仅在于新创建的容器是可变与不可变</p>
+<p>array的这个构造方法会进行深拷贝<code>initWithArray:&lt;#(nonnull NSArray *)#&gt; copyItems:&lt;#(BOOL)#&gt;</code></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">convenience</span> <span class="keyword">init</span>(array: [<span class="type">Any</span>], copyItems: <span class="type">Bool</span>) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">let</span> optionalArray : [<span class="type">AnyObject</span>] =</span><br><span class="line">            copyItems ?</span><br><span class="line">                array.<span class="built_in">map</span> &#123; <span class="keyword">return</span> __SwiftValue.store($<span class="number">0</span>).copy() <span class="keyword">as</span>! <span class="type">NSObject</span> &#125; :</span><br><span class="line">                array.<span class="built_in">map</span> &#123; <span class="keyword">return</span> __SwiftValue.store($<span class="number">0</span>) &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// This would have been nice, but "initializer delegation cannot be nested in another expression"</span></span><br><span class="line">        <span class="comment">//        optionalArray.withUnsafeBufferPointer &#123; ptr in</span></span><br><span class="line">        <span class="comment">//            self.init(objects: ptr.baseAddress, count: array.count)</span></span><br><span class="line">        <span class="comment">//        &#125;</span></span><br><span class="line">        <span class="keyword">let</span> cnt = array.<span class="built_in">count</span></span><br><span class="line">        <span class="keyword">let</span> buffer = <span class="type">UnsafeMutablePointer</span>&lt;<span class="type">AnyObject</span>&gt;.allocate(capacity: cnt)</span><br><span class="line">        buffer.initialize(from: optionalArray, <span class="built_in">count</span>: cnt)</span><br><span class="line">        <span class="keyword">self</span>.<span class="keyword">init</span>(objects: buffer, <span class="built_in">count</span>: cnt)</span><br><span class="line">        buffer.deinitialize(<span class="built_in">count</span>: cnt)</span><br><span class="line">        buffer.deallocate()</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>会申请内存空间，存储每个对象定义copy的返回对象。注意的是如果对象需要实现copy方法。cocoa自带的对象一般都有默认实现。</p>
+<p>对于NSArray、NSDictionary应使用copy来保证它们的封装性</p>
+<p>如果使用比如strong修饰，当NSMutableArray的实例赋给属性时，属性就变成了NSMutableArray，</p>
+<p>由于strong修饰，属性指向了可变数组的内存区域，如果可变数组改变了，属性也会跟随改变反之亦然，</p>
+<p>再有，此种情况运行时调用addObject:依然有效，因为isa已经不是NSArray了</p>
+<h4 id="block"><a href="#block" class="headerlink" title="block"></a>block</h4><p>为什么不能修改截获的自动变量的值</p>
+<p>我们知道，block会把截获的自动变量设置成自身的属性</p>
+<p>在block内部修改值，相当于设置了自身的属性，但是却无法改变原本的自动变量的值（全局变量，静态变量除外），这样就造成矛盾了。</p>
+<p>也就是在oc代码中，明明在block中修改了自动变量的值，结果却没有改变！</p>
+<p>所以有了__block修饰符来说明意图</p>
+<p>经<code>__block</code>修饰的变量会被编译套壳 <code>__Block_byref</code></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> __<span class="title">blockContext_block_impl_0</span> &#123;</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> __<span class="title">block_impl</span> <span class="title">impl</span>;</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> __<span class="title">blockContext_block_desc_0</span>* <span class="title">Desc</span>;</span></span><br><span class="line">  __Block_byref_alan_0 *alan; <span class="comment">// by ref</span></span><br><span class="line">  __blockContext_block_impl_0(<span class="keyword">void</span> *fp, struct __blockContext_block_desc_0 *desc, __Block_byref_alan_0 *_alan, <span class="keyword">int</span> flags=<span class="number">0</span>) : alan(_alan-&gt;__forwarding) &#123;</span><br><span class="line">    impl.isa = &amp;_NSConcreteStackBlock;</span><br><span class="line">    impl.Flags = flags;</span><br><span class="line">    impl.FuncPtr = fp;</span><br><span class="line">    Desc = desc;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>在注释// by ref 可见意图，通过指针引用来间接修改值。</p>
+<p>block属性只是自动变量的指针，在block内部通过属性找到自动变量的指针，进而改变值可以改变外部自动变量的值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">int alan</span><br><span class="line">// ↓</span><br><span class="line">struct __Block_byref_alan_0 &#123;</span><br><span class="line">  void *__isa;</span><br><span class="line">__Block_byref_alan_0 *__forwarding;</span><br><span class="line"> int __flags;</span><br><span class="line"> int __size;</span><br><span class="line"> int alan;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>关键是<code>__forwarding</code></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// block修改自动变量的部分</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">void</span> __blockContext_block_func_0(struct __blockContext_block_impl_0 *__cself) &#123;</span><br><span class="line">  __Block_byref_alan_0 *alan = __cself-&gt;alan; <span class="comment">// bound by ref</span></span><br><span class="line"></span><br><span class="line">        (alan-&gt;__forwarding-&gt;alan) = <span class="number">2</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// block外部的自动变量的声明</span></span><br><span class="line">__attribute__((__blocks__(byref))) __Block_byref_alan_0 alan = &#123;(<span class="keyword">void</span>*)<span class="number">0</span>,(__Block_byref_alan_0 *)&amp;alan, <span class="number">0</span>, <span class="keyword">sizeof</span>(__Block_byref_alan_0), <span class="number">1</span>&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 把自动变量赋给block</span></span><br><span class="line">((<span class="keyword">void</span> (*)())&amp;__blockContext_block_impl_0((<span class="keyword">void</span> *)__blockContext_block_func_0, &amp;__blockContext_block_desc_0_DATA, (__Block_byref_alan_0 *)&amp;alan, <span class="number">570425344</span>));</span><br></pre></td></tr></table></figure>
+<p>在block内部想改变外部的自动变量时，获取到的是外部变量壳对象的引用</p>
+<p>通过引用找到<code>__forwarding</code>再找到真正的属性变量进行赋值</p>
+<p>为什么不直接使用 alan-&gt;alan 即通过偏移直接赋值呢？</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="keyword">void</span> (*tryBlock)(<span class="keyword">void</span>) = ((<span class="keyword">void</span> (*)())&amp;__blockContext_block_impl_0((<span class="keyword">void</span> *)__blockContext_block_func_0, &amp;__blockContext_block_desc_0_DATA, alan));</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> __<span class="title">blockContext_block_impl_0</span> &#123;</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> __<span class="title">block_impl</span> <span class="title">impl</span>;</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> __<span class="title">blockContext_block_desc_0</span>* <span class="title">Desc</span>;</span></span><br><span class="line">  <span class="keyword">int</span> alan;</span><br><span class="line">  __blockContext_block_impl_0(<span class="keyword">void</span> *fp, struct __blockContext_block_desc_0 *desc, <span class="keyword">int</span> _alan, <span class="keyword">int</span> flags=<span class="number">0</span>) : alan(_alan) &#123;</span><br><span class="line">    impl.isa = &amp;_NSConcreteStackBlock;</span><br><span class="line">    impl.Flags = flags;</span><br><span class="line">    impl.FuncPtr = fp;</span><br><span class="line">    Desc = desc;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="comment">// </span></span><br><span class="line"><span class="keyword">void</span> (*tryBlock)(<span class="keyword">void</span>) = ((<span class="keyword">void</span> (*)())&amp;__blockContext_block_impl_0((<span class="keyword">void</span> *)__blockContext_block_func_0, &amp;__blockContext_block_desc_0_DATA, (__Block_byref_alan_0 *)&amp;alan, <span class="number">570425344</span>));</span><br></pre></td></tr></table></figure>
+<p>Block 的copy</p>
+<p>swift 内存布局</p>
+<p>swift如何实现多态</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="onegoon.store/2020/05/04/GCD/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="douCodeLife">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="斗扣年华">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2020/05/04/GCD/" class="post-title-link" itemprop="url">GCD</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2020-05-04 12:30:43" itemprop="dateCreated datePublished" datetime="2020-05-04T12:30:43+08:00">2020-05-04</time>
+            
+
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="onegoon.store/2020/05/01/Grand-Central-Dispatch/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="douCodeLife">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="斗扣年华">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2020/05/01/Grand-Central-Dispatch/" class="post-title-link" itemprop="url">Grand Central Dispatch</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2020-05-01 09:14:18" itemprop="dateCreated datePublished" datetime="2020-05-01T09:14:18+08:00">2020-05-01</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2020-05-06 16:58:09" itemprop="dateModified" datetime="2020-05-06T16:58:09+08:00">2020-05-06</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h3><p>进程：运行中的程序</p>
+<p>程序本身是没有生命周期的，只是存储在磁盘中的一些指令或是静态数据，是操作系统将这些字节运行起来，让程序发挥作用。</p>
+<p>操作系统提供运行中的程序的抽象，就是所谓的进程。</p>
+<p>程序是如何转化为进程的？操作系统是如何启动程序的？</p>
+<p>首先操作系统将磁盘中的代码和静态数据加载到内存，加载到进程的地址空间（程序以可执行的格式存储在磁盘中），然后初始化堆栈，当这些准备工作完成后，操作系统找到程序的入口main，将CPU的控制权交给这个创建的进程，而后，程序开始运行了。</p>
+<p>An abstract thread quality of service (QOS) classification.</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="onegoon.store/2020/04/21/iOS-weak/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="douCodeLife">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="斗扣年华">
     </span>
 
     
@@ -457,158 +1274,16 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="onegoon.store/2020/04/21/CoreAnimation/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ticat">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WG's Lakeside">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2020/04/21/CoreAnimation/" class="post-title-link" itemprop="url">CoreAnimation</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2020-04-21 09:58:22 / Modified: 09:59:08" itemprop="dateCreated datePublished" datetime="2020-04-21T09:58:22+08:00">2020-04-21</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="onegoon.store/2020/03/31/安全漏洞/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ticat">
+      <meta itemprop="name" content="douCodeLife">
       <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WG's Lakeside">
+      <meta itemprop="name" content="斗扣年华">
     </span>
 
     
@@ -644,12 +1319,24 @@
                 
               
 
-              <time title="Created: 2020-03-31 21:31:15 / Modified: 21:34:15" itemprop="dateCreated datePublished" datetime="2020-03-31T21:31:15+08:00">2020-03-31</time>
+              <time title="Created: 2020-03-31 21:31:15" itemprop="dateCreated datePublished" datetime="2020-03-31T21:31:15+08:00">2020-03-31</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2020-08-11 09:21:41" itemprop="dateModified" datetime="2020-08-11T09:21:41+08:00">2020-08-11</time>
               
             
           </span>
@@ -747,13 +1434,13 @@
     <link itemprop="mainEntityOfPage" href="onegoon.store/2020/03/31/程序性能/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ticat">
+      <meta itemprop="name" content="douCodeLife">
       <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WG's Lakeside">
+      <meta itemprop="name" content="斗扣年华">
     </span>
 
     
@@ -895,13 +1582,13 @@
     <link itemprop="mainEntityOfPage" href="onegoon.store/2020/03/24/Compilers/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ticat">
+      <meta itemprop="name" content="douCodeLife">
       <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WG's Lakeside">
+      <meta itemprop="name" content="斗扣年华">
     </span>
 
     
@@ -1040,13 +1727,13 @@
     <link itemprop="mainEntityOfPage" href="onegoon.store/2020/03/21/Xcode快捷键/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ticat">
+      <meta itemprop="name" content="douCodeLife">
       <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WG's Lakeside">
+      <meta itemprop="name" content="斗扣年华">
     </span>
 
     
@@ -1169,647 +1856,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="onegoon.store/2020/03/20/lldb/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ticat">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WG's Lakeside">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2020/03/20/lldb/" class="post-title-link" itemprop="url">lldb</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2020-03-20 09:53:17 / Modified: 10:20:56" itemprop="dateCreated datePublished" datetime="2020-03-20T09:53:17+08:00">2020-03-20</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h6 id="单指令"><a href="#单指令" class="headerlink" title="单指令"></a>单指令</h6><p>si</p>
-<p>ni</p>
-<p>n</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="onegoon.store/2020/03/19/汇编篇/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ticat">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WG's Lakeside">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2020/03/19/汇编篇/" class="post-title-link" itemprop="url">汇编篇</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2020-03-19 19:07:54" itemprop="dateCreated datePublished" datetime="2020-03-19T19:07:54+08:00">2020-03-19</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2020-03-26 18:53:44" itemprop="dateModified" datetime="2020-03-26T18:53:44+08:00">2020-03-26</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="80x86"><a href="#80x86" class="headerlink" title="80x86"></a>80x86</h3><h4 id="指令系统"><a href="#指令系统" class="headerlink" title="指令系统"></a>指令系统</h4><h5 id="指令格式"><a href="#指令格式" class="headerlink" title="指令格式"></a>指令格式</h5><p><code>[标号：] 操作码[操作数,...] [;注释]</code></p>
-<p>整数指令</p>
-<p>浮点数指令</p>
-<h5 id="操作系统行指令"><a href="#操作系统行指令" class="headerlink" title="操作系统行指令"></a>操作系统行指令</h5><h4 id="7类寻址"><a href="#7类寻址" class="headerlink" title="7类寻址"></a>7类寻址</h4><ol>
-<li>立即寻址</li>
-<li>寄存器寻址</li>
-<li>直接寻址</li>
-<li>寄存器间接寻址</li>
-<li>相对寄存器间接寻址</li>
-<li>基址加变址寻址</li>
-<li>相对基址加变址寻址</li>
-</ol>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2020/03/19/汇编篇/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="onegoon.store/2020/03/17/iOS中的对象/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ticat">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WG's Lakeside">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2020/03/17/iOS中的对象/" class="post-title-link" itemprop="url">iOS中的对象</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2020-03-17 15:23:24" itemprop="dateCreated datePublished" datetime="2020-03-17T15:23:24+08:00">2020-03-17</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2020-03-21 16:42:50" itemprop="dateModified" datetime="2020-03-21T16:42:50+08:00">2020-03-21</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>又到了手写weak’的时候了，再来一轮.</p>
-<p><em>站在巨人的肩膀，乘后人之凉</em></p>
-<p>阅读源码推荐VSCode，全称Visual Studio Code</p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2020/03/17/iOS中的对象/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="onegoon.store/2020/03/14/逆向/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ticat">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WG's Lakeside">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2020/03/14/逆向/" class="post-title-link" itemprop="url">逆向</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2020-03-14 00:21:03" itemprop="dateCreated datePublished" datetime="2020-03-14T00:21:03+08:00">2020-03-14</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2020-03-26 18:29:07" itemprop="dateModified" datetime="2020-03-26T18:29:07+08:00">2020-03-26</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> -g 产生调试信息</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> -c 预编译，编译，汇编 生成obj文件</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> gcc -g -c file</span></span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2020/03/14/逆向/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1845,7 +1891,7 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <p class="site-author-name" itemprop="name">Ticat</p>
+              <p class="site-author-name" itemprop="name">douCodeLife</p>
               <div class="site-description motion-element" itemprop="description"></div>
           </div>
 
@@ -1856,7 +1902,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">31</span>
+                    <span class="site-state-item-count">33</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1909,9 +1955,7 @@
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">20</span>
+                    <span class="site-state-item-count">19</span>
                     <span class="site-state-item-name">tags</span>
                   
                 </div>
@@ -1957,7 +2001,7 @@
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Ticat</span>
+  <span class="author" itemprop="copyrightHolder">douCodeLife</span>
 
   
 

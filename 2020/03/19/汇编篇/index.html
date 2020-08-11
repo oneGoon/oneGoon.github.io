@@ -105,13 +105,15 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="汇编篇">
 <meta property="og:url" content="onegoon.store/2020/03/19/汇编篇/index.html">
-<meta property="og:site_name" content="WG&#39;s Lakeside">
+<meta property="og:site_name" content="斗扣年华">
 <meta property="og:description" content="80x86指令系统指令格式[标号：] 操作码[操作数,...] [;注释] 整数指令 浮点数指令 操作系统行指令7类寻址 立即寻址 寄存器寻址 直接寻址 寄存器间接寻址 相对寄存器间接寻址 基址加变址寻址 相对基址加变址寻址">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-03-26T10:53:44.149Z">
+<meta property="og:image" content="https://github.com/oneGoon/Graphic/blob/master/hexo-blog/Assembly/x86%E5%AF%84%E5%AD%98%E5%99%A8%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8.png?raw=true">
+<meta property="og:updated_time" content="2020-05-15T02:55:44.050Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="汇编篇">
 <meta name="twitter:description" content="80x86指令系统指令格式[标号：] 操作码[操作数,...] [;注释] 整数指令 浮点数指令 操作系统行指令7类寻址 立即寻址 寄存器寻址 直接寻址 寄存器间接寻址 相对寄存器间接寻址 基址加变址寻址 相对基址加变址寻址">
+<meta name="twitter:image" content="https://github.com/oneGoon/Graphic/blob/master/hexo-blog/Assembly/x86%E5%AF%84%E5%AD%98%E5%99%A8%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8.png?raw=true">
 
 
 
@@ -129,7 +131,7 @@
   };
 </script>
 
-  <title>汇编篇 | WG's Lakeside</title>
+  <title>汇编篇 | 斗扣年华</title>
   
 
 
@@ -188,13 +190,13 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">WG's Lakeside</span>
+        <span class="site-title">斗扣年华</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
     
       
-        <p class="site-subtitle">只是想显点粗浅技艺，那是我的初衷</p>
+        <p class="site-subtitle">与扣斗，其乐无穷</p>
       
     
     
@@ -308,13 +310,13 @@
     <link itemprop="mainEntityOfPage" href="onegoon.store/2020/03/19/汇编篇/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ticat">
+      <meta itemprop="name" content="douCodeLife">
       <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WG's Lakeside">
+      <meta itemprop="name" content="斗扣年华">
     </span>
 
     
@@ -365,7 +367,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-03-26 18:53:44" itemprop="dateModified" datetime="2020-03-26T18:53:44+08:00">2020-03-26</time>
+                <time title="Modified: 2020-05-15 10:55:44" itemprop="dateModified" datetime="2020-05-15T10:55:44+08:00">2020-05-15</time>
               
             
           </span>
@@ -735,6 +737,7 @@
 <p><strong>program counter</strong> (<strong>PC</strong>) 通常在Intel x86和Itanium微处理器中叫做IP(Instruction pointer),有时又叫做address register(IAR)</p>
 <p>处理器从存储获取指令来执行，存储器的地址由pc而来，通常为顺序获取，每取一次，pc自增加。</p>
 <p>有些控制指令可以改变pc的值而实现跳跃获取</p>
+<h4 id="函数调用过程寄存的角色"><a href="#函数调用过程寄存的角色" class="headerlink" title="函数调用过程寄存的角色"></a>函数调用过程寄存的角色</h4><p><img src="https://github.com/oneGoon/Graphic/blob/master/hexo-blog/Assembly/x86%E5%AF%84%E5%AD%98%E5%99%A8%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8.png?raw=true" alt="x86registers"></p>
 <h3 id="AT-amp-T-vs-Intel"><a href="#AT-amp-T-vs-Intel" class="headerlink" title="AT&amp;T vs Intel"></a>AT&amp;T vs Intel</h3><p>x86 汇编语言两大主要派系： Intel stntax，AT&amp;T syntax</p>
 <p>Intel语法主要应用在DOS和Windows</p>
 <p>AT&amp;T语法主要应用在Unix</p>
@@ -908,7 +911,7 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <p class="site-author-name" itemprop="name">Ticat</p>
+              <p class="site-author-name" itemprop="name">douCodeLife</p>
               <div class="site-description motion-element" itemprop="description"></div>
           </div>
 
@@ -919,7 +922,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">31</span>
+                    <span class="site-state-item-count">33</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -972,9 +975,7 @@
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">20</span>
+                    <span class="site-state-item-count">19</span>
                     <span class="site-state-item-name">tags</span>
                   
                 </div>
@@ -1012,7 +1013,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#80x86"><span class="nav-number">1.</span> <span class="nav-text">80x86</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#指令系统"><span class="nav-number">1.1.</span> <span class="nav-text">指令系统</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#指令格式"><span class="nav-number">1.1.1.</span> <span class="nav-text">指令格式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#操作系统行指令"><span class="nav-number">1.1.2.</span> <span class="nav-text">操作系统行指令</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7类寻址"><span class="nav-number">1.2.</span> <span class="nav-text">7类寻址</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#立即寻址"><span class="nav-number">1.2.1.</span> <span class="nav-text">立即寻址</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#寄存器寻址"><span class="nav-number">1.2.2.</span> <span class="nav-text">寄存器寻址</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#直接寻址"><span class="nav-number">1.2.3.</span> <span class="nav-text">直接寻址</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#寄存器间接寻址"><span class="nav-number">1.2.4.</span> <span class="nav-text">寄存器间接寻址</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#相对寄存器间接寻址"><span class="nav-number">1.2.5.</span> <span class="nav-text">相对寄存器间接寻址</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#基址加变址寻址"><span class="nav-number">1.2.6.</span> <span class="nav-text">基址加变址寻址</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#相对基址加变址寻址"><span class="nav-number">1.2.7.</span> <span class="nav-text">相对基址加变址寻址</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#与跳转有关的寻址方式"><span class="nav-number">1.2.8.</span> <span class="nav-text">与跳转有关的寻址方式</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据传送指令"><span class="nav-number">1.3.</span> <span class="nav-text">数据传送指令</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#交换指令XCHG"><span class="nav-number">1.3.1.</span> <span class="nav-text">交换指令XCHG</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#I-O指令-IN-和-OUT"><span class="nav-number">1.3.2.</span> <span class="nav-text">I/O指令 IN 和 OUT</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#装入有效地址指令LEA"><span class="nav-number">1.3.3.</span> <span class="nav-text">装入有效地址指令LEA</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#装入全地址指令LDS，LES，LFS，LGS，LSS"><span class="nav-number">1.3.4.</span> <span class="nav-text">装入全地址指令LDS，LES，LFS，LGS，LSS</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#全部通用寄存器压栈和出栈指令"><span class="nav-number">1.3.5.</span> <span class="nav-text">全部通用寄存器压栈和出栈指令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#查表转换指令XLAT"><span class="nav-number">1.3.6.</span> <span class="nav-text">查表转换指令XLAT</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算术运算指令"><span class="nav-number">1.4.</span> <span class="nav-text">算术运算指令</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#加法和减法指令ADD-SUB"><span class="nav-number">1.4.1.</span> <span class="nav-text">加法和减法指令ADD/SUB</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#带进位加法-减法指令-ADC-SBB"><span class="nav-number">1.4.2.</span> <span class="nav-text">带进位加法/减法指令 ADC/SBB</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#加1-减1指令-INC-DEC"><span class="nav-number">1.4.3.</span> <span class="nav-text">加1/减1指令 INC/DEC</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#交换加法指令XADD"><span class="nav-number">1.4.4.</span> <span class="nav-text">交换加法指令XADD</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#变反指令NEG"><span class="nav-number">1.4.5.</span> <span class="nav-text">变反指令NEG</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#比较指令CMP"><span class="nav-number">1.4.6.</span> <span class="nav-text">比较指令CMP</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#无符号乘法指令MUL"><span class="nav-number">1.4.7.</span> <span class="nav-text">无符号乘法指令MUL</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#有符号乘法指令IMUL"><span class="nav-number">1.4.8.</span> <span class="nav-text">有符号乘法指令IMUL</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#单操作数"><span class="nav-number">1.4.8.1.</span> <span class="nav-text">单操作数</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#双操作数"><span class="nav-number">1.4.8.2.</span> <span class="nav-text">双操作数</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#三操作数"><span class="nav-number">1.4.8.3.</span> <span class="nav-text">三操作数</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#除法指令DIV-IDIV"><span class="nav-number">1.4.9.</span> <span class="nav-text">除法指令DIV/IDIV</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#符号扩展指令"><span class="nav-number">1.4.10.</span> <span class="nav-text">符号扩展指令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#十进制（BCD码）调整指令"><span class="nav-number">1.4.11.</span> <span class="nav-text">十进制（BCD码）调整指令</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#x86"><span class="nav-number">2.</span> <span class="nav-text">x86</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#通用寄存器"><span class="nav-number">2.1.</span> <span class="nav-text">通用寄存器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#段寄存器"><span class="nav-number">2.2.</span> <span class="nav-text">段寄存器</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AT-amp-T-vs-Intel"><span class="nav-number">3.</span> <span class="nav-text">AT&amp;T vs Intel</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#名词理解"><span class="nav-number">4.</span> <span class="nav-text">名词理解</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#二进制负数运算"><span class="nav-number">4.0.1.</span> <span class="nav-text">二进制负数运算</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#符号拓展位"><span class="nav-number">4.0.2.</span> <span class="nav-text">符号拓展位</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#符号扩充（又名符号扩展）"><span class="nav-number">4.0.2.1.</span> <span class="nav-text">符号扩充（又名符号扩展）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#在英特尔的x86指令集中，符号扩充有两种方式："><span class="nav-number">4.0.2.2.</span> <span class="nav-text">在英特尔的x86指令集中，符号扩充有两种方式：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#零扩展"><span class="nav-number">4.0.2.3.</span> <span class="nav-text">零扩展</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#移位运算"><span class="nav-number">4.0.3.</span> <span class="nav-text">移位运算</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#逻辑右移和算术右移的区别"><span class="nav-number">4.0.3.1.</span> <span class="nav-text">逻辑右移和算术右移的区别</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#BCD码"><span class="nav-number">4.0.4.</span> <span class="nav-text">BCD码</span></a></li></ol></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#参考资料"><span class="nav-number">5.</span> <span class="nav-text">参考资料</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#80x86"><span class="nav-number">1.</span> <span class="nav-text">80x86</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#指令系统"><span class="nav-number">1.1.</span> <span class="nav-text">指令系统</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#指令格式"><span class="nav-number">1.1.1.</span> <span class="nav-text">指令格式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#操作系统行指令"><span class="nav-number">1.1.2.</span> <span class="nav-text">操作系统行指令</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7类寻址"><span class="nav-number">1.2.</span> <span class="nav-text">7类寻址</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#立即寻址"><span class="nav-number">1.2.1.</span> <span class="nav-text">立即寻址</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#寄存器寻址"><span class="nav-number">1.2.2.</span> <span class="nav-text">寄存器寻址</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#直接寻址"><span class="nav-number">1.2.3.</span> <span class="nav-text">直接寻址</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#寄存器间接寻址"><span class="nav-number">1.2.4.</span> <span class="nav-text">寄存器间接寻址</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#相对寄存器间接寻址"><span class="nav-number">1.2.5.</span> <span class="nav-text">相对寄存器间接寻址</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#基址加变址寻址"><span class="nav-number">1.2.6.</span> <span class="nav-text">基址加变址寻址</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#相对基址加变址寻址"><span class="nav-number">1.2.7.</span> <span class="nav-text">相对基址加变址寻址</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#与跳转有关的寻址方式"><span class="nav-number">1.2.8.</span> <span class="nav-text">与跳转有关的寻址方式</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据传送指令"><span class="nav-number">1.3.</span> <span class="nav-text">数据传送指令</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#交换指令XCHG"><span class="nav-number">1.3.1.</span> <span class="nav-text">交换指令XCHG</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#I-O指令-IN-和-OUT"><span class="nav-number">1.3.2.</span> <span class="nav-text">I/O指令 IN 和 OUT</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#装入有效地址指令LEA"><span class="nav-number">1.3.3.</span> <span class="nav-text">装入有效地址指令LEA</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#装入全地址指令LDS，LES，LFS，LGS，LSS"><span class="nav-number">1.3.4.</span> <span class="nav-text">装入全地址指令LDS，LES，LFS，LGS，LSS</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#全部通用寄存器压栈和出栈指令"><span class="nav-number">1.3.5.</span> <span class="nav-text">全部通用寄存器压栈和出栈指令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#查表转换指令XLAT"><span class="nav-number">1.3.6.</span> <span class="nav-text">查表转换指令XLAT</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算术运算指令"><span class="nav-number">1.4.</span> <span class="nav-text">算术运算指令</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#加法和减法指令ADD-SUB"><span class="nav-number">1.4.1.</span> <span class="nav-text">加法和减法指令ADD/SUB</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#带进位加法-减法指令-ADC-SBB"><span class="nav-number">1.4.2.</span> <span class="nav-text">带进位加法/减法指令 ADC/SBB</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#加1-减1指令-INC-DEC"><span class="nav-number">1.4.3.</span> <span class="nav-text">加1/减1指令 INC/DEC</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#交换加法指令XADD"><span class="nav-number">1.4.4.</span> <span class="nav-text">交换加法指令XADD</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#变反指令NEG"><span class="nav-number">1.4.5.</span> <span class="nav-text">变反指令NEG</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#比较指令CMP"><span class="nav-number">1.4.6.</span> <span class="nav-text">比较指令CMP</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#无符号乘法指令MUL"><span class="nav-number">1.4.7.</span> <span class="nav-text">无符号乘法指令MUL</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#有符号乘法指令IMUL"><span class="nav-number">1.4.8.</span> <span class="nav-text">有符号乘法指令IMUL</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#单操作数"><span class="nav-number">1.4.8.1.</span> <span class="nav-text">单操作数</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#双操作数"><span class="nav-number">1.4.8.2.</span> <span class="nav-text">双操作数</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#三操作数"><span class="nav-number">1.4.8.3.</span> <span class="nav-text">三操作数</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#除法指令DIV-IDIV"><span class="nav-number">1.4.9.</span> <span class="nav-text">除法指令DIV/IDIV</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#符号扩展指令"><span class="nav-number">1.4.10.</span> <span class="nav-text">符号扩展指令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#十进制（BCD码）调整指令"><span class="nav-number">1.4.11.</span> <span class="nav-text">十进制（BCD码）调整指令</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#x86"><span class="nav-number">2.</span> <span class="nav-text">x86</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#通用寄存器"><span class="nav-number">2.1.</span> <span class="nav-text">通用寄存器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#段寄存器"><span class="nav-number">2.2.</span> <span class="nav-text">段寄存器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#函数调用过程寄存的角色"><span class="nav-number">2.3.</span> <span class="nav-text">函数调用过程寄存的角色</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AT-amp-T-vs-Intel"><span class="nav-number">3.</span> <span class="nav-text">AT&amp;T vs Intel</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#名词理解"><span class="nav-number">4.</span> <span class="nav-text">名词理解</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#二进制负数运算"><span class="nav-number">4.0.1.</span> <span class="nav-text">二进制负数运算</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#符号拓展位"><span class="nav-number">4.0.2.</span> <span class="nav-text">符号拓展位</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#符号扩充（又名符号扩展）"><span class="nav-number">4.0.2.1.</span> <span class="nav-text">符号扩充（又名符号扩展）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#在英特尔的x86指令集中，符号扩充有两种方式："><span class="nav-number">4.0.2.2.</span> <span class="nav-text">在英特尔的x86指令集中，符号扩充有两种方式：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#零扩展"><span class="nav-number">4.0.2.3.</span> <span class="nav-text">零扩展</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#移位运算"><span class="nav-number">4.0.3.</span> <span class="nav-text">移位运算</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#逻辑右移和算术右移的区别"><span class="nav-number">4.0.3.1.</span> <span class="nav-text">逻辑右移和算术右移的区别</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#BCD码"><span class="nav-number">4.0.4.</span> <span class="nav-text">BCD码</span></a></li></ol></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#参考资料"><span class="nav-number">5.</span> <span class="nav-text">参考资料</span></a></li></div>
             
 
           </div>
@@ -1037,7 +1038,7 @@
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Ticat</span>
+  <span class="author" itemprop="copyrightHolder">douCodeLife</span>
 
   
 

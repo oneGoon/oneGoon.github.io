@@ -105,7 +105,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content=" 网络篇">
 <meta property="og:url" content="onegoon.store/2020/03/09/网络篇/index.html">
-<meta property="og:site_name" content="WG&#39;s Lakeside">
+<meta property="og:site_name" content="斗扣年华">
 <meta property="og:description" content="Q: 两台服务器A和B的网络配置，     A B     IP address 192.168.26.129 192.168.26.3   Subnet mask 255.255.255.0 255.255.255.224   Default gateway 192.168.26.2 192.168.26.2    子网掩码本都为255.255.255.0， B的子网掩码不小心配成了255.25">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="/Users/wanglele/Library/Application%20Support/typora-user-images/image-20191101003036937.png">
@@ -119,6 +119,7 @@
 <meta property="og:image" content="https://github.com/oneGoon/Graphic/blob/master/hexo-blog/Internet-IP/IP%E5%9C%B0%E5%9D%80-%E7%AC%AC%207%20%E9%A1%B5.png?raw=true">
 <meta property="og:image" content="/Users/wanglele/Library/Application%20Support/typora-user-images/image-20191101003105903.png">
 <meta property="og:image" content="https://github.com/oneGoon/Graphic/blob/master/hexo-blog/Internet-IP/IP%E5%9C%B0%E5%9D%80-%E7%AC%AC%208%20%E9%A1%B5.png?raw=true">
+<meta property="og:image" content="/Users/wanglele/Library/Application%20Support/typora-user-images/image-20191031221257509.png">
 <meta property="og:image" content="/Users/wanglele/Library/Application%20Support/typora-user-images/image-20191031221257509.png">
 <meta property="og:image" content="/Users/wanglele/Library/Application%20Support/typora-user-images/image-20191101014051134.png">
 <meta property="og:image" content="/Users/wanglele/Library/Application%20Support/typora-user-images/image-20191101015510162.png">
@@ -137,7 +138,7 @@
 <meta property="og:image" content="/Users/wanglele/Library/Application%20Support/typora-user-images/image-20191101115845757.png">
 <meta property="og:image" content="/Users/wanglele/Library/Application%20Support/typora-user-images/image-20191101090154723.png">
 <meta property="og:image" content="/Users/wanglele/Library/Application%20Support/typora-user-images/image-20191101090039663.png">
-<meta property="og:updated_time" content="2020-03-13T01:32:01.059Z">
+<meta property="og:updated_time" content="2020-05-08T02:58:42.958Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content=" 网络篇">
 <meta name="twitter:description" content="Q: 两台服务器A和B的网络配置，     A B     IP address 192.168.26.129 192.168.26.3   Subnet mask 255.255.255.0 255.255.255.224   Default gateway 192.168.26.2 192.168.26.2    子网掩码本都为255.255.255.0， B的子网掩码不小心配成了255.25">
@@ -159,7 +160,7 @@
   };
 </script>
 
-  <title> 网络篇 | WG's Lakeside</title>
+  <title> 网络篇 | 斗扣年华</title>
   
 
 
@@ -218,13 +219,13 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">WG's Lakeside</span>
+        <span class="site-title">斗扣年华</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
     
       
-        <p class="site-subtitle">只是想显点粗浅技艺，那是我的初衷</p>
+        <p class="site-subtitle">与扣斗，其乐无穷</p>
       
     
     
@@ -338,13 +339,13 @@
     <link itemprop="mainEntityOfPage" href="onegoon.store/2020/03/09/网络篇/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ticat">
+      <meta itemprop="name" content="douCodeLife">
       <meta itemprop="description" content>
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WG's Lakeside">
+      <meta itemprop="name" content="斗扣年华">
     </span>
 
     
@@ -395,7 +396,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-03-13 09:32:01" itemprop="dateModified" datetime="2020-03-13T09:32:01+08:00">2020-03-13</time>
+                <time title="Modified: 2020-05-08 10:58:42" itemprop="dateModified" datetime="2020-05-08T10:58:42+08:00">2020-05-08</time>
               
             
           </span>
@@ -719,7 +720,7 @@
 <p>如果将网络拓扑排列为一棵树，并且以对网络拓扑敏感的方式来分配地址，可获得一个非常小的路由表，同时保持到所有目的地最短路径，下图举个例子</p>
 <p><img src="https://github.com/oneGoon/Graphic/blob/master/hexo-blog/Internet-IP/IP%E5%9C%B0%E5%9D%80-%E7%AC%AC%206%20%E9%A1%B5.png?raw=true" alt="ipaddr-6"></p>
 <p>左侧a)图中的树根是标记为19.12.4.8的路由器。为了知道每个可能的目的地的下一跳，它需要知道一棵树中在其下面的所有路由的条目，所以其存有的路由条目共9条。</p>
-<p>右侧b)图中的树根是标记为19.0.0.1，并要求其路由表中只3个条目（二叉树）左子树中所有路由器（节点）以前缀19.1开始，右侧的所有路由器以19.2开始。因此。路由器19.0.0.1的表中只需将19.1开始的目的地显示下一跳为19.1.0.1而将以19.2开始的目的地下一跳显示为19.2.0.1 。 任何其他的目的地址都被路由到标有”网络其他部分“的云中。结果共有3个条目（父结点，子结点）</p>
+<p>右侧b)图中的树根是标记为19.0.0.1，并要求其路由表中只有3个条目（二叉树）左子树中所有路由器（节点）以前缀19.1开始，右侧的所有路由器以19.2开始。因此。路由器19.0.0.1的表中只需将19.1开始的目的地显示下一跳为19.1.0.1而将以19.2开始的目的地下一跳显示为19.2.0.1 。 任何其他的目的地址都被路由到标有”网络其他部分“的云中。结果共有3个条目（父结点，子结点）</p>
 <h6 id="路由聚合"><a href="#路由聚合" class="headerlink" title="路由聚合"></a>路由聚合</h6><p>通过将相邻的多个IP前缀合并成一个短前缀称为一个聚合或汇聚</p>
 <p><img src="https://github.com/oneGoon/Graphic/blob/master/hexo-blog/Internet-IP/IP%E5%9C%B0%E5%9D%80-%E7%AC%AC%207%20%E9%A1%B5.png?raw=true" alt="ipaddr-7"></p>
 <p>前两个（190.154.27.0/26与190.154.27.64/26）数值相邻，因此可被聚合。前缀190.154.27.192/26不能被聚合，由于它们并非数值相邻。</p>
@@ -780,7 +781,7 @@
 <p><img src="https://github.com/oneGoon/Graphic/blob/master/hexo-blog/Internet-IP/IP%E5%9C%B0%E5%9D%80-%E7%AC%AC%208%20%E9%A1%B5.png?raw=true" alt="ipaddr-8"></p>
 <p>IP地址结构</p>
 <p>大多数IPv4地址块最终被细分为一个地址用于识别连接Internet或者某些专用的内联网的计算机网络接口，这些地址称为单播地址。除了单播地址，其他类型的地址包括广播、组播和任播地址，它们可能涉及多个接口，还有一些特殊用途的地址。而我们主要围绕讨论的是单播地址</p>
-<p><img src="/Users/wanglele/Library/Application Support/typora-user-images/image-20191031221257509.png" alt="image-20191031221257509"></p>
+<p><img src="/Users/wanglele/Library/Application Support/typora-user-images/image-20191031221257509.png" alt="image-20191031221257509" style="zoom:33%;"></p>
 <p>广播地址 ，如果发送这个地址，所有10.11.12 网络里面的设备都可以收到 </p>
 <p>网络号， 子网掩码和IP按位与就可得到网络号 </p>
 <p>IP地址的主机号 </p>
@@ -801,11 +802,11 @@
 <p>DHCP Request</p>
 <p>ip </p>
 <p>ACK</p>
-<p><img src="/Users/wanglele/Library/Application Support/typora-user-images/image-20191101014051134.png" alt="image-20191101014051134"></p>
-<p><img src="/Users/wanglele/Library/Application Support/typora-user-images/image-20191101015510162.png" alt="image-20191101015510162"></p>
-<p><img src="/Users/wanglele/Library/Application Support/typora-user-images/image-20191101021148782.png" alt="image-20191101021148782"></p>
-<p><img src="/Users/wanglele/Library/Application Support/typora-user-images/image-20191101021650331.png" alt="image-20191101021650331"></p>
-<p><img src="/Users/wanglele/Library/Application Support/typora-user-images/image-20191101023839284.png" alt="image-20191101023839284"></p>
+<p><img src="/Users/wanglele/Library/Application Support/typora-user-images/image-20191031221257509.png" alt="image-20191031221257509" style="zoom: 33%;"><img src="/Users/wanglele/Library/Application Support/typora-user-images/image-20191101014051134.png" alt="image-20191101014051134"></p>
+<p><img src="/Users/wanglele/Library/Application Support/typora-user-images/image-20191101015510162.png" alt="image-20191101015510162" style="zoom: 50%;"></p>
+<p><img src="/Users/wanglele/Library/Application Support/typora-user-images/image-20191101021148782.png" alt="image-20191101021148782" style="zoom:50%;"></p>
+<p><img src="/Users/wanglele/Library/Application Support/typora-user-images/image-20191101021650331.png" alt="image-20191101021650331" style="zoom:50%;"></p>
+<p><img src="/Users/wanglele/Library/Application Support/typora-user-images/image-20191101023839284.png" alt="image-20191101023839284" style="zoom:50%;"></p>
 <p><img src="/Users/wanglele/Library/Application Support/typora-user-images/image-20191101090609233.png" alt="image-20191101090609233"></p>
 <p>Socket库提供查询IP地址的功能 询问 DNS 服务器 获取IP ，端口号</p>
 <p>Socket 存有 描述符，IP，端口号</p>
@@ -954,7 +955,7 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <p class="site-author-name" itemprop="name">Ticat</p>
+              <p class="site-author-name" itemprop="name">douCodeLife</p>
               <div class="site-description motion-element" itemprop="description"></div>
           </div>
 
@@ -965,7 +966,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">31</span>
+                    <span class="site-state-item-count">33</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1018,9 +1019,7 @@
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">20</span>
+                    <span class="site-state-item-count">19</span>
                     <span class="site-state-item-name">tags</span>
                   
                 </div>
@@ -1083,7 +1082,7 @@
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Ticat</span>
+  <span class="author" itemprop="copyrightHolder">douCodeLife</span>
 
   
 
